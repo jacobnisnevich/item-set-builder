@@ -8,14 +8,14 @@ get '/' do
 end
 
 get '/getTags' do
-  file = File.read('C:\Users\Jacob\Downloads\dragontail-5.15.1\dragontail-5.15.1\5.15.1\data\en_US\item.json')
+  file = File.read('lib\item.json')
   hash = JSON.parse(file)
   itemParser = ItemParser.new(hash)
   itemParser.getTags().to_json()
 end
 
 get '/getItems' do
-  file = File.read('C:\Users\Jacob\Downloads\dragontail-5.15.1\dragontail-5.15.1\5.15.1\data\en_US\item.json')
+  file = File.read('lib\item.json')
   hash = JSON.parse(file)
   itemParser = ItemParser.new(hash)
   itemParser.getItems().to_json()
