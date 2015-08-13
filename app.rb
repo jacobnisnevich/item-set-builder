@@ -11,12 +11,16 @@ get '/getTags' do
   file = File.read('lib/item.json')
   hash = JSON.parse(file)
   itemParser = ItemParser.new(hash)
-  itemParser.getTags().to_json()
+  itemParser.getTags.to_json
 end
 
 get '/getItems' do
   file = File.read('lib/item.json')
   hash = JSON.parse(file)
   itemParser = ItemParser.new(hash)
-  itemParser.getItems().to_json()
+  itemParser.getItems.to_json
+end
+
+post '/uploadJSON' do
+  params[:files][0][:tempfile].read.to_json
 end

@@ -12,6 +12,17 @@ $(document).ready(function() {
     };
     Opentip.defaultStyle = "leagueItems";
 
+    $('#upload-button').click(function() {
+        $('#fileupload').click();
+    });
+
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $('#file-upload-text').html(data.result);
+        }
+    });
+
     $("#item-set-add-block-button").click(function() {
         $("#item-set-blocks").append('<li><div class="collapsible-header grey-text text-darken-2" contentEditable=true>New Item Block</div><div class="collapsible-body grey lighten-3 grey-text text-darken-2"><p>Lorem ipsum dolor sit amet.</p></div></li>');
         $(".collapsible").collapsible({

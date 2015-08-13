@@ -10,6 +10,13 @@
     <!-- JQuery UI JS -->
     <script src="js/jquery-ui.min.js"></script>
 
+    <!-- JQuery TagIt JS -->
+    <script src="js/tag-it.min.js"></script>
+
+    <!-- JQuery File Upload JS -->
+    <script src="js/jquery.iframe-transport.js"></script>
+    <script src="js/jquery.fileupload.js"></script>
+
     <!-- OpenTip JS -->
     <script src="js/opentip-jquery.min.js"></script>
 
@@ -21,6 +28,9 @@
 
     <!-- JQuery UI CSS -->
     <link rel="stylesheet" href="styles/jquery-ui.min.css">
+
+    <!-- JQuery TagIt CSS -->
+    <link rel="stylesheet" href="styles/jquery.tagit.css">
 
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
@@ -36,7 +46,7 @@
     <nav class="grey darken-4 z-depth-4">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">&nbsp;Item Set Builder</a>
+                <a href="#" class="brand-logo">Item Set Builder</a>
             </div>
         </div>
     </nav>
@@ -55,14 +65,33 @@
                         <div class="col s12 no-padding">
                             <ul class="tabs grey-text text-lighten-2">
                                 <li class="tab grey darken-4 col s6"><a class="active" href="#all-items-container">All Items</a></li>
-                                <li class="tab grey darken-4 col s6"><a href="#tab2">Set Info</a></li>
+                                <li class="tab grey darken-4 col s6"><a href="#set-info">Set Info</a></li>
                             </ul>
                         </div>
                         <div id="all-items-container" class="col s12">
                             <div><input placeholder="Search for item" id="item-search-box" type="text"></div>
                             <div id="all-items"></div>
                         </div>
-                        <div id="tab2" class="col s12">Tab 2</div>
+                        <div id="set-info" class="col s12">
+                            <div class="row">
+                                <div class="col s4 valign-wrapper set-info-form-label-container">
+                                    <h5 class="valign set-info-form-label">Set Name:</h5>
+                                </div>
+                                <div class="col s8">
+                                    <input placeholder="New Item Set" id="set-form-name" type="text" class="validate">
+                                </div>
+                                <div class="col s4 valign-wrapper set-info-form-label-container">
+                                    <h5 class="valign set-info-form-label">Maps:</h5>
+                                </div>
+                                <div class="col s8">
+                                    <input placeholder="Summoner's Rift" id="set-form-maps" type="text" class="validate">
+                                </div>
+                            </div>
+                            <div class="row left-align">
+                                <input id="fileupload" type="file" name="files[]" data-url="/uploadJSON">
+                                <pre class="code" id="file-upload-text">No file uploaded...</pre>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="item-builder" class="grey darken-3 grey-text text-lighten-2 col s8 offset-s1 z-depth-3">
