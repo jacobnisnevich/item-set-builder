@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Item Set Builder</title>
+
+    <!-- JQuery JS -->
+    <script src="js/jquery.js"></script>
+
+    <!-- JQuery UI JS -->
+    <script src="js/jquery-ui.min.js"></script>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+
+    <!-- item-set-builder JS -->
+    <script src="js/scripts.js"></script>
+
+    <!-- JQuery UI CSS -->
+    <link rel="stylesheet" href="styles/jquery-ui.min.css">
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- item-set-builder CSS -->
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <nav class="grey darken-4 z-depth-4">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">&nbsp;Item Set Builder</a>
+            </div>
+        </div>
+    </nav>
+    <div class="section grey darken-2" id="builder">
+        <div id="builder-app" class="container">
+            <div class="row">
+                <div id="toolbar" class="grey darken-3 grey-text text-lighten-2 col s12 z-depth-3 valign-wrapper">
+                    <a class="waves-effect waves-light btn grey darken-2 valign">Reset</a>
+                    <a class="waves-effect waves-light btn grey darken-2 valign">Upload</a>
+                    <a class="waves-effect waves-light btn grey darken-2 valign">Download</a>
+                </div>
+            </div>
+            <div class="row">
+                <div id="item-selection" class="grey darken-3 grey-text text-lighten-2 col s3 z-depth-3">
+                    <div class="row">
+                        <div class="col s12 no-padding">
+                            <ul class="tabs grey-text text-lighten-2">
+                                <li class="tab grey darken-4 col s6"><a class="active" href="#all-items-container">All Items</a></li>
+                                <li class="tab grey darken-4 col s6"><a href="#tab2">Set Info</a></li>
+                            </ul>
+                        </div>
+                        <div id="all-items-container" class="col s12">
+                            <div><input placeholder="Search for item" id="item-search-box" type="text"></div>
+                            <div id="all-items"></div>
+                        </div>
+                        <div id="tab2" class="col s12">Tab 2</div>
+                    </div>
+                </div>
+                <div id="item-builder" class="grey darken-3 grey-text text-lighten-2 col s8 offset-s1 z-depth-3">
+                    <ul id="item-set-blocks" class="collapsible" data-collapsible="expandable">
+                        <li>
+                            <div class="collapsible-header grey-text text-darken-2" contentEditable=true>New Item Block</div>
+                            <div class="collapsible-body grey lighten-3 grey-text text-darken-2"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                    </ul>
+                    <a id="item-set-add-block-button" class="btn-floating btn-large waves-effect waves-light grey darken-2"><i class="material-icons">add</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer grey darken-4">
+        <div class="container">
+            <p class="grey-text text-lighten-4" style="text-align: center">Item Set Builder is built with Materialize, Ruby, and Sinatra and is proudly open-source.</p>
+        </div>
+        <div class="footer-copyright black">
+            <div class="container">
+                © 2015 Jacob Nisnevich and Jason Yang
+                <a class="grey-text text-lighten-4 right" href="http://github.com/jacobnisnevich/item-set-builder">Source Available on GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

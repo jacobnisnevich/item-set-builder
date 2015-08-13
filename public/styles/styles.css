@@ -1,0 +1,89 @@
+body {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+nav .brand-logo {
+    font-size: 1.8rem;
+    line-height: 56px;
+}
+
+footer.page-footer {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+#spinner-view {
+    display: none;
+}
+
+#results-view {
+    display: none;
+}
+
+#builder {
+    height: 100%;
+}
+
+#results-table img {
+    width: 64px;
+}
+
+#results-back {
+    margin-top: 20px;
+}
+
+.custom-card {
+    padding: 20px;
+}
+
+.card-title-custom {
+    font-size: 24px;
+    padding-bottom: 5px;
+}
+
+.shadow {
+    text-shadow: #333 2px 2px 8px;
+}
+
+#builder-app .col {
+    text-align: center
+}
+
+#toolbar {
+    height: 48px;
+}
+
+#toolbar a {
+    margin-right: 10px;
+}
+
+#item-selection {
+    height: 70vh;
+}
+
+#item-builder {
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+#all-items {
+    overflow-y: scroll;
+    height: 55vh;
+}
+
+#all-items img {
+    float: left;
+    padding: 5%;
+    width: 25%;
+    border-radius: 20px;
+}
