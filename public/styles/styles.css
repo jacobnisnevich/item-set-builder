@@ -149,3 +149,11 @@ footer.page-footer {
 .item:hover {
     cursor: move;
 }
+
+#item-set-blocks {
+    border: 0;
+}
+
+#item-set-blocks li {
+    margin-bottom: 20px;
+}
