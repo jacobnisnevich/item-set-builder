@@ -90,8 +90,7 @@ footer.page-footer {
 #all-items img {
     float: left;
     padding: 5%;
-    width: 25%;
-    border-radius: 20px;
+    border-radius: 25px;
 }
 
 .set-info-form-label-container {
@@ -113,4 +112,40 @@ footer.page-footer {
 #file-upload-text {
     height: 30vh;
     overflow-y: scroll;
+}
+
+.item-slot img {
+    border-radius: 10px;
+}
+
+.item-slots div {
+    float: left;
+    margin: 9px;
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+.item:hover {
+    cursor: move;
 }

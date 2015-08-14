@@ -12,10 +12,6 @@ $(document).ready(function() {
     };
     Opentip.defaultStyle = "leagueItems";
 
-    $('#upload-button').click(function() {
-        $('#fileupload').click();
-    });
-
     $('#fileupload').fileupload({
         dataType: 'json',
         done: function (e, data) {
@@ -34,7 +30,7 @@ $(document).ready(function() {
         dataJSON = JSON.parse(data);
         for (var itemId in dataJSON) {
             if (dataJSON.hasOwnProperty(itemId)) {
-                $("#all-items").append('<img id="' + itemId + '" class="item" src="/images/items/' + itemId + '.png" alt="' + dataJSON[itemId]['name'] + '"/>');
+                $("#all-items").append('<img draggable="true" ondragstart="drag(event)" id="' + itemId + '" class="item" src="/images/items/' + itemId + '.png" alt="' + dataJSON[itemId]['name'] + '"/>');
                 new Opentip("#" + itemId, "<img src='/images/gold.png'>" + dataJSON[itemId]['gold']['total'] + "<br><br>" + dataJSON[itemId]['description'], dataJSON[itemId]['name'])
                 dataJSON[itemId]['tags'].forEach(function(tag) {
                     $("#" + itemId).addClass(tag);
@@ -52,3 +48,17 @@ $(document).ready(function() {
         }
     });
 });
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data).cloneNode(true));
+}
