@@ -103,4 +103,7 @@ function createJSONFile() {
     });
     data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
     $("#download-button").attr('href', 'data:' + data);
+    if ($("#set-form-name").val() == "") {
+        $("#download-button").attr('download', "Unnamed_Item_Set.json");
+    }
 }
