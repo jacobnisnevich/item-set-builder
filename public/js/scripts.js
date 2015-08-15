@@ -48,9 +48,13 @@ $(document).ready(function() {
     });
 
     $("#item-search-box").on('input', function() {
-        if ($("#item-search-box").val() != '') {
-            $(".item").not("[alt*='" + $("#item-search-box").val() + "']").hide();
-            $(".item[alt*='" + $("#item-search-box").val() + "']").show();
+        var search = $("#item-search-box").val().toLowerCase();
+        if (search != '') {
+            $(".item").hide();
+            $(".item").filter(function() {
+                var alt = $(this)[0].alt.toLowerCase();
+                return alt.indexOf(search) > -1;
+            }).show();
         } else {
             $(".item").show();
         }
