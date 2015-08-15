@@ -49,14 +49,15 @@ $(document).ready(function() {
 
     $("#item-search-box").on('input', function() {
         var search = $("#item-search-box").val().toLowerCase();
+        var all_item = $(".item", $("#all-items"));
         if (search != '') {
-            $(".item").hide();
-            $(".item").filter(function() {
+            all_item.hide();
+            all_item.filter(function() {
                 var alt = $(this)[0].alt.toLowerCase();
                 return alt.indexOf(search) > -1;
             }).show();
         } else {
-            $(".item").show();
+            all_item.show();
         }
     });
 });
