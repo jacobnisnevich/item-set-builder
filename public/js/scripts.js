@@ -2,9 +2,9 @@ $(document).ready(function() {
     Opentip.styles.leagueItems = {
         extends: "alert",
         stem: true,
-        borderColor: "rgb(0, 204, 153)",
+        borderColor: "rgb(182, 234, 187)",
         borderWidth: 1,
-        background: "rbga(0, 0, 0, 0.2)",
+        background: [[0, "rgba(30, 30, 30, 0.9)"]],
         borderRadius: 5,
         offset: [ 0, 0 ],
         tipJoint: "bottom left",
@@ -31,7 +31,7 @@ $(document).ready(function() {
         for (var itemId in dataJSON) {
             if (dataJSON.hasOwnProperty(itemId)) {
                 $("#all-items").append('<img draggable="true" ondragstart="drag(event)" id="' + itemId + '" class="item" src="/images/items/' + itemId + '.png" alt="' + dataJSON[itemId]['name'] + '"/>');
-                new Opentip("#" + itemId, "<img src='/images/gold.png'>" + dataJSON[itemId]['gold']['total'] + "<br><br>" + dataJSON[itemId]['description'], dataJSON[itemId]['name'])
+                new Opentip("#" + itemId, "<img src='/images/gold.png'>&nbsp;" + dataJSON[itemId]['gold']['total'] + "<br><br>" + dataJSON[itemId]['description'], dataJSON[itemId]['name'])
                 dataJSON[itemId]['tags'].forEach(function(tag) {
                     $("#" + itemId).addClass(tag);
                 });
