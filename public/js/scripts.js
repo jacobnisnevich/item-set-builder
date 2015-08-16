@@ -90,12 +90,25 @@ function drop(ev) {
             //cap at 2
         }
     }
-    //if item exists in slot already, return
-    else if ($(ev.target).parent().not(".item-slot")[0] == undefined) {
+    //if item exists in slot already, scoot over all items
+    else if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
+        //TODO: SCOOT THE SCOOT
         return;
     }
-    else { //else append to item slot
-        ev.target.appendChild(document.getElementById(data).cloneNode(true));
+    else { //else append to item slot at next available item slot
+        $(ev.target.parentElement).children().each(function() {
+            if ($(this).children().length == 0) {
+                // Object.create(ev, {
+                //     target: {
+                //         value: $(this)
+                //     }
+                // });
+                //TODO: CHANGE TARGET TO THIS
+                ev.target = $(this)[0];
+                ev.target.appendChild(document.getElementById(data).cloneNode(true));
+                return false;
+            }
+        });
     }
 }
 
