@@ -62,8 +62,6 @@ $(document).ready(function() {
     });
 });
 
-var data;
-
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -77,17 +75,36 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     //only stack if item is stackable
     if (ev.target.id == data) {
+        var countElement = $(ev.target).parent().find('.item-count');
+        var countNumber = Number($(ev.target).parent().find('.item-count').html());
         if (data == '2003') { //health potion
-            //cap at 5
-        }
-        else if (data == '2004') { //mana potion
-            //cap at 5
-        }
-        else if (data == '2044') { //stealth ward
-            //cap at 3
-        }
-        else if (data == '2043') { //vision ward
-            //cap at 2
+            if (countNumber < 5) {
+                $(countElement).html(++countNumber);
+                if (countNumber > 1) {
+                    $(countElement).show();
+                }
+            }
+        } else if (data == '2004') { //mana potion
+            if (countNumber < 5) {
+                $(countElement).html(++countNumber);
+                if (countNumber > 1) {
+                    $(countElement).show();
+                }
+            }
+        } else if (data == '2044') { //stealth ward
+            if (countNumber < 3) {
+                $(countElement).html(++countNumber);
+                if (countNumber > 1) {
+                    $(countElement).show();
+                }
+            }
+        } else if (data == '2043') { //vision ward
+            if (countNumber < 2) {
+                $(countElement).html(++countNumber);
+                if (countNumber > 1) {
+                    $(countElement).show();
+                }
+            }
         }
     }
     //if item exists in slot already, scoot over all items
@@ -97,7 +114,7 @@ function drop(ev) {
     }
     else { //else append to item slot at next available item slot
         $(ev.target.parentElement).children().each(function() {
-            if ($(this).children().length == 0) {
+            if ($(this).find('img').length == 0) {
                 // Object.create(ev, {
                 //     target: {
                 //         value: $(this)
@@ -141,7 +158,7 @@ function createJSONFile() {
         obj.blocks.push(block);
     });
 
-    data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
     
     $("#download-button").attr('href', 'data:' + data);
     if ($("#set-form-name").val() == "") {
