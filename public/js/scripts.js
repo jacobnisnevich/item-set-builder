@@ -75,7 +75,7 @@ function drag(ev) {
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    if (ev.target.id == data) {}
+    if (ev.target.id == data && (data == '2003' || data == '2004' || data == '2044' || data == '2043')) {}
     else if ($(ev.target).parent().not(".item-slot")[0] == undefined) {return;}
     ev.target.appendChild(document.getElementById(data).cloneNode(true));
 }
