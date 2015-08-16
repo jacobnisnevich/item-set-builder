@@ -93,6 +93,14 @@ footer.page-footer {
     border-radius: 25px;
 }
 
+stats, grouplimit {
+    color: rgb(182, 234, 187);
+}
+
+unique, active, aura {
+    color: rgb(200, 200, 0);
+}
+
 .set-info-form-label-container {
     height: 50px;
 }
