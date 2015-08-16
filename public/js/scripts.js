@@ -74,6 +74,7 @@ function drag(ev) {
 
 function drop(ev) {
     ev.preventDefault();
+    if ($(ev.target).parent().not(".item-slot")[0] == undefined) {return;}
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data).cloneNode(true));
 }
