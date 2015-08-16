@@ -75,9 +75,28 @@ function drag(ev) {
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    if (ev.target.id == data && (data == '2003' || data == '2004' || data == '2044' || data == '2043')) {}
-    else if ($(ev.target).parent().not(".item-slot")[0] == undefined) {return;}
-    ev.target.appendChild(document.getElementById(data).cloneNode(true));
+    //only stack if item is stackable
+    if (ev.target.id == data) {
+        if (data == '2003') { //health potion
+            //cap at 5
+        }
+        else if (data == '2004') { //mana potion
+            //cap at 5
+        }
+        else if (data == '2044') { //stealth ward
+            //cap at 3
+        }
+        else if (data == '2043') { //vision ward
+            //cap at 2
+        }
+    }
+    //if item exists in slot already, return
+    else if ($(ev.target).parent().not(".item-slot")[0] == undefined) {
+        return;
+    }
+    else { //else append to item slot
+        ev.target.appendChild(document.getElementById(data).cloneNode(true));
+    }
 }
 
 function createJSONFile() {
