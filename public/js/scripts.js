@@ -74,8 +74,9 @@ function drag(ev) {
 
 function drop(ev) {
     ev.preventDefault();
-    if ($(ev.target).parent().not(".item-slot")[0] == undefined) {return;}
     var data = ev.dataTransfer.getData("text");
+    if (ev.target.id == data) {}
+    else if ($(ev.target).parent().not(".item-slot")[0] == undefined) {return;}
     ev.target.appendChild(document.getElementById(data).cloneNode(true));
 }
 
