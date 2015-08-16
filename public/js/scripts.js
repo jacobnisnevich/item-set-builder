@@ -73,7 +73,7 @@ function drag(ev) {
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    //only stack if item is stackable
+    //stack if item is stackable
     if (ev.target.id == data) {
         var countElement = $(ev.target).parent().find('.item-count');
         var countNumber = Number($(ev.target).parent().find('.item-count').html());
@@ -115,14 +115,7 @@ function drop(ev) {
     else { //else append to item slot at next available item slot
         $(ev.target.parentElement).children().each(function() {
             if ($(this).find('img').length == 0) {
-                // Object.create(ev, {
-                //     target: {
-                //         value: $(this)
-                //     }
-                // });
-                //TODO: CHANGE TARGET TO THIS
-                ev.target = $(this)[0];
-                ev.target.appendChild(document.getElementById(data).cloneNode(true));
+                $(this).append(document.getElementById(data).cloneNode(true));
                 return false;
             }
         });
