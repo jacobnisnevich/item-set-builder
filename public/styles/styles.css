@@ -97,8 +97,12 @@ stats, grouplimit {
     color: rgb(182, 234, 187);
 }
 
-unique, active, aura {
+unique, active, aura, passive {
     color: rgb(200, 200, 0);
+}
+
+consumable {
+    color: rgb(224, 145, 58);
 }
 
 .set-info-form-label-container {
