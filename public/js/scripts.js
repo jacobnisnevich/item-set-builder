@@ -109,8 +109,27 @@ function drop(ev) {
     }
     //if item exists in slot already, scoot over all items
     else if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
-        //TODO: SCOOT THE SCOOT
-        return;
+        //find index of item slot dropped in
+        var index_start = $(ev.target.parentElement).parent().children().index($(ev.target.parentElement));
+
+        //find index of first empty slot
+        var index_end;
+        $(ev.target.parentElement).parent().children().each(function() {
+            if ($(this).find('img').length == 0) {
+                index_end = $(this).parent().children().index($(this));
+                return false;
+            }
+        });
+
+        //scoot items over by 1 so dropped item can fit
+        for (var i = index_end - 1; i >= index_start; i--) {
+            var parent = $(ev.target.parentElement).parent().children();
+            var element = parent.eq(i).children().filter(".item").detach();
+            parent.eq(index_end).append(element);
+        };
+
+        // var element = $(ev.target).detach();
+        // $('#parentNode').append(element);
     }
     else { //else append to item slot at next available item slot
         $(ev.target.parentElement).children().each(function() {
