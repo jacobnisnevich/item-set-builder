@@ -105,61 +105,13 @@ function drop(ev) {
                     $(countElement).show();
                 }
             }
+        } else { //same item so just scoot
+            scootItems(ev, data);
         }
     }
     //if item exists in slot already, scoot over all items
     else if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
-        var item_slots = $(ev.target.parentElement).parent().children();
-
-        //find index of item slot dropped in
-        var index_start = item_slots.index(ev.target.parentElement);
-
-        //find index of first empty slot
-        var index_end;
-        item_slots.each(function() {
-            if ($(this).find('img').length == 0) {
-                index_end = $(this).parent().children().index($(this));
-                return false;
-            }
-        });
-
-        //scoot items over by 1 so dropped item can fit
-        for (var i = index_end - 1; i >= index_start; i--, index_end--) {
-            //swap count numbers
-            var sourceCountElement = $(item_slots.eq(i).find('.item-count'));
-            var sourceCountNumber = Number(item_slots.eq(i).find('.item-count').html());
-            var destinationCountElement = $(item_slots.eq(index_end).find('.item-count'))
-            var destiantionCountNumber = Number(item_slots.eq(index_end).find('.item-count').html());
-
-            var temp = sourceCountNumber;
-            $(sourceCountElement).html(destiantionCountNumber);
-            $(destinationCountElement).html(temp);
-
-            //swap hidden-ness
-            var sourceHidden = $(sourceCountElement).is(":hidden");
-            var destinationHidden = $(destinationCountElement).is(":hidden");
-
-            if(sourceHidden) {
-                destinationCountElement.hide();
-            }
-            else {
-                destinationCountElement.show();
-            }
-
-            if(destinationHidden) {
-                sourceCountElement.hide();
-            }
-            else {
-                sourceCountElement.show();
-            }
-
-            //swap item images
-            var item = item_slots.eq(i).find(".item").detach();
-            item_slots.eq(index_end).append(item);
-        };
-
-        //finally, put item in slot
-        item_slots.eq(index_end).append(document.getElementById(data).cloneNode(true));
+        scootItems(ev, data);
     }
     else { //else append to item slot at next available item slot
         $(ev.target.parentElement).children().each(function() {
@@ -206,4 +158,58 @@ function createJSONFile() {
     if ($("#set-form-name").val() == "") {
         $("#download-button").attr('download', "Unnamed_Item_Set.json");
     }
+}
+
+function scootItems(ev, data) {
+    var item_slots = $(ev.target.parentElement).parent().children();
+
+    //find index of item slot dropped in
+    var index_start = item_slots.index(ev.target.parentElement);
+
+    //find index of first empty slot
+    var index_end;
+    item_slots.each(function() {
+        if ($(this).find('img').length == 0) {
+            index_end = $(this).parent().children().index($(this));
+            return false;
+        }
+    });
+
+    //scoot items over by 1 so dropped item can fit
+    for (var i = index_end - 1; i >= index_start; i--, index_end--) {
+        //swap count numbers
+        var sourceCountElement = $(item_slots.eq(i).find('.item-count'));
+        var sourceCountNumber = Number(item_slots.eq(i).find('.item-count').html());
+        var destinationCountElement = $(item_slots.eq(index_end).find('.item-count'))
+        var destiantionCountNumber = Number(item_slots.eq(index_end).find('.item-count').html());
+
+        var temp = sourceCountNumber;
+        $(sourceCountElement).html(destiantionCountNumber);
+        $(destinationCountElement).html(temp);
+
+        //swap hidden-ness
+        var sourceHidden = $(sourceCountElement).is(":hidden");
+        var destinationHidden = $(destinationCountElement).is(":hidden");
+
+        if(sourceHidden) {
+            destinationCountElement.hide();
+        }
+        else {
+            destinationCountElement.show();
+        }
+
+        if(destinationHidden) {
+            sourceCountElement.hide();
+        }
+        else {
+            sourceCountElement.show();
+        }
+
+        //swap item images
+        var item = item_slots.eq(i).find(".item").detach();
+        item_slots.eq(index_end).append(item);
+    };
+
+    //finally, put item in slot
+    item_slots.eq(index_end).append(document.getElementById(data).cloneNode(true));
 }
