@@ -68,11 +68,16 @@ function allowDrop(ev) {
 
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("parent", ev.target.parentElement.className);
+    if (ev.target.parentElement.className.indexOf("item-slots")) {
+        ev.dataTransfer.setData("index", $(ev.target.parentElement).parent().children().index($(ev.target.parentElement)));
+    }
 }
 
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
+    var parent = ev.dataTransfer.getData("parent");
     //stack if item is stackable
     if (ev.target.id == data) {
         var countElement = $(ev.target).parent().find('.item-count');
@@ -112,6 +117,59 @@ function drop(ev) {
     //if item exists in slot already, scoot over all items
     else if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
         scootItems(ev, data);
+    }
+    //if dragging item from item-set block, scoot over items
+    else if (parent.indexOf("item-slot") > -1) {
+        var item_slots = $(ev.target.parentElement).children();
+
+        //find index of item slot dropped in
+        var index_start = Number(ev.dataTransfer.getData("index"));
+
+        //find index of first empty slot
+        var index_end;
+        item_slots.each(function() {
+            if ($(this).find('img').length == 0) {
+                index_end = $(this).parent().children().index($(this));
+                return false;
+            }
+        });
+
+        //scoot items over by 1 so item can go to end
+        for (var i = index_start + 1; i < index_end; i++, index_start++) {
+            //swap count numbers
+            var sourceCountElement = $(item_slots.eq(index_start).find('.item-count'));
+            var sourceCountNumber = Number(item_slots.eq(index_start).find('.item-count').html());
+            var destinationCountElement = $(item_slots.eq(i).find('.item-count'))
+            var destiantionCountNumber = Number(item_slots.eq(i).find('.item-count').html());
+
+            var temp = sourceCountNumber;
+            $(sourceCountElement).html(destiantionCountNumber);
+            $(destinationCountElement).html(temp);
+
+            //swap hidden-ness
+            var sourceHidden = $(sourceCountElement).is(":hidden");
+            var destinationHidden = $(destinationCountElement).is(":hidden");
+
+            if(sourceHidden) {
+                destinationCountElement.hide();
+            }
+            else {
+                destinationCountElement.show();
+            }
+
+            if(destinationHidden) {
+                sourceCountElement.hide();
+            }
+            else {
+                sourceCountElement.show();
+            }
+
+            //swap item images
+            var sourceItem = item_slots.eq(i).find(".item").detach();
+            var draggedItem = item_slots.eq(index_start).find(".item").detach();
+            item_slots.eq(i).append(draggedItem);
+            item_slots.eq(index_start).append(sourceItem);
+        };
     }
     else { //else append to item slot at next available item slot
         $(ev.target.parentElement).children().each(function() {
