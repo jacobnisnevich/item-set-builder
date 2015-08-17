@@ -125,11 +125,39 @@ function drop(ev) {
 
         //scoot items over by 1 so dropped item can fit
         for (var i = index_end - 1; i >= index_start; i--, index_end--) {
-            var element = item_slots.eq(i).children().filter(".item").detach();
-            item_slots.eq(index_end).append(element);
+            //swap count numbers
+            var sourceCountElement = $(item_slots.eq(i).find('.item-count'));
+            var sourceCountNumber = Number(item_slots.eq(i).find('.item-count').html());
+            var destinationCountElement = $(item_slots.eq(index_end).find('.item-count'))
+            var destiantionCountNumber = Number(item_slots.eq(index_end).find('.item-count').html());
+
+            var sourceHidden = $(sourceCountElement).is(":hidden");
+            var destinationHidden = $(destinationCountElement).is(":hidden");
+
+            var temp = sourceCountNumber;
+            $(sourceCountElement).html(destiantionCountNumber);
+            $(destinationCountElement).html(temp);
+
+            if(sourceHidden) {
+                destinationCountElement.hide();
+            }
+            else {
+                destinationCountElement.show();
+            }
+
+            if(destinationHidden) {
+                sourceCountElement.hide();
+            }
+            else {
+                sourceCountElement.show();
+            }
+
+            //swap item images
+            var item = item_slots.eq(i).find(".item").detach();
+            item_slots.eq(index_end).append(item);
         };
 
-        //fianlly, put item in slot
+        //finally, put item in slot
         item_slots.eq(index_end).append(document.getElementById(data).cloneNode(true));
     }
     else { //else append to item slot at next available item slot
