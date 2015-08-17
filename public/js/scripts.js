@@ -131,12 +131,13 @@ function drop(ev) {
             var destinationCountElement = $(item_slots.eq(index_end).find('.item-count'))
             var destiantionCountNumber = Number(item_slots.eq(index_end).find('.item-count').html());
 
-            var sourceHidden = $(sourceCountElement).is(":hidden");
-            var destinationHidden = $(destinationCountElement).is(":hidden");
-
             var temp = sourceCountNumber;
             $(sourceCountElement).html(destiantionCountNumber);
             $(destinationCountElement).html(temp);
+
+            //swap hidden-ness
+            var sourceHidden = $(sourceCountElement).is(":hidden");
+            var destinationHidden = $(destinationCountElement).is(":hidden");
 
             if(sourceHidden) {
                 destinationCountElement.hide();
