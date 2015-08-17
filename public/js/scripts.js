@@ -128,6 +128,9 @@ function drop(ev) {
             var element = item_slots.eq(i).children().filter(".item").detach();
             item_slots.eq(index_end).append(element);
         };
+
+        //fianlly, put item in slot
+        item_slots.eq(index_end).append(document.getElementById(data).cloneNode(true));
     }
     else { //else append to item slot at next available item slot
         $(ev.target.parentElement).children().each(function() {
