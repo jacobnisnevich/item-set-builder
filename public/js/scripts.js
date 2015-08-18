@@ -78,106 +78,21 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     var parent = ev.dataTransfer.getData("parent");
-    //stack if item is stackable
-    if (ev.target.id == data) {
-        var countElement = $(ev.target).parent().find('.item-count');
-        var countNumber = Number($(ev.target).parent().find('.item-count').html());
-        if (data == '2003') { //health potion
-            if (countNumber < 5) {
-                $(countElement).html(++countNumber);
-                if (countNumber > 1) {
-                    $(countElement).show();
-                }
-            }
-        } else if (data == '2004') { //mana potion
-            if (countNumber < 5) {
-                $(countElement).html(++countNumber);
-                if (countNumber > 1) {
-                    $(countElement).show();
-                }
-            }
-        } else if (data == '2044') { //stealth ward
-            if (countNumber < 3) {
-                $(countElement).html(++countNumber);
-                if (countNumber > 1) {
-                    $(countElement).show();
-                }
-            }
-        } else if (data == '2043') { //vision ward
-            if (countNumber < 2) {
-                $(countElement).html(++countNumber);
-                if (countNumber > 1) {
-                    $(countElement).show();
-                }
-            }
-        } else { //same item so just scoot
-            scootItems(ev, data);
-        }
-    }
-    //if item exists in slot already, scoot over all items
-    else if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
-        scootItems(ev, data);
-    }
     //if dragging item from item-set block, scoot over items
-    else if (parent.indexOf("item-slot") > -1) {
-        var item_slots = $(ev.target.parentElement).children();
-
-        //find index of item slot dropped in
-        var index_start = Number(ev.dataTransfer.getData("index"));
-
-        //find index of first empty slot
-        var index_end;
-        item_slots.each(function() {
-            if ($(this).find('img').length == 0) {
-                index_end = $(this).parent().children().index($(this));
-                return false;
-            }
-        });
-
-        //scoot items over by 1 so item can go to end
-        for (var i = index_start + 1; i < index_end; i++, index_start++) {
-            //swap count numbers
-            var sourceCountElement = $(item_slots.eq(index_start).find('.item-count'));
-            var sourceCountNumber = Number(item_slots.eq(index_start).find('.item-count').html());
-            var destinationCountElement = $(item_slots.eq(i).find('.item-count'))
-            var destiantionCountNumber = Number(item_slots.eq(i).find('.item-count').html());
-
-            var temp = sourceCountNumber;
-            $(sourceCountElement).html(destiantionCountNumber);
-            $(destinationCountElement).html(temp);
-
-            //swap hidden-ness
-            var sourceHidden = $(sourceCountElement).is(":hidden");
-            var destinationHidden = $(destinationCountElement).is(":hidden");
-
-            if(sourceHidden) {
-                destinationCountElement.hide();
-            }
-            else {
-                destinationCountElement.show();
-            }
-
-            if(destinationHidden) {
-                sourceCountElement.hide();
-            }
-            else {
-                sourceCountElement.show();
-            }
-
-            //swap item images
-            var sourceItem = item_slots.eq(i).find(".item").detach();
-            var draggedItem = item_slots.eq(index_start).find(".item").detach();
-            item_slots.eq(i).append(draggedItem);
-            item_slots.eq(index_start).append(sourceItem);
-        };
+    if (parent.indexOf("item-slot") > -1) {
+        if (isExist(ev,data)) {}
+        else {scootLeft}
     }
-    else { //else append to item slot at next available item slot
-        $(ev.target.parentElement).children().each(function() {
-            if ($(this).find('img').length == 0) {
-                $(this).append(document.getElementById(data).cloneNode(true));
-                return false;
-            }
-        });
+    else { //came from all-items box
+        if (isExist(ev,data)) {}
+        else { //else append to item slot at next available item slot
+            $(ev.target.parentElement).children().each(function() {
+                if ($(this).find('img').length == 0) {
+                    $(this).append(document.getElementById(data).cloneNode(true));
+                    return false;
+                }
+            });
+        }
     }
 }
 
@@ -218,7 +133,7 @@ function createJSONFile() {
     }
 }
 
-function scootItems(ev, data) {
+function scootRight(ev, data) {
     var item_slots = $(ev.target.parentElement).parent().children();
 
     //find index of item slot dropped in
@@ -270,4 +185,121 @@ function scootItems(ev, data) {
 
     //finally, put item in slot
     item_slots.eq(index_end).append(document.getElementById(data).cloneNode(true));
+}
+
+//if item exists in slot already, scoot over all items
+function isExist(ev, data) {
+    if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
+        if(isSame(ev,data)) {}
+        else {scootLeft(ev, data);}
+    }
+}
+
+//if destination item is the same as source item
+function isSame(ev, data) {
+    //stack if item is stackable
+    if (ev.target.id == data) {
+        var countElement = $(ev.target).parent().find('.item-count');
+        var countNumber = Number($(ev.target).parent().find('.item-count').html());
+        if (data == '2003') { //health potion
+            if (countNumber < 5) {
+                $(countElement).html(++countNumber);
+                if (countNumber > 1) {
+                    $(countElement).show();
+                }
+            }
+        } else if (data == '2004') { //mana potion
+            if (countNumber < 5) {
+                $(countElement).html(++countNumber);
+                if (countNumber > 1) {
+                    $(countElement).show();
+                }
+            }
+        } else if (data == '2044') { //stealth ward
+            if (countNumber < 3) {
+                $(countElement).html(++countNumber);
+                if (countNumber > 1) {
+                    $(countElement).show();
+                }
+            }
+        } else if (data == '2043') { //vision ward
+            if (countNumber < 2) {
+                $(countElement).html(++countNumber);
+                if (countNumber > 1) {
+                    $(countElement).show();
+                }
+            }
+        } else { //same item so just scoot
+            scootLeft(ev, data);
+        }
+        return true;
+    }
+}
+
+function scootLeft(ev,data) {
+    var item_slots = $(ev.target.parentElement).children();
+
+    if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
+        scoot(ev, data);
+        //find index of first empty slot
+        var index_end;
+        item_slots.each(function() {
+            if ($(this).find('img').length == 0) {
+                index_end = $(this).parent().children().index($(this));
+                return false;
+            }
+        });
+        item_slots.eq(--index_end).find('img').remove();
+    }
+    else
+    {
+        //find index of item slot dropped in
+        var index_start = Number(ev.dataTransfer.getData("index"));
+
+        //find index of first empty slot
+        var index_end;
+        item_slots.each(function() {
+            if ($(this).find('img').length == 0) {
+                index_end = $(this).parent().children().index($(this));
+                return false;
+            }
+        });
+
+        //scoot items over by 1 so item can go to end
+        for (var i = index_start + 1; i < index_end; i++, index_start++) {
+            //swap count numbers
+            var sourceCountElement = $(item_slots.eq(index_start).find('.item-count'));
+            var sourceCountNumber = Number(item_slots.eq(index_start).find('.item-count').html());
+            var destinationCountElement = $(item_slots.eq(i).find('.item-count'))
+            var destiantionCountNumber = Number(item_slots.eq(i).find('.item-count').html());
+
+            var temp = sourceCountNumber;
+            $(sourceCountElement).html(destiantionCountNumber);
+            $(destinationCountElement).html(temp);
+
+            //swap hidden-ness
+            var sourceHidden = $(sourceCountElement).is(":hidden");
+            var destinationHidden = $(destinationCountElement).is(":hidden");
+
+            if(sourceHidden) {
+                destinationCountElement.hide();
+            }
+            else {
+                destinationCountElement.show();
+            }
+
+            if(destinationHidden) {
+                sourceCountElement.hide();
+            }
+            else {
+                sourceCountElement.show();
+            }
+
+            //swap item images
+            var sourceItem = item_slots.eq(i).find(".item").detach();
+            var draggedItem = item_slots.eq(index_start).find(".item").detach();
+            item_slots.eq(i).append(draggedItem);
+            item_slots.eq(index_start).append(sourceItem);
+        };
+    }
 }
