@@ -12,6 +12,8 @@ $(document).ready(function() {
     };
     Opentip.defaultStyle = "leagueItems";
 
+    loadSessionData();
+
     $('#fileupload').fileupload({
         dataType: 'json',
         done: function (e, data) {
@@ -78,7 +80,78 @@ function drop(ev) {
     ev.target.appendChild(document.getElementById(data).cloneNode(true));
 }
 
+function saveSessionData() {
+    var obj = createJSONObject();
+
+    localStorage.setItem('itemSetBuilderData', JSON.stringify(obj));
+}
+
+function loadSessionData() {
+    var obj = JSON.parse(localStorage.getItem('itemSetBuilderData'));
+
+    loadFromJSON(obj);
+}
+
+function loadFromJSON(obj) {
+    var blockName;
+    var itemsArray = [];
+    var itemCountsArray = [];
+
+    removeItemBlocks();
+
+    obj.blocks.forEach(function(block) {
+        blockName = block.type;
+        itemsArray = [];
+        itemCountsArray = [];
+
+        block.items.forEach(function(item) {
+            itemsArray.push(item.item);
+            itemCountsArray.push(item.count);
+        });
+
+        createItemBlock(blockName, itemsArray, itemCountsArray);
+    });
+}
+
+function removeItemBlocks() {
+    $('#item-set-blocks').empty();
+}
+
+function createItemBlock(name, itemsArray, itemCountsArray) {
+    var itemsCount = 0;
+
+    var itemBlockString = '<li class="active"><div class="collapsible-header grey-text text-darken-2" contentEditable=true>' + name + '</div>';
+    itemBlockString = itemBlockString.concat('<div class="collapsible-body grey lighten-3 grey-text text-darken-2"><div class="item-slots clearfix">');
+
+    itemsArray.forEach(function(itemId) {
+        itemsCount++;
+        itemBlockString = itemBlockString.concat('<div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"><img draggable="true" id="' + itemId + '" ondragstart="drag(event)" src="/images/items/' + itemId + '.png"></div>');
+    })
+
+    while (itemsCount < 10) {
+        itemsCount++;
+        itemBlockString = itemBlockString.concat('<div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div>');
+    }
+
+    itemBlockString = itemBlockString.concat('</div></div></li>');
+    $("#item-set-blocks").append(itemBlockString);
+    $(".collapsible").collapsible({
+        accordion: false
+    });
+}
+
 function createJSONFile() {
+    var obj = createJSONObject();
+
+    data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+    
+    $("#download-button").attr('href', 'data:' + data);
+    if ($("#set-form-name").val() == "") {
+        $("#download-button").attr('download', "Unnamed_Item_Set.json");
+    }
+}
+
+function createJSONObject() {
     var obj = {
         "map": "any",
         "isGlobalForChampions": false,
@@ -93,6 +166,7 @@ function createJSONFile() {
         "champion": "any",
         "blocks": []
     };
+
     $.each($("#item-set-blocks li"), function(itemBlock) {
         var block = {
             "items": [],
@@ -107,10 +181,5 @@ function createJSONFile() {
         obj.blocks.push(block);
     });
 
-    data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-    
-    $("#download-button").attr('href', 'data:' + data);
-    if ($("#set-form-name").val() == "") {
-        $("#download-button").attr('download', "Unnamed_Item_Set.json");
-    }
+    return obj;
 }
