@@ -78,7 +78,7 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     var parent = ev.dataTransfer.getData("parent");
-    var slot_filled = $($(ev.target).parent().not(".item-slot")[0]).length == 0;
+    var slot_filled = $(ev.target.parentElement).not(".item-slot").length == 0;
     var item_slots = $(ev.target.parentElement).parent().children();
     var index_drop = item_slots.index(ev.target.parentElement); //index of dropped item
     var index_empty = -1; //index of first empty slot
@@ -176,12 +176,12 @@ function createJSONFile() {
 //scoots items from index_start to index_end and places item at index_start
 function scootRight(ev, data, index_start, index_end, item_slots) {
     for (var i = index_end - 1; i >= index_start; i--, index_end--) {
-        //swap count numbers
         var sourceCountElement = $(item_slots.eq(i).find('.item-count'));
         var sourceCountNumber = Number(item_slots.eq(i).find('.item-count').html());
         var destinationCountElement = $(item_slots.eq(index_end).find('.item-count'))
         var destiantionCountNumber = Number(item_slots.eq(index_end).find('.item-count').html());
 
+        //swap count numbers
         var temp = sourceCountNumber;
         $(sourceCountElement).html(destiantionCountNumber);
         $(destinationCountElement).html(temp);
