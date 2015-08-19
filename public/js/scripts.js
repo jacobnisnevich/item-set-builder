@@ -79,8 +79,8 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     var slot_filled = $(ev.target.parentElement).not(".item-slot").length == 0;
     var item_slots;
-    var index_drop;  // index of dropped item
-    var index_empty; // index of first empty slot
+    var index_drop;  //index of dropped item
+    var index_empty = 10; //index of first empty slot
     if(slot_filled) {
         item_slots = $(ev.target.parentElement).parent().children();
         index_drop = item_slots.index(ev.target.parentElement);
@@ -106,7 +106,77 @@ function drop(ev) {
     if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1) {
         var index_source = Number(ev.dataTransfer.getData("index"));
         if (slot_filled) {
-
+            if (index_source > index_drop) {//source > destination
+                //stack if item is stackable
+                if (ev.target.id == data) {
+                    if (data == '2003' /* && countNumber < 5 */|| data == '2004' || data == '2043' || data == '2044') {
+                        var countElement = $(ev.target).parent().find('.item-count');
+                        var countNumber = Number($(ev.target).parent().find('.item-count').html());
+                        if (data == '2003' && countNumber < 5) { //health potion
+                            $(countElement).html(++countNumber);
+                            $(countElement).show();
+                            scootLeft(ev, data, index_source, index_empty, item_slots);
+                            //TODO: REMOVE ITEM AT END
+                        } else if (data == '2004' && countNumber < 5) { //mana potion
+                            $(countElement).html(++countNumber);
+                            $(countElement).show();
+                            scootLeft(ev, data, index_source, index_empty, item_slots);
+                            //TODO: REMOVE ITEM AT END
+                        } else if (data == '2043' && countNumber < 2) { //vision ward
+                            $(countElement).html(++countNumber);
+                            $(countElement).show();
+                            scootLeft(ev, data, index_source, index_empty, item_slots);
+                            //TODO: REMOVE ITEM AT END
+                        } else if (data == '2044' && countNumber < 3) { //stealth ward
+                            $(countElement).html(++countNumber);
+                            $(countElement).show();
+                            scootLeft(ev, data, index_source, index_empty, item_slots);
+                            //TODO: REMOVE ITEM AT END
+                        } else { //reached stack cap
+                            scootRight(ev, data, index_drop, index_source, item_slots, false);
+                        }
+                    } //else swapping same item so do nothing
+                    //TODO: FIX SCOOT RIGHT
+                }
+                else { //not same item
+                    scootRight(ev, data, index_drop, index_source, item_slots);
+                }
+            }
+            else { //source < destination
+                //stack if item is stackable
+                if (ev.target.id == data) {
+                    if (data == '2003' /* && countNumber < 5 */|| data == '2004' || data == '2043' || data == '2044') {
+                        var countElement = $(ev.target).parent().find('.item-count');
+                        var countNumber = Number($(ev.target).parent().find('.item-count').html());
+                        if (data == '2003' && countNumber < 5) { //health potion
+                            $(countElement).html(++countNumber);
+                            $(countElement).show();
+                            scootLeft(ev, data, index_source, index_empty, item_slots);
+                            //TODO: REMOVE ITEM AT END
+                        } else if (data == '2004' && countNumber < 5) { //mana potion
+                            $(countElement).html(++countNumber);
+                            $(countElement).show();
+                            scootLeft(ev, data, index_source, index_empty, item_slots);
+                            //TODO: REMOVE ITEM AT END
+                        } else if (data == '2043' && countNumber < 2) { //vision ward
+                            $(countElement).html(++countNumber);
+                            $(countElement).show();
+                            scootLeft(ev, data, index_source, index_empty, item_slots);
+                            //TODO: REMOVE ITEM AT END
+                        } else if (data == '2044' && countNumber < 3) { //stealth ward
+                            $(countElement).html(++countNumber);
+                            $(countElement).show();
+                            scootLeft(ev, data, index_source, index_empty, item_slots);
+                            //TODO: REMOVE ITEM AT END
+                        } else { //reached stack cap
+                            scootRight(ev, data, index_drop, index_source, item_slots, false);
+                        }
+                    } //else swapping same item so do nothing
+                }
+                else { //not same item
+                    scootLeft(ev, data, index_source, index_drop, item_slots);
+                }
+            }
         }
         else { //empty, scoot
             scootLeft(ev, data, index_source, index_empty - 1, item_slots);
@@ -125,18 +195,18 @@ function drop(ev) {
                 } else if (data == '2004' && countNumber < 5) { //mana potion
                     $(countElement).html(++countNumber);
                     $(countElement).show();
-                } else if (data == '2044' && countNumber < 3) { //stealth ward
-                    $(countElement).html(++countNumber);
-                    $(countElement).show();
                 } else if (data == '2043' && countNumber < 2) { //vision ward
                     $(countElement).html(++countNumber);
                     $(countElement).show();
+                } else if (data == '2044' && countNumber < 3) { //stealth ward
+                    $(countElement).html(++countNumber);
+                    $(countElement).show();
                 } else { //not stackable item or reached stack cap
-                    scootRight(ev,data, index_drop, index_empty, item_slots);
+                    scootRight(ev,data, index_drop, index_empty, item_slots, true);
                 }
             }
             else { //not same item
-                scootRight(ev,data, index_drop, index_empty, item_slots);
+                scootRight(ev,data, index_drop, index_empty, item_slots, true);
             }
         }
         else { //not filled, append to end
@@ -188,7 +258,7 @@ function createJSONFile() {
 }
 
 //scoots items from index_start to index_end and places item at index_start
-function scootRight(ev, data, index_start, index_end, item_slots) {
+function scootRight(ev, data, index_start, index_end, item_slots, clone) {
     for (var i = index_end - 1; i >= index_start; i--, index_end--) {
         var sourceCountElement = $(item_slots.eq(i).find('.item-count'));
         var sourceCountNumber = Number(item_slots.eq(i).find('.item-count').html());
@@ -210,7 +280,7 @@ function scootRight(ev, data, index_start, index_end, item_slots) {
     };
 
     //finally, put item in slot
-    item_slots.eq(index_end).append(document.getElementById(data).cloneNode(true));
+    item_slots.eq(index_end).append(document.getElementById(data).cloneNode(clone));
     item_slots.eq(index_end).find('.item-count').hide();
 }
 
