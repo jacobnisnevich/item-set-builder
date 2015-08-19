@@ -211,7 +211,7 @@ function drop(ev) {
                 scootRight(ev,data, index_drop, index_empty, item_slots);
             }
         }
-        else {
+        else { //empty, append to end
             item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
         }
     }
@@ -275,7 +275,7 @@ function scootRight(ev, data, index_start, index_end, item_slots) {
 
         //swap item images
         var left_item = item_slots.eq(i).find(".item").detach();
-        var right_item = item_slots.eq(index_end).find(".item").detach();
+        var right_item = item_slots.eq(i + 1).find(".item").detach();
         item_slots.eq(i).append(right_item);
         item_slots.eq(i + 1).append(left_item);
     };
