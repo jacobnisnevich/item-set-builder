@@ -77,25 +77,39 @@ function drag(ev) {
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    var parent = ev.dataTransfer.getData("parent");
     var slot_filled = $(ev.target.parentElement).not(".item-slot").length == 0;
-    var item_slots = $(ev.target.parentElement).parent().children();
-    var index_drop = item_slots.index(ev.target.parentElement); //index of dropped item
-    var index_empty = -1; //index of first empty slot
-    item_slots.each(function() { // find first empty slot
-        if ($(this).find('img').length == 0) {
-            index_empty = $(this).parent().children().index($(this));
-            return false;
-        }
-    });
+    var item_slots;
+    var index_drop;  // index of dropped item
+    var index_empty; // index of first empty slot
+    if(slot_filled) {
+        item_slots = $(ev.target.parentElement).parent().children();
+        index_drop = item_slots.index(ev.target.parentElement);
+        item_slots.each(function() {
+            if ($(this).find('img').length == 0) {
+                index_empty = $(this).parent().children().index($(this));
+                return false;
+            }
+        });
+    }
+    else {
+        item_slots = $(ev.target.parentElement).children();
+        index_drop = item_slots.index(ev.target);
+        item_slots.each(function() {
+            if ($(this).find('img').length == 0) {
+                index_empty = $(this).parent().children().index($(this));
+                return false;
+            }
+        });
+    }
 
     //if dragging item from item-set block
-    if (parent.indexOf("item-slot") > -1) {
+    if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1) {
+        var index_source = Number(ev.dataTransfer.getData("index"));
         if (slot_filled) {
 
         }
-        else { //empty, scoot left
-
+        else { //empty, scoot
+            scootLeft(ev, data, index_source, index_empty - 1, item_slots);
         }
     }
     else { //came from all-items box
@@ -201,13 +215,13 @@ function scootRight(ev, data, index_start, index_end, item_slots) {
 }
 
 function scootLeft(ev,data, index_start, index_end, item_slots) {
-    for (var i = index_start + 1; i < index_end; i++, index_start++) {
-        //swap count numbers
+    for (var i = index_start; i < index_end; i++, index_start++) {
         var sourceCountElement = $(item_slots.eq(index_start).find('.item-count'));
         var sourceCountNumber = Number(item_slots.eq(index_start).find('.item-count').html());
         var destinationCountElement = $(item_slots.eq(i).find('.item-count'))
         var destiantionCountNumber = Number(item_slots.eq(i).find('.item-count').html());
 
+        //swap count numbers
         var temp = sourceCountNumber;
         $(sourceCountElement).html(destiantionCountNumber);
         $(destinationCountElement).html(temp);
@@ -218,8 +232,8 @@ function scootLeft(ev,data, index_start, index_end, item_slots) {
 
         //swap item images
         var sourceItem = item_slots.eq(i).find(".item").detach();
-        var draggedItem = item_slots.eq(index_start).find(".item").detach();
+        var draggedItem = item_slots.eq(i + 1).find(".item").detach();
         item_slots.eq(i).append(draggedItem);
-        item_slots.eq(index_start).append(sourceItem);
+        item_slots.eq(i + 1).append(sourceItem);
     };
 }
