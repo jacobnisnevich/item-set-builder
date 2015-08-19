@@ -277,7 +277,7 @@ function scootRight(ev, data, index_start, index_end, item_slots) {
         var left_item = item_slots.eq(i).find(".item").detach();
         var right_item = item_slots.eq(index_end).find(".item").detach();
         item_slots.eq(i).append(right_item);
-        item_slots.eq(index_end).append(left_item);
+        item_slots.eq(i + 1).append(left_item);
     };
 }
 
