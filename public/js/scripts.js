@@ -12,7 +12,9 @@ $(document).ready(function() {
     };
     Opentip.defaultStyle = "leagueItems";
 
-    loadSessionData();
+    if (localStorage.getItem('itemSetBuilderData') != null) {
+        loadSessionData();
+    }
 
     $('#fileupload').fileupload({
         dataType: 'json',
@@ -47,6 +49,10 @@ $(document).ready(function() {
 
     $("#download-button").click(function() {
         createJSONFile();
+    });
+
+    $("#save-button").click(function() {
+        saveSessionData();
     });
 
     $("#item-search-box").on('input', function() {
@@ -90,6 +96,10 @@ function loadSessionData() {
     var obj = JSON.parse(localStorage.getItem('itemSetBuilderData'));
 
     loadFromJSON(obj);
+}
+
+function clearSessionData() {
+    localStorage.removeItem('itemSetBuilderData');
 }
 
 function loadFromJSON(obj) {
