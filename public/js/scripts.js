@@ -47,6 +47,10 @@ $(document).ready(function() {
         $("#download-button").attr('download', $("#set-form-name").val() + ".json")
     });
 
+    $("#reset-button").click(function() {
+        resetItemBlocks();
+    });
+
     $("#download-button").click(function() {
         createJSONFile();
     });
@@ -121,6 +125,11 @@ function loadFromJSON(obj) {
 
         createItemBlock(blockName, itemsArray, itemCountsArray);
     });
+}
+
+function resetItemBlocks() {
+    removeItemBlocks();
+    createItemBlock('New Item Block', [], []);
 }
 
 function removeItemBlocks() {
