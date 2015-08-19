@@ -78,74 +78,54 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     var parent = ev.dataTransfer.getData("parent");
-
+    var slot_filled = $($(ev.target).parent().not(".item-slot")[0]).length == 0;
     var item_slots = $(ev.target.parentElement).parent().children();
-
-    //find index of item slot dropped in
-    var index_start = item_slots.index(ev.target.parentElement);
-
-    //find index of first empty slot
-    var index_end;
-    item_slots.each(function() {
+    var index_drop = item_slots.index(ev.target.parentElement); //index of dropped item
+    var index_empty = -1; //index of first empty slot
+    item_slots.each(function() { // find first empty slot
         if ($(this).find('img').length == 0) {
-            index_end = $(this).parent().children().index($(this));
+            index_empty = $(this).parent().children().index($(this));
             return false;
         }
     });
 
-    //if dragging item from item-set block, scoot over items
+    //if dragging item from item-set block
     if (parent.indexOf("item-slot") > -1) {
-        if (isExist(ev,data)) {}
-        else {scootLeft}
+        if (slot_filled) {
+
+        }
+        else { //empty, scoot left
+
+        }
     }
     else { //came from all-items box
         //if slot has item
-        if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
+        if (slot_filled) {
             //stack if item is stackable
             if (ev.target.id == data) {
                 var countElement = $(ev.target).parent().find('.item-count');
                 var countNumber = Number($(ev.target).parent().find('.item-count').html());
-                if (data == '2003') { //health potion
-                    if (countNumber < 5) {
-                        $(countElement).html(++countNumber);
-                        $(countElement).show();
-                    }
-                    else {
-                        scootRight(ev,data, index_start + 1, index_end, item_slots);
-                    }
-                } else if (data == '2004') { //mana potion
-                    if (countNumber < 5) {
-                        $(countElement).html(++countNumber);
-                        $(countElement).show();
-                    }
-                    else {
-                       scootRight(ev,data, index_start + 1, index_end, item_slots);
-                    }
-                } else if (data == '2044') { //stealth ward
-                    if (countNumber < 3) {
-                        $(countElement).html(++countNumber);
-                        $(countElement).show();
-                    }
-                    else {
-                        scootRight(ev,data, index_start + 1, index_end, item_slots);
-                    }
-                } else if (data == '2043') { //vision ward
-                    if (countNumber < 2) {
-                        $(countElement).html(++countNumber);
-                        $(countElement).show();
-                    }
-                    else {
-                        scootRight(ev,data, index_start + 1, index_end, item_slots);
-                    }
-                } else { //not stackable item
-                    scootRight(ev,data, index_start, index_end, item_slots);
+                if (data == '2003' && countNumber < 5) { //health potion
+                    $(countElement).html(++countNumber);
+                    $(countElement).show();
+                } else if (data == '2004' && countNumber < 5) { //mana potion
+                    $(countElement).html(++countNumber);
+                    $(countElement).show();
+                } else if (data == '2044' && countNumber < 3) { //stealth ward
+                    $(countElement).html(++countNumber);
+                    $(countElement).show();
+                } else if (data == '2043' && countNumber < 2) { //vision ward
+                    $(countElement).html(++countNumber);
+                    $(countElement).show();
+                } else { //not stackable item or reached stack cap
+                    scootRight(ev,data, index_drop, index_empty, item_slots);
                 }
             }
             else { //not same item
-                scootRight(ev,data, index_start, index_end, item_slots);
+                scootRight(ev,data, index_drop, index_empty, item_slots);
             }
         }
-        else { //not filled
+        else { //not filled, append to end
             $(ev.target.parentElement).children().each(function() {
                 if ($(this).find('img').length == 0) {
                     $(this).append(document.getElementById(data).cloneNode(true));
@@ -207,22 +187,8 @@ function scootRight(ev, data, index_start, index_end, item_slots) {
         $(destinationCountElement).html(temp);
 
         //swap hidden-ness
-        var sourceHidden = $(sourceCountElement).is(":hidden");
-        var destinationHidden = $(destinationCountElement).is(":hidden");
-
-        if(sourceHidden) {
-            destinationCountElement.hide();
-        }
-        else {
-            destinationCountElement.show();
-        }
-
-        if(destinationHidden) {
-            sourceCountElement.hide();
-        }
-        else {
-            sourceCountElement.show();
-        }
+        $(sourceCountElement).is(":hidden") ? destinationCountElement.hide() : destinationCountElement.show();
+        $(destinationCountElement).is(":hidden") ? sourceCountElement.hide() : sourceCountElement.show();
 
         //swap item images
         var item = item_slots.eq(i).find(".item").detach();
@@ -231,72 +197,29 @@ function scootRight(ev, data, index_start, index_end, item_slots) {
 
     //finally, put item in slot
     item_slots.eq(index_end).append(document.getElementById(data).cloneNode(true));
+    item_slots.eq(index_end).find('.item-count').hide();
 }
 
-function scootLeft(ev,data) {
-    var item_slots = $(ev.target.parentElement).children();
+function scootLeft(ev,data, index_start, index_end, item_slots) {
+    for (var i = index_start + 1; i < index_end; i++, index_start++) {
+        //swap count numbers
+        var sourceCountElement = $(item_slots.eq(index_start).find('.item-count'));
+        var sourceCountNumber = Number(item_slots.eq(index_start).find('.item-count').html());
+        var destinationCountElement = $(item_slots.eq(i).find('.item-count'))
+        var destiantionCountNumber = Number(item_slots.eq(i).find('.item-count').html());
 
-    if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
-        scoot(ev, data);
-        //find index of first empty slot
-        var index_end;
-        item_slots.each(function() {
-            if ($(this).find('img').length == 0) {
-                index_end = $(this).parent().children().index($(this));
-                return false;
-            }
-        });
-        item_slots.eq(--index_end).find('img').remove();
-    }
-    else
-    {
-        //find index of item slot dropped in
-        var index_start = Number(ev.dataTransfer.getData("index"));
+        var temp = sourceCountNumber;
+        $(sourceCountElement).html(destiantionCountNumber);
+        $(destinationCountElement).html(temp);
 
-        //find index of first empty slot
-        var index_end;
-        item_slots.each(function() {
-            if ($(this).find('img').length == 0) {
-                index_end = $(this).parent().children().index($(this));
-                return false;
-            }
-        });
+        //swap hidden-ness
+        $(sourceCountElement).is(":hidden") ? destinationCountElement.hide() : destinationCountElement.show;
+        $(destinationCountElement).is(":hidden") ? sourceCountElement.hide() : sourceCountElement.show();
 
-        //scoot items over by 1 so item can go to end
-        for (var i = index_start + 1; i < index_end; i++, index_start++) {
-            //swap count numbers
-            var sourceCountElement = $(item_slots.eq(index_start).find('.item-count'));
-            var sourceCountNumber = Number(item_slots.eq(index_start).find('.item-count').html());
-            var destinationCountElement = $(item_slots.eq(i).find('.item-count'))
-            var destiantionCountNumber = Number(item_slots.eq(i).find('.item-count').html());
-
-            var temp = sourceCountNumber;
-            $(sourceCountElement).html(destiantionCountNumber);
-            $(destinationCountElement).html(temp);
-
-            //swap hidden-ness
-            var sourceHidden = $(sourceCountElement).is(":hidden");
-            var destinationHidden = $(destinationCountElement).is(":hidden");
-
-            if(sourceHidden) {
-                destinationCountElement.hide();
-            }
-            else {
-                destinationCountElement.show();
-            }
-
-            if(destinationHidden) {
-                sourceCountElement.hide();
-            }
-            else {
-                sourceCountElement.show();
-            }
-
-            //swap item images
-            var sourceItem = item_slots.eq(i).find(".item").detach();
-            var draggedItem = item_slots.eq(index_start).find(".item").detach();
-            item_slots.eq(i).append(draggedItem);
-            item_slots.eq(index_start).append(sourceItem);
-        };
-    }
+        //swap item images
+        var sourceItem = item_slots.eq(i).find(".item").detach();
+        var draggedItem = item_slots.eq(index_start).find(".item").detach();
+        item_slots.eq(i).append(draggedItem);
+        item_slots.eq(index_start).append(sourceItem);
+    };
 }
