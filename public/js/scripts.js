@@ -51,6 +51,10 @@ $(document).ready(function() {
         resetItemBlocks();
     });
 
+    $("#upload-button").click(function() {
+        $("#hidden-upload-button").click();
+    });
+
     $("#download-button").click(function() {
         createJSONFile();
     });
@@ -90,6 +94,8 @@ function drop(ev) {
     ev.target.appendChild(document.getElementById(data).cloneNode(true));
 }
 
+// Session manipulation functions
+
 function saveSessionData() {
     var obj = createJSONObject();
 
@@ -106,26 +112,7 @@ function clearSessionData() {
     localStorage.removeItem('itemSetBuilderData');
 }
 
-function loadFromJSON(obj) {
-    var blockName;
-    var itemsArray = [];
-    var itemCountsArray = [];
-
-    removeItemBlocks();
-
-    obj.blocks.forEach(function(block) {
-        blockName = block.type;
-        itemsArray = [];
-        itemCountsArray = [];
-
-        block.items.forEach(function(item) {
-            itemsArray.push(item.item);
-            itemCountsArray.push(item.count);
-        });
-
-        createItemBlock(blockName, itemsArray, itemCountsArray);
-    });
-}
+// Item block manipulation functions
 
 function resetItemBlocks() {
     removeItemBlocks();
@@ -156,6 +143,29 @@ function createItemBlock(name, itemsArray, itemCountsArray) {
     $("#item-set-blocks").append(itemBlockString);
     $(".collapsible").collapsible({
         accordion: false
+    });
+}
+
+// JSON data manipulation functions
+
+function loadFromJSON(obj) {
+    var blockName;
+    var itemsArray = [];
+    var itemCountsArray = [];
+
+    removeItemBlocks();
+
+    obj.blocks.forEach(function(block) {
+        blockName = block.type;
+        itemsArray = [];
+        itemCountsArray = [];
+
+        block.items.forEach(function(item) {
+            itemsArray.push(item.id);
+            itemCountsArray.push(item.count);
+        });
+
+        createItemBlock(blockName, itemsArray, itemCountsArray);
     });
 }
 
@@ -193,7 +203,7 @@ function createJSONObject() {
         };
         $.each($($("#item-set-blocks li")[itemBlock]).find("img"), function(item) {
             block.items.push({
-                "item": $($($("#item-set-blocks li")[itemBlock]).find("img")[item]).attr("id"),
+                "id": $($($("#item-set-blocks li")[itemBlock]).find("img")[item]).attr("id"),
                 "count": "1"
             });
         });
@@ -201,4 +211,16 @@ function createJSONObject() {
     });
 
     return obj;
+}
+
+// Event handling functions
+
+function handleFileUpload(files) {
+    var file = files[0];
+
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        loadFromJSON(JSON.parse(event.target.result));
+    };
+    reader.readAsText(file);
 }
