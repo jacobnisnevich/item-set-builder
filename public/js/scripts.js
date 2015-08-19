@@ -192,7 +192,7 @@ function createJSONObject() {
     $.each($("#item-set-blocks li"), function(itemBlock) {
         var block = {
             "items": [],
-            "type": $("#item-set-blocks li").find(".collapsible-header")[0].textContent
+            "type": $("#item-set-blocks li").find(".collapsible-header")[itemBlock].textContent
         };
         $.each($($("#item-set-blocks li")[itemBlock]).find("img"), function(item) {
             block.items.push({
