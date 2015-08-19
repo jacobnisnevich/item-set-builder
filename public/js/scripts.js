@@ -202,20 +202,17 @@ function drop(ev) {
                     $(countElement).html(++countNumber);
                     $(countElement).show();
                 } else { //not stackable item or reached stack cap
-                    scootRight(ev,data, index_drop, index_empty, item_slots, true);
+                    item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
+                    scootRight(ev,data, index_drop, index_empty, item_slots);
                 }
             }
             else { //not same item
-                scootRight(ev,data, index_drop, index_empty, item_slots, true);
+                item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
+                scootRight(ev,data, index_drop, index_empty, item_slots);
             }
         }
-        else { //not filled, append to end
-            $(ev.target.parentElement).children().each(function() {
-                if ($(this).find('img').length == 0) {
-                    $(this).append(document.getElementById(data).cloneNode(true));
-                    return false;
-                }
-            });
+        else {
+            item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
         }
     }
 }
@@ -258,52 +255,54 @@ function createJSONFile() {
 }
 
 //scoots items from index_start to index_end and places item at index_start
-function scootRight(ev, data, index_start, index_end, item_slots, clone) {
-    for (var i = index_end - 1; i >= index_start; i--, index_end--) {
-        var sourceCountElement = $(item_slots.eq(i).find('.item-count'));
-        var sourceCountNumber = Number(item_slots.eq(i).find('.item-count').html());
-        var destinationCountElement = $(item_slots.eq(index_end).find('.item-count'))
-        var destiantionCountNumber = Number(item_slots.eq(index_end).find('.item-count').html());
+function scootRight(ev, data, index_start, index_end, item_slots) {
+    for (var i = index_end - 1; i >= index_start; i--) {
+        var leftCountElement = $(item_slots.eq(i).find('.item-count'));
+        var leftCountNumber = Number(item_slots.eq(i).find('.item-count').html());
+        var rightCountElement = $(item_slots.eq(i + 1).find('.item-count'))
+        var rightCountNumber = Number(item_slots.eq(i + 1).find('.item-count').html());
 
         //swap count numbers
-        var temp = sourceCountNumber;
-        $(sourceCountElement).html(destiantionCountNumber);
-        $(destinationCountElement).html(temp);
+        var temp = leftCountNumber;
+        $(leftCountElement).html(rightCountNumber);
+        $(rightCountElement).html(temp);
 
         //swap hidden-ness
-        $(sourceCountElement).is(":hidden") ? destinationCountElement.hide() : destinationCountElement.show();
-        $(destinationCountElement).is(":hidden") ? sourceCountElement.hide() : sourceCountElement.show();
+        var left_hidden = $(leftCountElement).is(":hidden");
+        var right_hidden = $(rightCountElement).is(":hidden")
+        left_hidden ? rightCountElement.hide() : rightCountElement.show();
+        right_hidden ? leftCountElement.hide() : leftCountElement.show();
 
         //swap item images
-        var item = item_slots.eq(i).find(".item").detach();
-        item_slots.eq(index_end).append(item);
+        var left_item = item_slots.eq(i).find(".item").detach();
+        var right_item = item_slots.eq(index_end).find(".item").detach();
+        item_slots.eq(i).append(right_item);
+        item_slots.eq(index_end).append(left_item);
     };
-
-    //finally, put item in slot
-    item_slots.eq(index_end).append(document.getElementById(data).cloneNode(clone));
-    item_slots.eq(index_end).find('.item-count').hide();
 }
 
 function scootLeft(ev,data, index_start, index_end, item_slots) {
-    for (var i = index_start; i < index_end; i++, index_start++) {
-        var sourceCountElement = $(item_slots.eq(index_start).find('.item-count'));
-        var sourceCountNumber = Number(item_slots.eq(index_start).find('.item-count').html());
-        var destinationCountElement = $(item_slots.eq(i).find('.item-count'))
-        var destiantionCountNumber = Number(item_slots.eq(i).find('.item-count').html());
+    for (var i = index_start + 1; i < index_end; i++) {
+        var leftCountElement = $(item_slots.eq(i + 1).find('.item-count'));
+        var leftCountNumber = Number(item_slots.eq(i + 1).find('.item-count').html());
+        var rightCountElement = $(item_slots.eq(i).find('.item-count'))
+        var rightCountNumber = Number(item_slots.eq(i).find('.item-count').html());
 
         //swap count numbers
-        var temp = sourceCountNumber;
-        $(sourceCountElement).html(destiantionCountNumber);
-        $(destinationCountElement).html(temp);
+        var temp = leftCountNumber;
+        $(leftCountElement).html(rightCountNumber);
+        $(rightCountElement).html(temp);
 
         //swap hidden-ness
-        $(sourceCountElement).is(":hidden") ? destinationCountElement.hide() : destinationCountElement.show;
-        $(destinationCountElement).is(":hidden") ? sourceCountElement.hide() : sourceCountElement.show();
+        var source_hidden = $(leftCountElement).is(":hidden");
+        var destination_hidden = $(rightCountElement).is(":hidden")
+        source_hidden ? rightCountElement.hide() : rightCountElement.show();
+        destination_hidden ? leftCountElement.hide() : leftCountElement.show();
 
         //swap item images
-        var sourceItem = item_slots.eq(i).find(".item").detach();
-        var draggedItem = item_slots.eq(i + 1).find(".item").detach();
-        item_slots.eq(i).append(draggedItem);
-        item_slots.eq(i + 1).append(sourceItem);
+        var leftItem = item_slots.eq(i).find(".item").detach();
+        var rightItem = item_slots.eq(i + 1).find(".item").detach();
+        item_slots.eq(i).append(rightItem);
+        item_slots.eq(i + 1).append(leftItem);
     };
 }
