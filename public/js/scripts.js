@@ -78,14 +78,74 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     var parent = ev.dataTransfer.getData("parent");
+
+    var item_slots = $(ev.target.parentElement).parent().children();
+
+    //find index of item slot dropped in
+    var index_start = item_slots.index(ev.target.parentElement);
+
+    //find index of first empty slot
+    var index_end;
+    item_slots.each(function() {
+        if ($(this).find('img').length == 0) {
+            index_end = $(this).parent().children().index($(this));
+            return false;
+        }
+    });
+
     //if dragging item from item-set block, scoot over items
     if (parent.indexOf("item-slot") > -1) {
         if (isExist(ev,data)) {}
         else {scootLeft}
     }
     else { //came from all-items box
-        if (isExist(ev,data)) {}
-        else { //else append to item slot at next available item slot
+        //if slot has item
+        if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
+            //stack if item is stackable
+            if (ev.target.id == data) {
+                var countElement = $(ev.target).parent().find('.item-count');
+                var countNumber = Number($(ev.target).parent().find('.item-count').html());
+                if (data == '2003') { //health potion
+                    if (countNumber < 5) {
+                        $(countElement).html(++countNumber);
+                        $(countElement).show();
+                    }
+                    else {
+                        scootRight(ev,data, index_start + 1, index_end, item_slots);
+                    }
+                } else if (data == '2004') { //mana potion
+                    if (countNumber < 5) {
+                        $(countElement).html(++countNumber);
+                        $(countElement).show();
+                    }
+                    else {
+                       scootRight(ev,data, index_start + 1, index_end, item_slots);
+                    }
+                } else if (data == '2044') { //stealth ward
+                    if (countNumber < 3) {
+                        $(countElement).html(++countNumber);
+                        $(countElement).show();
+                    }
+                    else {
+                        scootRight(ev,data, index_start + 1, index_end, item_slots);
+                    }
+                } else if (data == '2043') { //vision ward
+                    if (countNumber < 2) {
+                        $(countElement).html(++countNumber);
+                        $(countElement).show();
+                    }
+                    else {
+                        scootRight(ev,data, index_start + 1, index_end, item_slots);
+                    }
+                } else { //not stackable item
+                    scootRight(ev,data, index_start, index_end, item_slots);
+                }
+            }
+            else { //not same item
+                scootRight(ev,data, index_start, index_end, item_slots);
+            }
+        }
+        else { //not filled
             $(ev.target.parentElement).children().each(function() {
                 if ($(this).find('img').length == 0) {
                     $(this).append(document.getElementById(data).cloneNode(true));
@@ -133,21 +193,16 @@ function createJSONFile() {
     }
 }
 
-function scootRight(ev, data) {
-    var item_slots = $(ev.target.parentElement).parent().children();
-
-    //find index of item slot dropped in
-    var index_start = item_slots.index(ev.target.parentElement);
-
-    //find index of first empty slot
-    var index_end;
-    item_slots.each(function() {
+function appendToEnd(ev, data) {
+    $(ev.target.parentElement).parent().children().each(function() {
         if ($(this).find('img').length == 0) {
-            index_end = $(this).parent().children().index($(this));
+            $(this).append(document.getElementById(data).cloneNode(true));
             return false;
         }
     });
+}
 
+function scootRight(ev, data, index_start, index_end, item_slots) {
     //scoot items over by 1 so dropped item can fit
     for (var i = index_end - 1; i >= index_start; i--, index_end--) {
         //swap count numbers
@@ -185,14 +240,6 @@ function scootRight(ev, data) {
 
     //finally, put item in slot
     item_slots.eq(index_end).append(document.getElementById(data).cloneNode(true));
-}
-
-//if item exists in slot already, scoot over all items
-function isExist(ev, data) {
-    if ($($(ev.target).parent().not(".item-slot")[0]).length == 0) {
-        if(isSame(ev,data)) {}
-        else {scootLeft(ev, data);}
-    }
 }
 
 //if destination item is the same as source item
