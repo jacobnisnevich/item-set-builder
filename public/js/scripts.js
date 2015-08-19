@@ -16,13 +16,6 @@ $(document).ready(function() {
         loadSessionData();
     }
 
-    $('#fileupload').fileupload({
-        dataType: 'json',
-        done: function (e, data) {
-            $('#file-upload-text').html(data.result);
-        }
-    });
-
     $("#item-set-add-block-button").click(function() {
         $("#item-set-blocks").append('<li class="active"><div class="collapsible-header grey-text text-darken-2" contentEditable=true>New Item Block</div><div class="collapsible-body grey lighten-3 grey-text text-darken-2"><div class="item-slots clearfix"><div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div></div></li>');
         $(".collapsible").collapsible({
