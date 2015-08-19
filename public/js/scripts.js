@@ -193,17 +193,8 @@ function createJSONFile() {
     }
 }
 
-function appendToEnd(ev, data) {
-    $(ev.target.parentElement).parent().children().each(function() {
-        if ($(this).find('img').length == 0) {
-            $(this).append(document.getElementById(data).cloneNode(true));
-            return false;
-        }
-    });
-}
-
+//scoots items from index_start to index_end and places item at index_start
 function scootRight(ev, data, index_start, index_end, item_slots) {
-    //scoot items over by 1 so dropped item can fit
     for (var i = index_end - 1; i >= index_start; i--, index_end--) {
         //swap count numbers
         var sourceCountElement = $(item_slots.eq(i).find('.item-count'));
@@ -240,47 +231,6 @@ function scootRight(ev, data, index_start, index_end, item_slots) {
 
     //finally, put item in slot
     item_slots.eq(index_end).append(document.getElementById(data).cloneNode(true));
-}
-
-//if destination item is the same as source item
-function isSame(ev, data) {
-    //stack if item is stackable
-    if (ev.target.id == data) {
-        var countElement = $(ev.target).parent().find('.item-count');
-        var countNumber = Number($(ev.target).parent().find('.item-count').html());
-        if (data == '2003') { //health potion
-            if (countNumber < 5) {
-                $(countElement).html(++countNumber);
-                if (countNumber > 1) {
-                    $(countElement).show();
-                }
-            }
-        } else if (data == '2004') { //mana potion
-            if (countNumber < 5) {
-                $(countElement).html(++countNumber);
-                if (countNumber > 1) {
-                    $(countElement).show();
-                }
-            }
-        } else if (data == '2044') { //stealth ward
-            if (countNumber < 3) {
-                $(countElement).html(++countNumber);
-                if (countNumber > 1) {
-                    $(countElement).show();
-                }
-            }
-        } else if (data == '2043') { //vision ward
-            if (countNumber < 2) {
-                $(countElement).html(++countNumber);
-                if (countNumber > 1) {
-                    $(countElement).show();
-                }
-            }
-        } else { //same item so just scoot
-            scootLeft(ev, data);
-        }
-        return true;
-    }
 }
 
 function scootLeft(ev,data) {
