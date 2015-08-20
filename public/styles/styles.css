@@ -236,8 +236,31 @@ consumable {
 .filter-menu {
     display: none;
     position: absolute;
-    width: 200px;
+    width: 250px;
     left: 0;
     height: 57vh;
-    color: #7F7F7F !important;
+}
+
+.filter-form p {
+    padding-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.filter-form label {
+    color: #444444 !important;
+}
+
+.filter-form-title {
+    font-size: 14px;
+    padding: 8px 0;
+}
+
+.filter-indent {
+    margin-left: 25px;
+}
+
+.form-body {
+    overflow-y: scroll;
+    height: 53vh;
 }
