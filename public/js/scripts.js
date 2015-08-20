@@ -132,31 +132,20 @@ function drop(ev) {
             else { //source < destination
                 //stack if item is stackable
                 if (ev.target.id == data) {
-                    if (data == '2003' /* && countNumber < 5 */|| data == '2004' || data == '2043' || data == '2044') {
+                    if (data == '2003' || data == '2004' || data == '2043' || data == '2044') { //if stackable
                         var countElement = $(ev.target).parent().find('.item-count');
                         var countNumber = Number($(ev.target).parent().find('.item-count').html());
-                        if (data == '2003' && countNumber < 5) { //health potion
-                            $(countElement).html(++countNumber);
-                            $(countElement).show();
-                            scootLeft(ev, data, index_source, index_empty, item_slots);
-                            //TODO: REMOVE ITEM AT END
-                        } else if (data == '2004' && countNumber < 5) { //mana potion
-                            $(countElement).html(++countNumber);
-                            $(countElement).show();
-                            scootLeft(ev, data, index_source, index_empty, item_slots);
-                            //TODO: REMOVE ITEM AT END
-                        } else if (data == '2043' && countNumber < 2) { //vision ward
-                            $(countElement).html(++countNumber);
-                            $(countElement).show();
-                            scootLeft(ev, data, index_source, index_empty, item_slots);
-                            //TODO: REMOVE ITEM AT END
-                        } else if (data == '2044' && countNumber < 3) { //stealth ward
+                        if ((data == '2003' && countNumber < 5) || //health potion
+                            (data == '2004' && countNumber < 5) || //mana potion
+                            (data == '2043' && countNumber < 2) || //vision ward
+                            (data == '2044' && countNumber < 3))   //stealth ward
+                        { 
                             $(countElement).html(++countNumber);
                             $(countElement).show();
                             scootLeft(ev, data, index_source, index_empty, item_slots);
                             //TODO: REMOVE ITEM AT END
                         } else { //reached stack cap
-                            scootRight(ev, data, index_drop, index_source, item_slots, false);
+                            scootRight(ev, data, index_source, index_drop - 1, item_slots);
                         }
                     } //else swapping same item so do nothing
                 }
