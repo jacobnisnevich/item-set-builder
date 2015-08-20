@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    var toggleOn = true;
-
     Opentip.styles.leagueItems = {
         extends: "alert",
         stem: true,
@@ -38,15 +36,6 @@ $(document).ready(function() {
                 }
             }
         }
-    });
-
-    $.get("/getChamps", function(data) {
-        dataJSON = JSON.parse(data);
-        sortedKeys = Object.keys(dataJSON).sort()
-        sortedKeys.forEach(function(champName) {
-            $(".champ-container").append('<div class="col s1 no-padding"><img class="champ-select" id="' + dataJSON[champName]["key"] + '" src="images/champs/' + dataJSON[champName]["key"] + '.png" alt="' + dataJSON[champName]["name"] + '"></div>');
-            new Opentip("#" + dataJSON[champName]["key"], dataJSON[champName]["name"])               
-        });
     });
 
     $("#set-form-name").on('input', function() {
@@ -230,14 +219,6 @@ function clearSessionData() {
 
 // Item block manipulation functions
 
-function toggleItemBlocks(open) {
-    if (!open) {
-        $('.collapsible-header').parent('li.active').find('.collapsible-header').click();
-    } else {
-        $('.collapsible-header').parent().not('li.active').find('.collapsible-header').click();
-    }
-}
-
 function resetItemBlocks() {
     removeItemBlocks();
     createItemBlock('New Item Block', [], []);
@@ -250,7 +231,7 @@ function removeItemBlocks() {
 function createItemBlock(name, itemsArray, itemCountsArray) {
     var itemsCount = 0;
 
-    var itemBlockString = '<li><div class="collapsible-header grey-text text-darken-2" contentEditable=true>' + name + '</div>';
+    var itemBlockString = '<li class="active"><div class="collapsible-header grey-text text-darken-2" contentEditable=true>' + name + '</div>';
     itemBlockString = itemBlockString.concat('<div class="collapsible-body grey lighten-3 grey-text text-darken-2"><div class="item-slots clearfix">');
 
     itemsArray.forEach(function(itemId, index) {
