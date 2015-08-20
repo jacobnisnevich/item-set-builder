@@ -82,7 +82,7 @@ footer.page-footer {
     padding: 0;
 }
 
-#all-items {
+#all-items, #set-info {
     overflow-y: scroll;
     height: 55vh;
 }
@@ -183,4 +183,28 @@ consumable {
 
 #item-set-blocks li {
     margin-bottom: 20px;
+}
+
+.map-container, .champ-container {
+    margin: 5px !important;
+    padding: 5px;
+}
+
+.champ-container {
+    line-height: 0.8;
+}
+
+.map-select, .champ-select {
+    width: 95%;
+    -webkit-filter: contrast(50%);
+    filter: contrast(50%);
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.map-select:hover, .champ-select:hover {
+    -webkit-filter: contrast(100%);
+    filter: contrast(100%);
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
 }
