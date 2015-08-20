@@ -183,12 +183,12 @@ function drop(ev) {
                 { 
                     $(countElement).html(++countNumber);
                     $(countElement).show();
-                } else { //not stackable item or reached stack cap
+                } else if (!isFull()) { //not stackable item or reached stack cap
                     item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
                     scootLeft(ev,data, index_drop, index_empty, item_slots);
                 }
             }
-            else { //not same item
+            else if (!isFull()) { //not same item
                 item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
                 scootLeft(ev,data, index_drop, index_empty, item_slots);
             }
@@ -386,4 +386,16 @@ function handleFileUpload(files) {
         loadFromJSON(JSON.parse(event.target.result));
     };
     reader.readAsText(file);
+}
+
+//returns true if item-slots are full
+function isFull() {
+    var returnval = true;
+    $(".item-slots").children().each(function() {
+        if ($(this).find('img').length == 0) {
+            returnval = false;
+            return false;
+        }
+    });
+    return returnval;
 }
