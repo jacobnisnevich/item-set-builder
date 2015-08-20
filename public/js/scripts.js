@@ -58,6 +58,22 @@ $(document).ready(function() {
         saveSessionData();
     });
 
+    $(document).on('click', ".edit-item-block-button", function() {
+        var blockName = $(this).parent().parent().find('.item-block-name');
+        blockName.attr('contentEditable', true);
+        blockName.focus();
+        blockName.select();
+    });
+
+    $(document).on('click', ".toggle-item-block-button", function() {
+        var blockHeader = $(this).parent().parent().find('.collapsible-header');
+        blockHeader.click();
+    });
+
+    $(document).on('focusout', ".item-block-name", function() {
+        $(this).attr('contentEditable', false);
+    });
+
     $("#item-search-box").on('input', function() {
         var search = $("#item-search-box").val().toLowerCase();
         var all_items = $(".item", $("#all-items"));
@@ -231,7 +247,8 @@ function removeItemBlocks() {
 function createItemBlock(name, itemsArray, itemCountsArray) {
     var itemsCount = 0;
 
-    var itemBlockString = '<li class="active"><div class="collapsible-header grey-text text-darken-2" contentEditable=true>' + name + '</div>';
+    var itemBlockString = '<li><div class="item-block-buttons noselect"><i class="material-icons toggle-item-block-button text-grey text-darken-2">swap_vert</i><i class="material-icons edit-item-block-button">spellcheck</i></div>';
+    itemBlockString = itemBlockString.concat('<div class="collapsible-header grey-text text-darken-2"><span class="item-block-name">' + name + '</span></div>');
     itemBlockString = itemBlockString.concat('<div class="collapsible-body grey lighten-3 grey-text text-darken-2"><div class="item-slots clearfix">');
 
     itemsArray.forEach(function(itemId, index) {
@@ -308,7 +325,7 @@ function createJSONObject() {
     $.each($("#item-set-blocks li"), function(itemBlock) {
         var block = {
             "items": [],
-            "type": $("#item-set-blocks li").find(".collapsible-header")[itemBlock].textContent
+            "type": $("#item-set-blocks li").find(".item-block-name")[itemBlock].textContent
         };
         $.each($($("#item-set-blocks li")[itemBlock]).find("img"), function(item) {
             block.items.push({
