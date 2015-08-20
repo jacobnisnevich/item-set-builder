@@ -84,6 +84,13 @@ footer.page-footer {
 
 #all-items, #set-info {
     overflow-y: scroll;
+}
+
+#all-items-container, #set-info {
+    height: 63vh;
+}
+
+#all-items {
     height: 55vh;
 }
 
