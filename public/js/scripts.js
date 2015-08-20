@@ -12,12 +12,9 @@ $(document).ready(function() {
     };
     Opentip.defaultStyle = "leagueItems";
 
-    $('#fileupload').fileupload({
-        dataType: 'json',
-        done: function (e, data) {
-            $('#file-upload-text').html(data.result);
-        }
-    });
+    if (localStorage.getItem('itemSetBuilderData') != null) {
+        loadSessionData();
+    }
 
     $("#item-set-add-block-button").click(function() {
         $("#item-set-blocks").append('<li><div class="collapsible-header grey-text text-darken-2" contentEditable=true>New Item Block</div><div class="collapsible-body grey lighten-3 grey-text text-darken-2"><div class="item-slots clearfix"><div class="item-slot slot-1" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-1">1</div></div><div class="item-slot slot-2" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-2">1</div></div><div class="item-slot slot-3" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-3">1</div></div><div class="item-slot slot-4" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-4">1</div></div><div class="item-slot slot-5" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-5">1</div></div><div class="item-slot slot-6" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-6">1</div></div><div class="item-slot slot-7" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-7">1</div></div><div class="item-slot slot-8" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-8">1</div></div><div class="item-slot slot-9" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-9">1</div></div><div class="item-slot slot-10" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-10">1</div></div></div></div></li>');
@@ -32,9 +29,11 @@ $(document).ready(function() {
             if (dataJSON.hasOwnProperty(itemId)) {
                 $("#all-items").append('<img draggable="true" ondragstart="drag(event)" id="' + itemId + '" class="item" src="/images/items/' + itemId + '.png" alt="' + dataJSON[itemId]['name'] + '"/>');
                 new Opentip("#" + itemId, "<img src='/images/gold.png'>&nbsp;" + dataJSON[itemId]['gold']['total'] + "<br><br>" + dataJSON[itemId]['description'], dataJSON[itemId]['name'])
-                dataJSON[itemId]['tags'].forEach(function(tag) {
-                    $("#" + itemId).addClass(tag);
-                });
+                if (dataJSON[itemId]['tags']) {
+                    dataJSON[itemId]['tags'].forEach(function(tag) {
+                        $("#" + itemId).addClass(tag);
+                    });
+                }
             }
         }
     });
@@ -43,8 +42,20 @@ $(document).ready(function() {
         $("#download-button").attr('download', $("#set-form-name").val() + ".json")
     });
 
+    $("#reset-button").click(function() {
+        resetItemBlocks();
+    });
+
+    $("#upload-button").click(function() {
+        $("#hidden-upload-button").click();
+    });
+
     $("#download-button").click(function() {
         createJSONFile();
+    });
+
+    $("#save-button").click(function() {
+        saveSessionData();
     });
 
     $("#item-search-box").on('input', function() {
@@ -188,7 +199,93 @@ function drop(ev) {
     }
 }
 
+// Session manipulation functions
+
+function saveSessionData() {
+    var obj = createJSONObject();
+
+    localStorage.setItem('itemSetBuilderData', JSON.stringify(obj));
+}
+
+function loadSessionData() {
+    var obj = JSON.parse(localStorage.getItem('itemSetBuilderData'));
+
+    loadFromJSON(obj);
+}
+
+function clearSessionData() {
+    localStorage.removeItem('itemSetBuilderData');
+}
+
+// Item block manipulation functions
+
+function resetItemBlocks() {
+    removeItemBlocks();
+    createItemBlock('New Item Block', [], []);
+}
+
+function removeItemBlocks() {
+    $('#item-set-blocks').empty();
+}
+
+function createItemBlock(name, itemsArray, itemCountsArray) {
+    var itemsCount = 0;
+
+    var itemBlockString = '<li class="active"><div class="collapsible-header grey-text text-darken-2" contentEditable=true>' + name + '</div>';
+    itemBlockString = itemBlockString.concat('<div class="collapsible-body grey lighten-3 grey-text text-darken-2"><div class="item-slots clearfix">');
+
+    itemsArray.forEach(function(itemId) {
+        itemsCount++;
+        itemBlockString = itemBlockString.concat('<div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"><img draggable="true" id="' + itemId + '" ondragstart="drag(event)" src="/images/items/' + itemId + '.png"></div>');
+    })
+
+    while (itemsCount < 10) {
+        itemsCount++;
+        itemBlockString = itemBlockString.concat('<div class="item-slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div>');
+    }
+
+    itemBlockString = itemBlockString.concat('</div></div></li>');
+    $("#item-set-blocks").append(itemBlockString);
+    $(".collapsible").collapsible({
+        accordion: false
+    });
+}
+
+// JSON data manipulation functions
+
+function loadFromJSON(obj) {
+    var blockName;
+    var itemsArray = [];
+    var itemCountsArray = [];
+
+    removeItemBlocks();
+
+    obj.blocks.forEach(function(block) {
+        blockName = block.type;
+        itemsArray = [];
+        itemCountsArray = [];
+
+        block.items.forEach(function(item) {
+            itemsArray.push(item.id);
+            itemCountsArray.push(item.count);
+        });
+
+        createItemBlock(blockName, itemsArray, itemCountsArray);
+    });
+}
+
 function createJSONFile() {
+    var obj = createJSONObject();
+
+    data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+    
+    $("#download-button").attr('href', 'data:' + data);
+    if ($("#set-form-name").val() == "") {
+        $("#download-button").attr('download', "Unnamed_Item_Set.json");
+    }
+}
+
+function createJSONObject() {
     var obj = {
         "map": "any",
         "isGlobalForChampions": false,
@@ -203,14 +300,15 @@ function createJSONFile() {
         "champion": "any",
         "blocks": []
     };
+
     $.each($("#item-set-blocks li"), function(itemBlock) {
         var block = {
             "items": [],
-            "type": $("#item-set-blocks li").find(".collapsible-header")[0].textContent
+            "type": $("#item-set-blocks li").find(".collapsible-header")[itemBlock].textContent
         };
         $.each($($("#item-set-blocks li")[itemBlock]).find("img"), function(item) {
             block.items.push({
-                "item": $($($("#item-set-blocks li")[itemBlock]).find("img")[item]).attr("id"),
+                "id": $($($("#item-set-blocks li")[itemBlock]).find("img")[item]).attr("id"),
                 "count": "1"
             });
         });
@@ -276,4 +374,16 @@ function scootLeft(ev, data, index_start, index_end, item_slots) {
         item_slots.eq(i).append(rightItem);
         item_slots.eq(i + 1).append(leftItem);
     };
+}
+
+// Event handling functions
+
+function handleFileUpload(files) {
+    var file = files[0];
+
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        loadFromJSON(JSON.parse(event.target.result));
+    };
+    reader.readAsText(file);
 }
