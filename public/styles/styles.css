@@ -130,7 +130,8 @@ consumable {
     border-radius: 10px;
 }
 
-.item-slots div {
+.item-slot {
+    position: relative;
     float: left;
     margin: 9px;
     width: 64px;
@@ -140,6 +141,19 @@ consumable {
     box-shadow: 1px 1px 5px;
 }
 
+.item-count {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 18px;
+    width: 18px;
+    background-color: rgba(50, 50, 50, 0.8);
+    color: white;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    font-size: 12px;
+}
 .clearfix:after {
     visibility: hidden;
     display: block;
