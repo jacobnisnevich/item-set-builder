@@ -129,15 +129,15 @@ function drop(ev) {
                         { 
                             $(countElement).html(++countNumber);
                             $(countElement).show();
-                            scootLeft(ev, data, index_source, index_empty - 1, item_slots);
+                            scootRight(ev, data, index_source, index_empty - 1, item_slots);
                             item_slots.eq(index_empty - 1).remove();
                         } else { //reached stack cap
-                            scootLeft(ev, data, index_drop, index_source, item_slots);
+                            scootRight(ev, data, index_drop, index_source, item_slots);
                         }
                     } //else swapping same item so do nothing
                 }
                 else { //not same item
-                    scootRight(ev, data, index_drop, index_source, item_slots);
+                    scootLeft(ev, data, index_drop, index_source, item_slots);
                 }
             }
             else { //source < destination
@@ -153,20 +153,20 @@ function drop(ev) {
                         { 
                             $(countElement).html(++countNumber);
                             $(countElement).show();
-                            scootLeft(ev, data, index_source, index_empty - 1, item_slots);
+                            scootRight(ev, data, index_source, index_empty - 1, item_slots);
                             item_slots.eq(index_empty - 1).remove();
                         } else { //reached stack cap
-                            scootRight(ev, data, index_source, index_drop, item_slots);
+                            scootLeft(ev, data, index_source, index_drop, item_slots);
                         }
                     } //else swapping same item so do nothing
                 }
                 else { //not same item
-                    scootLeft(ev, data, index_source, index_drop, item_slots);
+                    scootRight(ev, data, index_source, index_drop, item_slots);
                 }
             }
         }
         else { //empty, scoot
-            scootLeft(ev, data, index_source, index_empty - 1, item_slots);
+            scootRight(ev, data, index_source, index_empty - 1, item_slots);
         }
     }
     else { //came from all-items box
@@ -185,12 +185,12 @@ function drop(ev) {
                     $(countElement).show();
                 } else { //not stackable item or reached stack cap
                     item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
-                    scootRight(ev,data, index_drop, index_empty, item_slots);
+                    scootLeft(ev,data, index_drop, index_empty, item_slots);
                 }
             }
             else { //not same item
                 item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
-                scootRight(ev,data, index_drop, index_empty, item_slots);
+                scootLeft(ev,data, index_drop, index_empty, item_slots);
             }
         }
         else { //empty, append to end
@@ -323,8 +323,8 @@ function createJSONObject() {
     }
 }
 
-//scoots items from index_start to index_end and places item at index_start
-function scootRight(ev, data, index_start, index_end, item_slots) {
+//scoots items from index_end to index_start
+function scootLeft(ev, data, index_start, index_end, item_slots) {
     for (var i = index_end - 1; i >= index_start; i--) {
         var leftCountElement = $(item_slots.eq(i).find('.item-count'));
         var leftCountNumber = Number(item_slots.eq(i).find('.item-count').html());
@@ -350,7 +350,8 @@ function scootRight(ev, data, index_start, index_end, item_slots) {
     };
 }
 
-function scootLeft(ev, data, index_start, index_end, item_slots) {
+//scoots items from index_start to index_end
+function scootRight(ev, data, index_start, index_end, item_slots) {
     for (var i = index_start; i < index_end; i++) {
         var leftCountElement = $(item_slots.eq(i + 1).find('.item-count'));
         var leftCountNumber = Number(item_slots.eq(i + 1).find('.item-count').html());
@@ -377,7 +378,6 @@ function scootLeft(ev, data, index_start, index_end, item_slots) {
 }
 
 // Event handling functions
-
 function handleFileUpload(files) {
     var file = files[0];
 
