@@ -29,9 +29,11 @@ $(document).ready(function() {
             if (dataJSON.hasOwnProperty(itemId)) {
                 $("#all-items").append('<img draggable="true" ondragstart="drag(event)" id="' + itemId + '" class="item" src="/images/items/' + itemId + '.png" alt="' + dataJSON[itemId]['name'] + '"/>');
                 new Opentip("#" + itemId, "<img src='/images/gold.png'>&nbsp;" + dataJSON[itemId]['gold']['total'] + "<br><br>" + dataJSON[itemId]['description'], dataJSON[itemId]['name'])
-                dataJSON[itemId]['tags'].forEach(function(tag) {
-                    $("#" + itemId).addClass(tag);
-                });
+                if (dataJSON[itemId]['tags']) {
+                    dataJSON[itemId]['tags'].forEach(function(tag) {
+                        $("#" + itemId).addClass(tag);
+                    });
+                }
             }
         }
     });

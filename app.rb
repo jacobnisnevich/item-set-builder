@@ -1,23 +1,24 @@
 require 'sinatra'
 require 'json'
+require 'httparty'
 
 require File.expand_path('../lib/item-set-builder.rb', __FILE__)
+
+itemAPI = 'https://global.api.pvp.net/api/lol/static-data/na/v1.2/item?locale=en_US&itemListData=all&api_key=' + ENV["LOL_KEY"]
 
 get '/' do
   File.read(File.join('public', 'index.html'))
 end
 
 get '/getTags' do
-  file = File.read('lib/item.json')
-  hash = JSON.parse(file)
-  itemParser = ItemParser.new(hash)
+  response = HTTParty.get(itemAPI)
+  itemParser = ItemParser.new(response.parsed_response)
   itemParser.getTags.to_json
 end
 
 get '/getItems' do
-  file = File.read('lib/item.json')
-  hash = JSON.parse(file)
-  itemParser = ItemParser.new(hash)
+  response = HTTParty.get(itemAPI)
+  itemParser = ItemParser.new(response.parsed_response)
   itemParser.getItems.to_json
 end
 
