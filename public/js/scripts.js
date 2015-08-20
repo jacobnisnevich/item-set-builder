@@ -119,7 +119,7 @@ function drop(ev) {
                             $(countElement).html(++countNumber);
                             $(countElement).show();
                             scootLeft(ev, data, index_source, index_empty - 1, item_slots);
-                            //TODO: REMOVE ITEM AT END
+                            item_slots.eq(index_empty - 1).remove();
                         } else { //reached stack cap
                             scootLeft(ev, data, index_drop, index_source, item_slots);
                         }
@@ -143,7 +143,7 @@ function drop(ev) {
                             $(countElement).html(++countNumber);
                             $(countElement).show();
                             scootLeft(ev, data, index_source, index_empty - 1, item_slots);
-                            //TODO: REMOVE ITEM AT END
+                            item_slots.eq(index_empty - 1).remove();
                         } else { //reached stack cap
                             scootRight(ev, data, index_source, index_drop, item_slots);
                         }
