@@ -238,8 +238,9 @@ consumable {
     display: none;
     position: absolute;
     width: 250px;
-    left: 0;
+    left: -280;
     height: 57vh;
+    z-index: 1000;
 }
 
 .filter-form p {
@@ -255,6 +256,10 @@ consumable {
 .filter-form-title {
     font-size: 14px;
     padding: 8px 0;
+}
+
+.filter-form-title:hover {
+    cursor: move;
 }
 
 .filter-indent {
