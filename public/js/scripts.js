@@ -118,10 +118,10 @@ function drop(ev) {
                         { 
                             $(countElement).html(++countNumber);
                             $(countElement).show();
-                            scootLeft(ev, data, index_source, index_empty, item_slots);
+                            scootLeft(ev, data, index_source, index_empty - 1, item_slots);
                             //TODO: REMOVE ITEM AT END
                         } else { //reached stack cap
-                            scootLeft(ev, data, index_drop + 1, index_source, item_slots);
+                            scootLeft(ev, data, index_drop, index_source, item_slots);
                         }
                     } //else swapping same item so do nothing
                 }
@@ -142,10 +142,10 @@ function drop(ev) {
                         { 
                             $(countElement).html(++countNumber);
                             $(countElement).show();
-                            scootLeft(ev, data, index_source, index_empty, item_slots);
+                            scootLeft(ev, data, index_source, index_empty - 1, item_slots);
                             //TODO: REMOVE ITEM AT END
                         } else { //reached stack cap
-                            scootRight(ev, data, index_source, index_drop - 1, item_slots);
+                            scootRight(ev, data, index_source, index_drop, item_slots);
                         }
                     } //else swapping same item so do nothing
                 }
@@ -253,7 +253,7 @@ function scootRight(ev, data, index_start, index_end, item_slots) {
 }
 
 function scootLeft(ev, data, index_start, index_end, item_slots) {
-    for (var i = index_start + 1; i < index_end; i++) {
+    for (var i = index_start; i < index_end; i++) {
         var leftCountElement = $(item_slots.eq(i + 1).find('.item-count'));
         var leftCountNumber = Number(item_slots.eq(i + 1).find('.item-count').html());
         var rightCountElement = $(item_slots.eq(i).find('.item-count'))
