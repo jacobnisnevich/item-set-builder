@@ -118,8 +118,57 @@ $(document).ready(function() {
             var item = $(this);
             var returnval = false;
             filters.forEach(function(element) {
+                if (element == "Starting Items") {
+                    if (!item.hasClass("Jungle") &&
+                        !item.hasClass("Lane")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                else if (element == "Tools") {
+                    if (!item.hasClass("Consumable") &&
+                        !item.hasClass("GoldPer") &&
+                        !item.hasClass("Trinket Vision")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                else if (element == "Defense") {
+                    if (!item.hasClass("Armor") &&
+                        !item.hasClass("Health") &&
+                        !item.hasClass("HealthRegen") &&
+                        !item.hasClass("SpellBlock")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                else if (element == "Attack") {
+                    if (!item.hasClass("AttackSpeed") &&
+                        !item.hasClass("CriticalStrike") &&
+                        !item.hasClass("Damage") &&
+                        !item.hasClass("LifeSteal")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                else if (element == "Magic") {
+                    if (!item.hasClass("CooldownReduction") &&
+                        !item.hasClass("Mana") &&
+                        !item.hasClass("ManaRegen") &&
+                        !item.hasClass("SpellDamage")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                else if (element == "Movement") {
+                    if (!item.hasClass("Boots") &&
+                        !item.hasClass("NonbootsMovement")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
                 //if class doesn't have filter, hide item
-                if (!item.hasClass(element)) {
+                else if (!item.hasClass(element)) {
                     returnval = true;
                     return false;
                 }
