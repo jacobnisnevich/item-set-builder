@@ -87,7 +87,7 @@ $(document).ready(function() {
         $('input[type=checkbox]').each(function() {
             $(this).prop('checked', false);
         });
-        
+
         var search = $("#item-search-box").val().toLowerCase();
         var all_items = $(".item", $("#all-items"));
         if (search != '') {
@@ -104,6 +104,12 @@ $(document).ready(function() {
     //on filter checkbox change
     $('input[type=checkbox]').change(function() {
         var all_items = $(".item", $("#all-items"));
+
+        //refresh search if needed
+        if ($("#item-search-box").val()) {
+            $("#item-search-box").val('');
+            all_items.show();
+        }
 
         //in unchecking, show all items again to re-filter
         if (!this.checked) {all_items.show()}
