@@ -35,6 +35,15 @@ $(document).ready(function() {
         }
     });
 
+    $.get("/getChamps", function(data) {
+        dataJSON = JSON.parse(data);
+        sortedKeys = Object.keys(dataJSON).sort()
+        sortedKeys.forEach(function(champName) {
+            $(".champ-container").append('<div class="col s1 no-padding"><img class="champ-select" id="' + dataJSON[champName]["key"] + '" src="images/champs/' + dataJSON[champName]["key"] + '.png" alt="' + dataJSON[champName]["name"] + '"></div>');
+            new Opentip("#" + dataJSON[champName]["key"], dataJSON[champName]["name"])               
+        });
+    });
+
     $("#item-search-box").on('input', function() {
         //uncheck all checkboxes
         $('input[type=checkbox]').each(function() {
