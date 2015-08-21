@@ -83,6 +83,11 @@ $(document).ready(function() {
     });
 
     $("#item-search-box").on('input', function() {
+        //uncheck all checkboxes
+        $('input[type=checkbox]').each(function() {
+            $(this).prop('checked', false);
+        });
+        
         var search = $("#item-search-box").val().toLowerCase();
         var all_items = $(".item", $("#all-items"));
         if (search != '') {
