@@ -18,7 +18,8 @@ $(document).ready(function() {
     });
 
     $("#set-form-name").on('input', function() {
-        $("#download-button").attr('download', $("#set-form-name").val() + ".json")
+        global.setName = $("#set-form-name").val();
+        $("#download-button").attr('download', global.setName + ".json")
     });
 
     $("#save-button").click(function() {
@@ -103,6 +104,16 @@ function loadFromJSON(obj) {
 
     removeItemBlocks();
 
+    global = {
+        setName: obj.title,
+        selectedMap: obj.map,
+        selectedMode: obj.mode,
+        selectedChamp: ''
+    };
+
+    $('#set-form-name').val(global.setName)
+    $('*[data-map="' + global.selectedMap + '"]').addClass('map-selected');
+
     obj.blocks.forEach(function(block) {
         blockName = block.type;
         itemsArray = [];
@@ -123,24 +134,31 @@ function createJSONFile() {
     data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
     
     $("#download-button").attr('href', 'data:' + data);
-    if ($("#set-form-name").val() == "") {
-        $("#download-button").attr('download', "Unnamed_Item_Set.json");
-    }
+    $("#download-button").attr('download', global.setName + ".json");
 }
 
 function createJSONObject() {
+    var mapChoice;
+    if (global.selectedMap == '') {
+        mapChoice = 'any'
+    } else {
+        mapChoice = global.selectedMap;
+    }
+
+    var modeChoice;
+    if (global.selectedMode == '') {
+        modeChoice = 'any'
+    } else {
+        modeChoice = global.selectedMode;
+    }
+
     var obj = {
-        "map": "any",
-        "isGlobalForChampions": false,
-        "associatedChampions": [],
-        "title": $("#set-form-name").val(),
+        "title": global.setName,        
+        "type": 'custom',
+        "map": mapChoice,
+        "mode": modeChoice,
         "priority": false,
-        "mode": "any",
-        "isGlobalForMaps": true,
-        "associatedMaps": [],
-        "type": "custom",
-        "sortrank": 1,
-        "champion": "any",
+        "sortrank": 0,
         "blocks": []
     };
 
