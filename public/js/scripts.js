@@ -95,6 +95,20 @@ $(document).ready(function() {
             all_items.show();
         }
     });
+
+    //on filter checkbox change
+    $('input[type=checkbox]').change(function() {
+        var all_items = $(".item", $("#all-items"));
+        all_items.hide();
+        var id = this.id;
+        $('input[type=checkbox]').each(function() {
+            if (this.checked) { //show items that have this.id in their class
+                all_items.filter(function() {
+                    return $(this).hasClass(id) == true;
+                }).show();
+            }
+        });
+    });
 });
 
 function allowDrop(ev) {
