@@ -20,6 +20,21 @@ $(document).ready(function() {
         toggleFilterMenu();
     });
 
+    $.get("/getItems", function(data) {
+        dataJSON = JSON.parse(data);
+        for (var itemId in dataJSON) {
+            if (dataJSON.hasOwnProperty(itemId)) {
+                $("#all-items").append('<img draggable="true" ondragstart="drag(event)" id="' + itemId + '" class="item" src="/images/items/' + itemId + '.png" alt="' + dataJSON[itemId]['name'] + '"/>');
+                new Opentip("#" + itemId, "<img src='/images/gold.png'>&nbsp;" + dataJSON[itemId]['gold']['total'] + "<br><br>" + dataJSON[itemId]['description'], dataJSON[itemId]['name'])
+                if (dataJSON[itemId]['tags']) {
+                    dataJSON[itemId]['tags'].forEach(function(tag) {
+                        $("#" + itemId).addClass(tag);
+                    });
+                }
+            }
+        }
+    });
+
     $("#item-search-box").on('input', function() {
         //uncheck all checkboxes
         $('input[type=checkbox]').each(function() {
@@ -141,3 +156,11 @@ $(document).ready(function() {
         }).hide();
     });
 });
+
+function toggleFilterMenu() {
+    if ($('.filter-menu').is(':visible')) {
+        $('.filter-menu').hide();
+    } else {
+        $('.filter-menu').show();
+    }
+}
