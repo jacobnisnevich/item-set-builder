@@ -338,3 +338,9 @@ consumable {
 .help-tooltip {
     cursor: pointer;
 }
+
+code {
+    padding: 10px;
+    margin: 5px;
+    border: 2px grey solid;
+}

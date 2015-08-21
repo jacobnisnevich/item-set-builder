@@ -15,6 +15,23 @@ $(document).ready(function() {
 
     $("#download-button").click(function() {
         createJSONFile();
+        $('#download-instructions-box').openModal();
+
+        var fileName = 'Unnamed Item Set.json';
+        if (global.setName) {
+            fileName = global.setName + '.json';
+        }
+
+        if (global.selectedChamp) {
+            $("#champ-set-instructions").show();
+            $("#global-set-instructions").hide();
+            $("#champKey").text(global.selectedChamp);
+            $("#fileName").text(fileName);
+        } else {
+            $("#global-set-instructions").show();
+            $("#champ-set-instructions").hide();
+            $("#fileName").text(fileName);
+        }
     });
 
     $("#set-form-name").on('input', function() {
@@ -134,7 +151,11 @@ function createJSONFile() {
     data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
     
     $("#download-button").attr('href', 'data:' + data);
-    $("#download-button").attr('download', global.setName + ".json");
+    if (global.setName) {
+        $("#download-button").attr('download', global.setName + ".json");
+    } else {
+        $("#download-button").attr('download', "Unnamed Item Set.json");
+    }
 }
 
 function createJSONObject() {

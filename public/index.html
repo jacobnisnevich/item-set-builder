@@ -48,6 +48,28 @@
         </div>
     </nav>
     <div class="section grey darken-2" id="builder">
+        <div id="download-instructions-box" class="modal modal-fixed-footer gray">
+            <div class="modal-content grey darken-3 grey-text text-lighten-2">
+                <h4>Download Instructions</h4>
+                <p>To use the item set in your League of Legends client simply follow in the instructions below:</p>
+                <div id="global-set-instructions">
+                    <p>1. As you have chosen a global item set that all champions can use, navigate to:</p>
+                    <code>League of Legends\Config\Global\Recommended\</code>
+                    <p>2. Copy the <b id="fileName"></b> file to the folder that you have navigated to.</p>
+                    <p>3. Your item set should now be visible in the item shop to all champions</p>
+                </div>
+                <div id="champ-set-instructions">
+                    <p>1. As you have chosen a champion specific item set, navigate to:</p>
+                    <code>League of Legends\Config\Champions\<b id="champKey"></b>\Recommended\</code>
+                    <p>2. Copy the <b id="fileName"></b> file to the folder that you have navigated to.</p>
+                    <p>3. Your item set should now be visible in the item shop to your specific champion, <b id="champKey"></b></p>
+                </div>
+            </div>
+            <div class="modal-footer grey darken-3">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat grey lighten-1">Ok</a>
+            </div>
+        </div>
+
         <div id="builder-app" class="container">
             <div class="row">
                 <div id="toolbar" class="grey darken-3 grey-text text-lighten-2 col s12 z-depth-3 valign-wrapper">
