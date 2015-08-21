@@ -334,9 +334,9 @@ function drop(ev) {
 
 function toggleFilterMenu() {
     if ($('.filter-menu').is(':visible')) {
-        $('.filter-menu').hide();
+        $('.filter-menu').fadeOut('fast');
     } else {
-        $('.filter-menu').show();
+        $('.filter-menu').fadeIn('fast');
     }
 }
 
