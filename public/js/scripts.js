@@ -99,13 +99,13 @@ $(document).ready(function() {
     //on filter checkbox change
     $('input[type=checkbox]').change(function() {
         var all_items = $(".item", $("#all-items"));
-        all_items.hide();
+        all_items.show();
         var id = this.id;
         $('input[type=checkbox]').each(function() {
             if (this.checked) { //show items that have this.id in their class
                 all_items.filter(function() {
-                    return $(this).hasClass(id) == true;
-                }).show();
+                    return $(this).hasClass(id) == false;
+                }).hide();
             }
         });
     });
