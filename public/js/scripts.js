@@ -99,15 +99,33 @@ $(document).ready(function() {
     //on filter checkbox change
     $('input[type=checkbox]').change(function() {
         var all_items = $(".item", $("#all-items"));
-        var id = this.id;
+
+        //in unchecking, show all items again to re-filter
+        if (!this.checked) {all_items.show()}
+
+        //calulate which fields are checked
+        var filters = [];
         $('input[type=checkbox]').each(function() {
-            if (this.checked) { //show items that have this.id in their class
-                all_items.filter(function() {
-                    if (this.hidden) {return false}
-                    return $(this).hasClass(id) == false;
-                }).hide();
+            if (this.checked) {
+                filters.push(this.id)
             }
         });
+
+        all_items.filter(function() {
+            //if hidden already, just return
+            if (this.hidden) {return false}
+
+            var item = $(this);
+            var returnval = false;
+            filters.forEach(function(element) {
+                //if class doesn't have filter, hide item
+                if (!item.hasClass(element)) {
+                    returnval = true;
+                    return false;
+                }
+            });
+            return returnval;
+        }).hide();
     });
 });
 
