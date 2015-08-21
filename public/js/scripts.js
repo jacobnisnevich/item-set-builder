@@ -16,6 +16,10 @@ $(document).ready(function() {
         loadSessionData();
     }
 
+    $(".button-collapse").sideNav();
+
+    $(".filter-menu").draggable({ handle: ".filter-form-title" });
+
     $("#item-set-add-block-button").click(function() {
         $("#item-set-blocks").append('<li><div class="collapsible-header grey-text text-darken-2" contentEditable=true>New Item Block</div><div class="collapsible-body grey lighten-3 grey-text text-darken-2"><div class="item-slots clearfix"><div class="item-slot slot-1" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-1">1</div></div><div class="item-slot slot-2" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-2">1</div></div><div class="item-slot slot-3" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-3">1</div></div><div class="item-slot slot-4" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-4">1</div></div><div class="item-slot slot-5" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-5">1</div></div><div class="item-slot slot-6" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-6">1</div></div><div class="item-slot slot-7" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-7">1</div></div><div class="item-slot slot-8" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-8">1</div></div><div class="item-slot slot-9" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-9">1</div></div><div class="item-slot slot-10" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="item-count count-10">1</div></div></div></div></li>');
         $(".collapsible").collapsible({
@@ -38,6 +42,10 @@ $(document).ready(function() {
         }
     });
 
+    $('.filter-items-button').click(function() {
+        toggleFilterMenu();
+    });
+
     $("#set-form-name").on('input', function() {
         $("#download-button").attr('download', $("#set-form-name").val() + ".json")
     });
@@ -58,7 +66,28 @@ $(document).ready(function() {
         saveSessionData();
     });
 
+    $(document).on('click', ".edit-item-block-button", function() {
+        var blockName = $(this).parent().parent().find('.item-block-name');
+        blockName.attr('contentEditable', true);
+        blockName.focus();
+        blockName.select();
+    });
+
+    $(document).on('click', ".toggle-item-block-button", function() {
+        var blockHeader = $(this).parent().parent().find('.collapsible-header');
+        blockHeader.click();
+    });
+
+    $(document).on('focusout', ".item-block-name", function() {
+        $(this).attr('contentEditable', false);
+    });
+
     $("#item-search-box").on('input', function() {
+        //uncheck all checkboxes
+        $('input[type=checkbox]').each(function() {
+            $(this).prop('checked', false);
+        });
+
         var search = $("#item-search-box").val().toLowerCase();
         var all_items = $(".item", $("#all-items"));
         if (search != '') {
@@ -70,6 +99,108 @@ $(document).ready(function() {
         } else {
             all_items.show();
         }
+    });
+
+    //on filter checkbox change
+    $('input[type=checkbox]').change(function() {
+        var all_items = $(".item", $("#all-items"));
+
+        //refresh search if needed
+        if ($("#item-search-box").val()) {
+            $("#item-search-box").val('');
+            all_items.show();
+        }
+
+        //in unchecking, show all items again to re-filter
+        if (!this.checked) {all_items.show()}
+
+        //calulate which fields are checked
+        var filters = [];
+        $('input[type=checkbox]').each(function() {
+            if (this.checked) {
+                filters.push(this.id)
+            }
+        });
+
+        var all_items_checked = false;
+        all_items.filter(function() {
+            if (all_items_checked) {
+                //uncheck all checkboxes
+                $('input[type=checkbox]').each(function() {
+                    $(this).prop('checked', false);
+                });
+                all_items.show();
+                return false;
+            }
+
+            //if hidden already, just return
+            if (this.hidden) {return false}
+
+            var item = $(this);
+            var returnval = false;
+            filters.forEach(function(element) {
+                if (all_items_checked || element == "All Items") {
+                    all_items_checked = true;
+                    returnval = false;
+                    return false;
+                }
+                else if (element == "Starting Items") {
+                    if (!item.hasClass("Jungle") &&
+                        !item.hasClass("Lane")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                else if (element == "Tools") {
+                    if (!item.hasClass("Consumable") &&
+                        !item.hasClass("GoldPer") &&
+                        !item.hasClass("Trinket Vision")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                else if (element == "Defense") {
+                    if (!item.hasClass("Armor") &&
+                        !item.hasClass("Health") &&
+                        !item.hasClass("HealthRegen") &&
+                        !item.hasClass("SpellBlock")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                else if (element == "Attack") {
+                    if (!item.hasClass("AttackSpeed") &&
+                        !item.hasClass("CriticalStrike") &&
+                        !item.hasClass("Damage") &&
+                        !item.hasClass("LifeSteal")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                else if (element == "Magic") {
+                    if (!item.hasClass("CooldownReduction") &&
+                        !item.hasClass("Mana") &&
+                        !item.hasClass("ManaRegen") &&
+                        !item.hasClass("SpellDamage")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                else if (element == "Movement") {
+                    if (!item.hasClass("Boots") &&
+                        !item.hasClass("NonbootsMovement")) {
+                        returnval = true;
+                        return false;
+                    }
+                }
+                //if class doesn't have filter, hide item
+                else if (!item.hasClass(element)) {
+                    returnval = true;
+                    return false;
+                }
+            });
+            return returnval;
+        }).hide();
     });
 });
 
@@ -199,6 +330,17 @@ function drop(ev) {
     }
 }
 
+// Filter menu handling
+
+function toggleFilterMenu() {
+    if ($('.filter-menu').is(':visible')) {
+        $('.filter-menu').hide();
+    } else {
+        $('.filter-menu').show();
+    }
+}
+
+
 // Session manipulation functions
 
 function saveSessionData() {
@@ -231,7 +373,8 @@ function removeItemBlocks() {
 function createItemBlock(name, itemsArray, itemCountsArray) {
     var itemsCount = 0;
 
-    var itemBlockString = '<li class="active"><div class="collapsible-header grey-text text-darken-2" contentEditable=true>' + name + '</div>';
+    var itemBlockString = '<li><div class="item-block-buttons noselect"><i class="material-icons toggle-item-block-button text-grey text-darken-2">swap_vert</i><i class="material-icons edit-item-block-button">spellcheck</i></div>';
+    itemBlockString = itemBlockString.concat('<div class="collapsible-header grey-text text-darken-2"><span class="item-block-name">' + name + '</span></div>');
     itemBlockString = itemBlockString.concat('<div class="collapsible-body grey lighten-3 grey-text text-darken-2"><div class="item-slots clearfix">');
 
     itemsArray.forEach(function(itemId, index) {
@@ -308,7 +451,7 @@ function createJSONObject() {
     $.each($("#item-set-blocks li"), function(itemBlock) {
         var block = {
             "items": [],
-            "type": $("#item-set-blocks li").find(".collapsible-header")[itemBlock].textContent
+            "type": $("#item-set-blocks li").find(".item-block-name")[itemBlock].textContent
         };
         $.each($($("#item-set-blocks li")[itemBlock]).find("img"), function(item) {
             block.items.push({
