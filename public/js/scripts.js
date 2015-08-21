@@ -111,14 +111,29 @@ $(document).ready(function() {
             }
         });
 
+        var all_items_checked = false;
         all_items.filter(function() {
+            if (all_items_checked) {
+                //uncheck all checkboxes
+                $('input[type=checkbox]').each(function() {
+                    $(this).prop('checked', false);
+                });
+                all_items.show();
+                return false;
+            }
+
             //if hidden already, just return
             if (this.hidden) {return false}
 
             var item = $(this);
             var returnval = false;
             filters.forEach(function(element) {
-                if (element == "Starting Items") {
+                if (all_items_checked || element == "All Items") {
+                    all_items_checked = true;
+                    returnval = false;
+                    return false;
+                }
+                else if (element == "Starting Items") {
                     if (!item.hasClass("Jungle") &&
                         !item.hasClass("Lane")) {
                         returnval = true;
