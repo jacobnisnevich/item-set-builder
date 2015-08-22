@@ -7,11 +7,6 @@ $(document).ready(function() {
 
     $("#reset-button").click(function() {
         resetItemBlocks();
-        $("#item-search-box").val('');
-        $('input[type=checkbox]').each(function() {
-            $(this).prop('checked', false);
-        });
-        $(".item", $("#all-items")).show();
     });
 
     $("#upload-button").click(function() {
@@ -31,11 +26,11 @@ $(document).ready(function() {
             $("#champ-set-instructions").show();
             $("#global-set-instructions").hide();
             $("#champKey").text(global.selectedChamp);
-            $("#fileName").text(fileName);
+            $(".fileName").text(fileName);
         } else {
             $("#global-set-instructions").show();
             $("#champ-set-instructions").hide();
-            $("#fileName").text(fileName);
+            $(".fileName").text(fileName);
         }
     });
 
