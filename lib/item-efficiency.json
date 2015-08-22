@@ -1,0 +1,2228 @@
+[
+  {
+    "Item": "Ancient Coin",
+    "Cost": "365",
+    "Efficiency": "-185.00",
+    "Gold Value": "180.00",
+    "Gold Efficiency Ratio": "49.32%"
+  },
+  {
+    "Item": "Relic Shield",
+    "Cost": "365",
+    "Efficiency": "-165.00",
+    "Gold Value": "200.00",
+    "Gold Efficiency Ratio": "54.79%"
+  },
+  {
+    "Item": "Spellthief's Edge",
+    "Cost": "365",
+    "Efficiency": "-76.25",
+    "Gold Value": "288.75",
+    "Gold Efficiency Ratio": "79.11%"
+  },
+  {
+    "Item": "Avarice Blade",
+    "Cost": "800",
+    "Efficiency": "-300.00",
+    "Gold Value": "500.00",
+    "Gold Efficiency Ratio": "62.50%"
+  },
+  {
+    "Item": "Nomad's Medallion",
+    "Cost": "865",
+    "Efficiency": "-465.00",
+    "Gold Value": "400.00",
+    "Gold Efficiency Ratio": "46.24%"
+  },
+  {
+    "Item": "Targon's Brace",
+    "Cost": "865",
+    "Efficiency": "-218.33",
+    "Gold Value": "646.67",
+    "Gold Efficiency Ratio": "74.76%"
+  },
+  {
+    "Item": "Frostfang",
+    "Cost": "865",
+    "Efficiency": "-287.50",
+    "Gold Value": "577.50",
+    "Gold Efficiency Ratio": "66.76%"
+  },
+  {
+    "Item": "Talisman of Ascension",
+    "Cost": "2100",
+    "Efficiency": "-443.33",
+    "Gold Value": "1656.67",
+    "Gold Efficiency Ratio": "78.89%"
+  },
+  {
+    "Item": "Frost Queen's Claim",
+    "Cost": "2200",
+    "Efficiency": "-435.83",
+    "Gold Value": "1764.17",
+    "Gold Efficiency Ratio": "80.19%"
+  },
+  {
+    "Item": "Face of the Mountain",
+    "Cost": "2200",
+    "Efficiency": "-190.00",
+    "Gold Value": "2010.00",
+    "Gold Efficiency Ratio": "91.36%"
+  },
+  {
+    "Item": "Elixir of Ruin",
+    "Cost": "400",
+    "Efficiency": "266.67",
+    "Gold Value": "666.67",
+    "Gold Efficiency Ratio": "166.67%"
+  },
+  {
+    "Item": "Elixir of Iron",
+    "Cost": "400",
+    "Efficiency": "-400.00",
+    "Gold Value": "0.00",
+    "Gold Efficiency Ratio": "0.00%"
+  },
+  {
+    "Item": "Elixir of Sorcery",
+    "Cost": "400",
+    "Efficiency": "470.00",
+    "Gold Value": "870.00",
+    "Gold Efficiency Ratio": "217.50%"
+  },
+  {
+    "Item": "Elixir of Wrath",
+    "Cost": "400",
+    "Efficiency": "500.00",
+    "Gold Value": "900.00",
+    "Gold Efficiency Ratio": "225.00%"
+  },
+  {
+    "Item": "Doran's Ring",
+    "Cost": "400",
+    "Efficiency": "86.25",
+    "Gold Value": "486.25",
+    "Gold Efficiency Ratio": "121.56%"
+  },
+  {
+    "Item": "Doran's Shield",
+    "Cost": "440",
+    "Efficiency": "-226.67",
+    "Gold Value": "213.33",
+    "Gold Efficiency Ratio": "48.48%"
+  },
+  {
+    "Item": "Doran's Blade",
+    "Cost": "440",
+    "Efficiency": "163.67",
+    "Gold Value": "603.67",
+    "Gold Efficiency Ratio": "137.20%"
+  },
+  {
+    "Item": "Enchantment: Warrior",
+    "Cost": "2250",
+    "Efficiency": "-373.00",
+    "Gold Value": "1877.00",
+    "Gold Efficiency Ratio": "83.42%"
+  },
+  {
+    "Item": "Enchantment: Runeglaive",
+    "Cost": "2250",
+    "Efficiency": "-445.83",
+    "Gold Value": "1804.17",
+    "Gold Efficiency Ratio": "80.19%"
+  },
+  {
+    "Item": "Enchantment: Cinderhulk",
+    "Cost": "2250",
+    "Efficiency": "-1,250.00",
+    "Gold Value": "1000.00",
+    "Gold Efficiency Ratio": "44.44%"
+  },
+  {
+    "Item": "Enchantment: Devourer",
+    "Cost": "2250",
+    "Efficiency": "-750.00",
+    "Gold Value": "1500.00",
+    "Gold Efficiency Ratio": "66.67%"
+  },
+  {
+    "Item": "Enchantment: Warrior",
+    "Cost": "1400",
+    "Efficiency": "477.00",
+    "Gold Value": "1877.00",
+    "Gold Efficiency Ratio": "134.07%"
+  },
+  {
+    "Item": "Enchantment: Runeglaive",
+    "Cost": "1400",
+    "Efficiency": "404.17",
+    "Gold Value": "1804.17",
+    "Gold Efficiency Ratio": "128.87%"
+  },
+  {
+    "Item": "Enchantment: Cinderhulk",
+    "Cost": "1400",
+    "Efficiency": "-400.00",
+    "Gold Value": "1000.00",
+    "Gold Efficiency Ratio": "71.43%"
+  },
+  {
+    "Item": "Enchantment: Devourer",
+    "Cost": "1400",
+    "Efficiency": "100.00",
+    "Gold Value": "1500.00",
+    "Gold Efficiency Ratio": "107.14%"
+  },
+  {
+    "Item": "Mejai's Soulstealer (empty)",
+    "Cost": "1400",
+    "Efficiency": "-965.00",
+    "Gold Value": "435.00",
+    "Gold Efficiency Ratio": "31.07%"
+  },
+  {
+    "Item": "Mejai's Soulstealer (bought)",
+    "Cost": "1400",
+    "Efficiency": "-95.00",
+    "Gold Value": "1305.00",
+    "Gold Efficiency Ratio": "93.21%"
+  },
+  {
+    "Item": "Mejai's Soulstealer (full)",
+    "Cost": "1400",
+    "Efficiency": "2,990.00",
+    "Gold Value": "4390.00",
+    "Gold Efficiency Ratio": "313.57%"
+  },
+  {
+    "Item": "Sword of the Occult (empty)",
+    "Cost": "1400",
+    "Efficiency": "-1,040.00",
+    "Gold Value": "360.00",
+    "Gold Efficiency Ratio": "25.71%"
+  },
+  {
+    "Item": "Sword of the Occult (bought)",
+    "Cost": "1400",
+    "Efficiency": "-140.00",
+    "Gold Value": "1260.00",
+    "Gold Efficiency Ratio": "90.00%"
+  },
+  {
+    "Item": "Sword of the Occult (full)",
+    "Cost": "1400",
+    "Efficiency": "3,160.00",
+    "Gold Value": "4560.00",
+    "Gold Efficiency Ratio": "325.71%"
+  },
+  {
+    "Item": "Bloodthirster (no shield)",
+    "Cost": "3500",
+    "Efficiency": "480.00",
+    "Gold Value": "3980.00",
+    "Gold Efficiency Ratio": "113.71%"
+  },
+  {
+    "Item": "Bloodthirster (50 hp shield)",
+    "Cost": "3500",
+    "Efficiency": "613.33",
+    "Gold Value": "4113.33",
+    "Gold Efficiency Ratio": "117.52%"
+  },
+  {
+    "Item": "Bloodthirster (full hp shield)",
+    "Cost": "3500",
+    "Efficiency": "1,413.33",
+    "Gold Value": "4913.33",
+    "Gold Efficiency Ratio": "140.38%"
+  },
+  {
+    "Item": "Rod of Ages (empty)",
+    "Cost": "2800",
+    "Efficiency": "105.00",
+    "Gold Value": "2905.00",
+    "Gold Efficiency Ratio": "103.75%"
+  },
+  {
+    "Item": "Rod of Ages (full)",
+    "Cost": "2800",
+    "Efficiency": "2,308.33",
+    "Gold Value": "5108.33",
+    "Gold Efficiency Ratio": "182.44%"
+  },
+  {
+    "Item": "Tear of the Goddess (empty)",
+    "Cost": "720",
+    "Efficiency": "-40.00",
+    "Gold Value": "680.00",
+    "Gold Efficiency Ratio": "94.44%"
+  },
+  {
+    "Item": "Tear of the Goddess (full)",
+    "Cost": "720",
+    "Efficiency": "1,460.00",
+    "Gold Value": "2180.00",
+    "Gold Efficiency Ratio": "302.78%"
+  },
+  {
+    "Item": "Archangel's Staff (empty)",
+    "Cost": "3000",
+    "Efficiency": "-236.88",
+    "Gold Value": "2763.13",
+    "Gold Efficiency Ratio": "92.10%"
+  },
+  {
+    "Item": "Archangel's Staff (full)",
+    "Cost": "3000",
+    "Efficiency": "1,752.50",
+    "Gold Value": "4752.50",
+    "Gold Efficiency Ratio": "158.42%"
+  },
+  {
+    "Item": "Seraph's Embrace",
+    "Cost": "3000",
+    "Efficiency": "1,752.50",
+    "Gold Value": "4752.50",
+    "Gold Efficiency Ratio": "158.42%"
+  },
+  {
+    "Item": "Manamune (no mana)",
+    "Cost": "2200",
+    "Efficiency": "-440.00",
+    "Gold Value": "1760.00",
+    "Gold Efficiency Ratio": "80.00%"
+  },
+  {
+    "Item": "Manamune (full)",
+    "Cost": "2200",
+    "Efficiency": "1,600.00",
+    "Gold Value": "3800.00",
+    "Gold Efficiency Ratio": "172.73%"
+  },
+  {
+    "Item": "Muramana",
+    "Cost": "2200",
+    "Efficiency": "1,600.00",
+    "Gold Value": "3800.00",
+    "Gold Efficiency Ratio": "172.73%"
+  },
+  {
+    "Item": "Seeker's Armguard (empty)",
+    "Cost": "1200",
+    "Efficiency": "-56.25",
+    "Gold Value": "1143.75",
+    "Gold Efficiency Ratio": "95.31%"
+  },
+  {
+    "Item": "Seeker's Armguard (full)",
+    "Cost": "1200",
+    "Efficiency": "570.00",
+    "Gold Value": "1770.00",
+    "Gold Efficiency Ratio": "147.50%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (0 Stacks)",
+    "Cost": "2600",
+    "Efficiency": "-650.00",
+    "Gold Value": "1950.00",
+    "Gold Efficiency Ratio": "75.00%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (Half Stacked)",
+    "Cost": "2600",
+    "Efficiency": "178.00",
+    "Gold Value": "2778.00",
+    "Gold Efficiency Ratio": "106.85%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (Fully Stacked)",
+    "Cost": "2600",
+    "Efficiency": "1,006.00",
+    "Gold Value": "3606.00",
+    "Gold Efficiency Ratio": "138.69%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (0 stacks - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "775.00",
+    "Gold Value": "3375.00",
+    "Gold Efficiency Ratio": "129.81%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (half stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "1,603.00",
+    "Gold Value": "4203.00",
+    "Gold Efficiency Ratio": "161.65%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (fully stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "2,431.00",
+    "Gold Value": "5031.00",
+    "Gold Efficiency Ratio": "193.50%"
+  },
+  {
+    "Item": "Sorcerer's Shoes",
+    "Cost": "1100",
+    "Efficiency": "0.00",
+    "Gold Value": "1100.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "The Brutalizer",
+    "Cost": "1337",
+    "Efficiency": "0.00",
+    "Gold Value": "1337.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "Haunting Guise",
+    "Cost": "1485",
+    "Efficiency": "107.08",
+    "Gold Value": "1592.08",
+    "Gold Efficiency Ratio": "107.21%"
+  },
+  {
+    "Item": "Last Whisper",
+    "Cost": "2300",
+    "Efficiency": "-860.00",
+    "Gold Value": "1440.00",
+    "Gold Efficiency Ratio": "62.61%"
+  },
+  {
+    "Item": "Enchantment: Warrior (Item + Enchant)",
+    "Cost": "2250",
+    "Efficiency": "-193.00",
+    "Gold Value": "2057.00",
+    "Gold Efficiency Ratio": "91.42%"
+  },
+  {
+    "Item": "Enchantment: Warrior (Enchant Only)",
+    "Cost": "1500",
+    "Efficiency": "557.00",
+    "Gold Value": "2057.00",
+    "Gold Efficiency Ratio": "137.13%"
+  },
+  {
+    "Item": "Void Staff",
+    "Cost": "2500",
+    "Efficiency": "-760.00",
+    "Gold Value": "1740.00",
+    "Gold Efficiency Ratio": "69.60%"
+  },
+  {
+    "Item": "Youmuu's Ghostblade",
+    "Cost": "2700",
+    "Efficiency": "-312.67",
+    "Gold Value": "2387.33",
+    "Gold Efficiency Ratio": "88.42%"
+  },
+  {
+    "Item": "Liandry's Torment",
+    "Cost": "3000",
+    "Efficiency": "55.00",
+    "Gold Value": "3055.00",
+    "Gold Efficiency Ratio": "101.83%"
+  },
+  {
+    "Item": "Zeal",
+    "Cost": "1100",
+    "Efficiency": "197.50",
+    "Gold Value": "1297.50",
+    "Gold Efficiency Ratio": "117.95%"
+  },
+  {
+    "Item": "Twin Shadows",
+    "Cost": "2400",
+    "Efficiency": "-106.33",
+    "Gold Value": "2293.67",
+    "Gold Efficiency Ratio": "95.57%"
+  },
+  {
+    "Item": "Statikk Shiv",
+    "Cost": "2500",
+    "Efficiency": "-63.00",
+    "Gold Value": "2437.00",
+    "Gold Efficiency Ratio": "97.48%"
+  },
+  {
+    "Item": "Phantom Dancer",
+    "Cost": "2800",
+    "Efficiency": "647.50",
+    "Gold Value": "3447.50",
+    "Gold Efficiency Ratio": "123.13%"
+  },
+  {
+    "Item": "Zephyr",
+    "Cost": "2850",
+    "Efficiency": "261.67",
+    "Gold Value": "3111.67",
+    "Gold Efficiency Ratio": "109.18%"
+  },
+  {
+    "Item": "Lich Bane",
+    "Cost": "3000",
+    "Efficiency": "-562.50",
+    "Gold Value": "2437.50",
+    "Gold Efficiency Ratio": "81.25%"
+  },
+  {
+    "Item": "Trinity Force",
+    "Cost": "3703",
+    "Efficiency": "812.17",
+    "Gold Value": "4515.17",
+    "Gold Efficiency Ratio": "121.93%"
+  },
+  {
+    "Item": "Ardent Censer",
+    "Cost": "2100",
+    "Efficiency": "122.67",
+    "Gold Value": "2222.67",
+    "Gold Efficiency Ratio": "105.84%"
+  },
+  {
+    "Item": "Aether Wisp",
+    "Cost": "850",
+    "Efficiency": "0.00",
+    "Gold Value": "850.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "Luden's Echo",
+    "Cost": "3100",
+    "Efficiency": "-213.50",
+    "Gold Value": "2886.50",
+    "Gold Efficiency Ratio": "93.11%"
+  },
+  {
+    "Item": "Sightstone",
+    "Cost": "800",
+    "Efficiency": "-400.00",
+    "Gold Value": "400.00",
+    "Gold Efficiency Ratio": "50.00%"
+  },
+  {
+    "Item": "Kindlegem",
+    "Cost": "850",
+    "Efficiency": "0.00",
+    "Gold Value": "850.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "Catalyst the Protector",
+    "Cost": "1200",
+    "Efficiency": "-66.67",
+    "Gold Value": "1133.33",
+    "Gold Efficiency Ratio": "94.44%"
+  },
+  {
+    "Item": "Ruby Sightstone",
+    "Cost": "1600",
+    "Efficiency": "-533.33",
+    "Gold Value": "1066.67",
+    "Gold Efficiency Ratio": "66.67%"
+  },
+  {
+    "Item": "Phage",
+    "Cost": "1325",
+    "Efficiency": "-71.67",
+    "Gold Value": "1253.33",
+    "Gold Efficiency Ratio": "94.59%"
+  },
+  {
+    "Item": "Haunting Guise",
+    "Cost": "1485",
+    "Efficiency": "107.08",
+    "Gold Value": "1592.08",
+    "Gold Efficiency Ratio": "107.21%"
+  },
+  {
+    "Item": "Locket of the Iron Solari",
+    "Cost": "2800",
+    "Efficiency": "-346.67",
+    "Gold Value": "2453.33",
+    "Gold Efficiency Ratio": "87.62%"
+  },
+  {
+    "Item": "Aegis of the Legion",
+    "Cost": "1900",
+    "Efficiency": "-296.67",
+    "Gold Value": "1603.33",
+    "Gold Efficiency Ratio": "84.39%"
+  },
+  {
+    "Item": "Spirit Visage",
+    "Cost": "2750",
+    "Efficiency": "93.33",
+    "Gold Value": "2843.33",
+    "Gold Efficiency Ratio": "103.39%"
+  },
+  {
+    "Item": "Sunfire Cape",
+    "Cost": "2650",
+    "Efficiency": "-550.00",
+    "Gold Value": "2100.00",
+    "Gold Efficiency Ratio": "79.25%"
+  },
+  {
+    "Item": "Banshee's Veil",
+    "Cost": "2750",
+    "Efficiency": "-90.00",
+    "Gold Value": "2660.00",
+    "Gold Efficiency Ratio": "96.73%"
+  },
+  {
+    "Item": "Warmog's Armor",
+    "Cost": "2500",
+    "Efficiency": "-366.67",
+    "Gold Value": "2133.33",
+    "Gold Efficiency Ratio": "85.33%"
+  },
+  {
+    "Item": "Rod of Ages (empty)",
+    "Cost": "2800",
+    "Efficiency": "105.00",
+    "Gold Value": "2905.00",
+    "Gold Efficiency Ratio": "103.75%"
+  },
+  {
+    "Item": "Rod of Ages (full)",
+    "Cost": "2800",
+    "Efficiency": "2,308.33",
+    "Gold Value": "5108.33",
+    "Gold Efficiency Ratio": "182.44%"
+  },
+  {
+    "Item": "Ohmwrecker",
+    "Cost": "2600",
+    "Efficiency": "-123.33",
+    "Gold Value": "2476.67",
+    "Gold Efficiency Ratio": "95.26%"
+  },
+  {
+    "Item": "Liandry's Torment",
+    "Cost": "3000",
+    "Efficiency": "55.00",
+    "Gold Value": "3055.00",
+    "Gold Efficiency Ratio": "101.83%"
+  },
+  {
+    "Item": "Rylai's Crystal Scepter",
+    "Cost": "3000",
+    "Efficiency": "241.67",
+    "Gold Value": "3241.67",
+    "Gold Efficiency Ratio": "108.06%"
+  },
+  {
+    "Item": "Randuin's Omen",
+    "Cost": "2850",
+    "Efficiency": "-116.67",
+    "Gold Value": "2733.33",
+    "Gold Efficiency Ratio": "95.91%"
+  },
+  {
+    "Item": "Frozen Mallet",
+    "Cost": "3300",
+    "Efficiency": "-353.33",
+    "Gold Value": "2946.67",
+    "Gold Efficiency Ratio": "89.29%"
+  },
+  {
+    "Item": "Trinity Force",
+    "Cost": "3703",
+    "Efficiency": "812.17",
+    "Gold Value": "4515.17",
+    "Gold Efficiency Ratio": "121.93%"
+  },
+  {
+    "Item": "Enchantment: Juggernaut (Item + Enchant)",
+    "Cost": "2250",
+    "Efficiency": "-600.00",
+    "Gold Value": "1650.00",
+    "Gold Efficiency Ratio": "73.33%"
+  },
+  {
+    "Item": "Enchantment: Juggernaut (Enchant Only)",
+    "Cost": "1500",
+    "Efficiency": "150.00",
+    "Gold Value": "1650.00",
+    "Gold Efficiency Ratio": "110.00%"
+  },
+  {
+    "Item": "Crystalline Bracer",
+    "Cost": "600",
+    "Efficiency": "113.33",
+    "Gold Value": "713.33",
+    "Gold Efficiency Ratio": "118.89%"
+  },
+  {
+    "Item": "Righteous Glory",
+    "Cost": "2500",
+    "Efficiency": "-206.67",
+    "Gold Value": "2293.33",
+    "Gold Efficiency Ratio": "91.73%"
+  },
+  {
+    "Item": "Spectre's Cowl",
+    "Cost": "1200",
+    "Efficiency": "33.33",
+    "Gold Value": "1233.33",
+    "Gold Efficiency Ratio": "102.78%"
+  },
+  {
+    "Item": "Banner of Command",
+    "Cost": "3000",
+    "Efficiency": "225.00",
+    "Gold Value": "3225.00",
+    "Gold Efficiency Ratio": "107.50%"
+  },
+  {
+    "Item": "Bami's Cinder\n",
+    "Cost": "1000",
+    "Efficiency": "-200.00",
+    "Gold Value": "800.00",
+    "Gold Efficiency Ratio": "80.00%"
+  },
+  {
+    "Item": "The Black Cleaver",
+    "Cost": "3000",
+    "Efficiency": "140.00",
+    "Gold Value": "3140.00",
+    "Gold Efficiency Ratio": "104.67%"
+  },
+  {
+    "Item": "Dead Man's Plate",
+    "Cost": "2750",
+    "Efficiency": "-50.00",
+    "Gold Value": "2700.00",
+    "Gold Efficiency Ratio": "98.18%"
+  },
+  {
+    "Item": "Dead Man's Plate (fully stacked)",
+    "Cost": "2750",
+    "Efficiency": "730.00",
+    "Gold Value": "3480.00",
+    "Gold Efficiency Ratio": "126.55%"
+  },
+  {
+    "Item": "Mercury's Treads",
+    "Cost": "1200",
+    "Efficiency": "-115.00",
+    "Gold Value": "1085.00",
+    "Gold Efficiency Ratio": "90.42%"
+  },
+  {
+    "Item": "Chalice of Harmony",
+    "Cost": "900",
+    "Efficiency": "-40.00",
+    "Gold Value": "860.00",
+    "Gold Efficiency Ratio": "95.56%"
+  },
+  {
+    "Item": "Hexdrinker",
+    "Cost": "1450",
+    "Efficiency": "50.00",
+    "Gold Value": "1500.00",
+    "Gold Efficiency Ratio": "103.45%"
+  },
+  {
+    "Item": "Hexdrinker (with 250 hp magic dmg shield)",
+    "Cost": "1450",
+    "Efficiency": "716.67",
+    "Gold Value": "2166.67",
+    "Gold Efficiency Ratio": "149.43%"
+  },
+  {
+    "Item": "Quicksilver Sash",
+    "Cost": "1250",
+    "Efficiency": "-650.00",
+    "Gold Value": "600.00",
+    "Gold Efficiency Ratio": "48.00%"
+  },
+  {
+    "Item": "Twin Shadows",
+    "Cost": "2400",
+    "Efficiency": "-106.33",
+    "Gold Value": "2293.67",
+    "Gold Efficiency Ratio": "95.57%"
+  },
+  {
+    "Item": "Aegis of the Legion",
+    "Cost": "1900",
+    "Efficiency": "-296.67",
+    "Gold Value": "1603.33",
+    "Gold Efficiency Ratio": "84.39%"
+  },
+  {
+    "Item": "Locket of the Iron Solari",
+    "Cost": "2800",
+    "Efficiency": "-346.67",
+    "Gold Value": "2453.33",
+    "Gold Efficiency Ratio": "87.62%"
+  },
+  {
+    "Item": "Spirit Visage",
+    "Cost": "2750",
+    "Efficiency": "93.33",
+    "Gold Value": "2843.33",
+    "Gold Efficiency Ratio": "103.39%"
+  },
+  {
+    "Item": "Wit's End",
+    "Cost": "2600",
+    "Efficiency": "-500.00",
+    "Gold Value": "2100.00",
+    "Gold Efficiency Ratio": "80.77%"
+  },
+  {
+    "Item": "Mikael's Crucible",
+    "Cost": "2450",
+    "Efficiency": "-613.33",
+    "Gold Value": "1836.67",
+    "Gold Efficiency Ratio": "74.97%"
+  },
+  {
+    "Item": "Banshee's Veil",
+    "Cost": "2750",
+    "Efficiency": "-90.00",
+    "Gold Value": "2660.00",
+    "Gold Efficiency Ratio": "96.73%"
+  },
+  {
+    "Item": "Guardian Angel",
+    "Cost": "2800",
+    "Efficiency": "-800.00",
+    "Gold Value": "2000.00",
+    "Gold Efficiency Ratio": "71.43%"
+  },
+  {
+    "Item": "Abyssal Scepter",
+    "Cost": "2440",
+    "Efficiency": "82.50",
+    "Gold Value": "2522.50",
+    "Gold Efficiency Ratio": "103.38%"
+  },
+  {
+    "Item": "Athene's Unholy Grail",
+    "Cost": "2700",
+    "Efficiency": "458.33",
+    "Gold Value": "3158.33",
+    "Gold Efficiency Ratio": "116.98%"
+  },
+  {
+    "Item": "Maw of Malmortius",
+    "Cost": "3200",
+    "Efficiency": "-240.00",
+    "Gold Value": "2960.00",
+    "Gold Efficiency Ratio": "92.50%"
+  },
+  {
+    "Item": "Mercurial Scimitar",
+    "Cost": "3700",
+    "Efficiency": "-120.00",
+    "Gold Value": "3580.00",
+    "Gold Efficiency Ratio": "96.76%"
+  },
+  {
+    "Item": "Spectre's Cowl",
+    "Cost": "1200",
+    "Efficiency": "33.33",
+    "Gold Value": "1233.33",
+    "Gold Efficiency Ratio": "102.78%"
+  },
+  {
+    "Item": "Banner of Command",
+    "Cost": "3000",
+    "Efficiency": "225.00",
+    "Gold Value": "3225.00",
+    "Gold Efficiency Ratio": "107.50%"
+  },
+  {
+    "Item": "Negatron Cloak",
+    "Cost": "850",
+    "Efficiency": "50.00",
+    "Gold Value": "900.00",
+    "Gold Efficiency Ratio": "105.88%"
+  },
+  {
+    "Item": "Zz'rot Portal",
+    "Cost": "2800",
+    "Efficiency": "-40.00",
+    "Gold Value": "2760.00",
+    "Gold Efficiency Ratio": "98.57%"
+  },
+  {
+    "Item": "ZZ'rot Portal (When user is near the gate)",
+    "Cost": "2800",
+    "Efficiency": "1,145.00",
+    "Gold Value": "3945.00",
+    "Gold Efficiency Ratio": "140.89%"
+  },
+  {
+    "Item": "Ninja Tabi",
+    "Cost": "1000",
+    "Efficiency": "85.00",
+    "Gold Value": "1085.00",
+    "Gold Efficiency Ratio": "108.50%"
+  },
+  {
+    "Item": "Warden's Mail",
+    "Cost": "1050",
+    "Efficiency": "-150.00",
+    "Gold Value": "900.00",
+    "Gold Efficiency Ratio": "85.71%"
+  },
+  {
+    "Item": "Seeker's Armguard (empty)",
+    "Cost": "1200",
+    "Efficiency": "-56.25",
+    "Gold Value": "1143.75",
+    "Gold Efficiency Ratio": "95.31%"
+  },
+  {
+    "Item": "Seeker's Armguard (full)",
+    "Cost": "1200",
+    "Efficiency": "570.00",
+    "Gold Value": "1770.00",
+    "Gold Efficiency Ratio": "147.50%"
+  },
+  {
+    "Item": "Glacial Shroud",
+    "Cost": "950",
+    "Efficiency": "266.67",
+    "Gold Value": "1216.67",
+    "Gold Efficiency Ratio": "128.07%"
+  },
+  {
+    "Item": "Aegis of the Legion",
+    "Cost": "1900",
+    "Efficiency": "-296.67",
+    "Gold Value": "1603.33",
+    "Gold Efficiency Ratio": "84.39%"
+  },
+  {
+    "Item": "Thornmail",
+    "Cost": "2100",
+    "Efficiency": "-100.00",
+    "Gold Value": "2000.00",
+    "Gold Efficiency Ratio": "95.24%"
+  },
+  {
+    "Item": "Sunfire Cape",
+    "Cost": "2600",
+    "Efficiency": "-500.00",
+    "Gold Value": "2100.00",
+    "Gold Efficiency Ratio": "80.77%"
+  },
+  {
+    "Item": "Guardian Angel",
+    "Cost": "2800",
+    "Efficiency": "-800.00",
+    "Gold Value": "2000.00",
+    "Gold Efficiency Ratio": "71.43%"
+  },
+  {
+    "Item": "Frozen Heart",
+    "Cost": "2450",
+    "Efficiency": "983.33",
+    "Gold Value": "3433.33",
+    "Gold Efficiency Ratio": "140.14%"
+  },
+  {
+    "Item": "Ohmwrecker",
+    "Cost": "2600",
+    "Efficiency": "-123.33",
+    "Gold Value": "2476.67",
+    "Gold Efficiency Ratio": "95.26%"
+  },
+  {
+    "Item": "Randuin's Omen",
+    "Cost": "2850",
+    "Efficiency": "-116.67",
+    "Gold Value": "2733.33",
+    "Gold Efficiency Ratio": "95.91%"
+  },
+  {
+    "Item": "Zhonya's Hourglass",
+    "Cost": "3300",
+    "Efficiency": "310.00",
+    "Gold Value": "3610.00",
+    "Gold Efficiency Ratio": "109.39%"
+  },
+  {
+    "Item": "Iceborn Gauntlet",
+    "Cost": "2900",
+    "Efficiency": "269.17",
+    "Gold Value": "3169.17",
+    "Gold Efficiency Ratio": "109.28%"
+  },
+  {
+    "Item": "Raptor's Cloak",
+    "Cost": "1000",
+    "Efficiency": "160.00",
+    "Gold Value": "1160.00",
+    "Gold Efficiency Ratio": "116.00%"
+  },
+  {
+    "Item": "Zz'rot Portal",
+    "Cost": "2800",
+    "Efficiency": "-40.00",
+    "Gold Value": "2760.00",
+    "Gold Efficiency Ratio": "98.57%"
+  },
+  {
+    "Item": "ZZ'rot Portal (When user is near the gate)",
+    "Cost": "2800",
+    "Efficiency": "1,145.00",
+    "Gold Value": "3945.00",
+    "Gold Efficiency Ratio": "140.89%"
+  },
+  {
+    "Item": "Zeke's Harbinger",
+    "Cost": "2300",
+    "Efficiency": "304.17",
+    "Gold Value": "2604.17",
+    "Gold Efficiency Ratio": "113.22%"
+  },
+  {
+    "Item": "Dead Man's Plate",
+    "Cost": "2750",
+    "Efficiency": "-50.00",
+    "Gold Value": "2700.00",
+    "Gold Efficiency Ratio": "98.18%"
+  },
+  {
+    "Item": "Dead Man's Plate (fully stacked)",
+    "Cost": "2750",
+    "Efficiency": "730.00",
+    "Gold Value": "3480.00",
+    "Gold Efficiency Ratio": "126.55%"
+  },
+  {
+    "Item": "Sword of the Occult (empty)",
+    "Cost": "1400",
+    "Efficiency": "-1,040.00",
+    "Gold Value": "360.00",
+    "Gold Efficiency Ratio": "25.71%"
+  },
+  {
+    "Item": "Sword of the Occult (bought)",
+    "Cost": "1400",
+    "Efficiency": "-140.00",
+    "Gold Value": "1260.00",
+    "Gold Efficiency Ratio": "90.00%"
+  },
+  {
+    "Item": "Sword of the Occult (full)",
+    "Cost": "1400",
+    "Efficiency": "3,160.00",
+    "Gold Value": "4560.00",
+    "Gold Efficiency Ratio": "325.71%"
+  },
+  {
+    "Item": "The Brutalizer",
+    "Cost": "1337",
+    "Efficiency": "0.00",
+    "Gold Value": "1337.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "Hexdrinker",
+    "Cost": "1450",
+    "Efficiency": "50.00",
+    "Gold Value": "1500.00",
+    "Gold Efficiency Ratio": "103.45%"
+  },
+  {
+    "Item": "Hexdrinker (with 250 hp magic dmg shield)",
+    "Cost": "1450",
+    "Efficiency": "716.67",
+    "Gold Value": "2166.67",
+    "Gold Efficiency Ratio": "149.43%"
+  },
+  {
+    "Item": "Phage",
+    "Cost": "1325",
+    "Efficiency": "-71.67",
+    "Gold Value": "1253.33",
+    "Gold Efficiency Ratio": "94.59%"
+  },
+  {
+    "Item": "Essence Reaver",
+    "Cost": "3200",
+    "Efficiency": "546.67",
+    "Gold Value": "3746.67",
+    "Gold Efficiency Ratio": "117.08%"
+  },
+  {
+    "Item": "Bilgewater Cutlass",
+    "Cost": "1400",
+    "Efficiency": "-60.00",
+    "Gold Value": "1340.00",
+    "Gold Efficiency Ratio": "95.71%"
+  },
+  {
+    "Item": "Manamune (no mana)",
+    "Cost": "2200",
+    "Efficiency": "-440.00",
+    "Gold Value": "1760.00",
+    "Gold Efficiency Ratio": "80.00%"
+  },
+  {
+    "Item": "Manamune (full)",
+    "Cost": "2200",
+    "Efficiency": "1,600.00",
+    "Gold Value": "3800.00",
+    "Gold Efficiency Ratio": "172.73%"
+  },
+  {
+    "Item": "Muramana",
+    "Cost": "2200",
+    "Efficiency": "1,600.00",
+    "Gold Value": "3800.00",
+    "Gold Efficiency Ratio": "172.73%"
+  },
+  {
+    "Item": "Last Whisper",
+    "Cost": "2300",
+    "Efficiency": "-860.00",
+    "Gold Value": "1440.00",
+    "Gold Efficiency Ratio": "62.61%"
+  },
+  {
+    "Item": "Tiamat",
+    "Cost": "1900",
+    "Efficiency": "-100.00",
+    "Gold Value": "1800.00",
+    "Gold Efficiency Ratio": "94.74%"
+  },
+  {
+    "Item": "Youmuu's Ghostblade",
+    "Cost": "2700",
+    "Efficiency": "-312.67",
+    "Gold Value": "2387.33",
+    "Gold Efficiency Ratio": "88.42%"
+  },
+  {
+    "Item": "Zephyr",
+    "Cost": "2850",
+    "Efficiency": "261.67",
+    "Gold Value": "3111.67",
+    "Gold Efficiency Ratio": "109.18%"
+  },
+  {
+    "Item": "Blade of the Ruined King",
+    "Cost": "3200",
+    "Efficiency": "-550.00",
+    "Gold Value": "2650.00",
+    "Gold Efficiency Ratio": "82.81%"
+  },
+  {
+    "Item": "The Black Cleaver",
+    "Cost": "3000",
+    "Efficiency": "140.00",
+    "Gold Value": "3140.00",
+    "Gold Efficiency Ratio": "104.67%"
+  },
+  {
+    "Item": "Bloodthirster (no shield)",
+    "Cost": "3500",
+    "Efficiency": "480.00",
+    "Gold Value": "3980.00",
+    "Gold Efficiency Ratio": "113.71%"
+  },
+  {
+    "Item": "Bloodthirster (50 hp shield)",
+    "Cost": "3500",
+    "Efficiency": "613.33",
+    "Gold Value": "4113.33",
+    "Gold Efficiency Ratio": "117.52%"
+  },
+  {
+    "Item": "Bloodthirster (full hp shield)",
+    "Cost": "3500",
+    "Efficiency": "1,413.33",
+    "Gold Value": "4913.33",
+    "Gold Efficiency Ratio": "140.38%"
+  },
+  {
+    "Item": "Maw of Malmortius",
+    "Cost": "3200",
+    "Efficiency": "-240.00",
+    "Gold Value": "2960.00",
+    "Gold Efficiency Ratio": "92.50%"
+  },
+  {
+    "Item": "Frozen Mallet",
+    "Cost": "3300",
+    "Efficiency": "-353.33",
+    "Gold Value": "2946.67",
+    "Gold Efficiency Ratio": "89.29%"
+  },
+  {
+    "Item": "Hextech Gunblade",
+    "Cost": "3400",
+    "Efficiency": "880.00",
+    "Gold Value": "4280.00",
+    "Gold Efficiency Ratio": "125.88%"
+  },
+  {
+    "Item": "Ravenous Hydra",
+    "Cost": "3300",
+    "Efficiency": "420.00",
+    "Gold Value": "3720.00",
+    "Gold Efficiency Ratio": "112.73%"
+  },
+  {
+    "Item": "Infinity Edge",
+    "Cost": "3800",
+    "Efficiency": "80.00",
+    "Gold Value": "3880.00",
+    "Gold Efficiency Ratio": "102.11%"
+  },
+  {
+    "Item": "Mercurial Scimitar",
+    "Cost": "3700",
+    "Efficiency": "-120.00",
+    "Gold Value": "3580.00",
+    "Gold Efficiency Ratio": "96.76%"
+  },
+  {
+    "Item": "Enchantment: Warrior (Item + Enchant)",
+    "Cost": "2250",
+    "Efficiency": "-193.00",
+    "Gold Value": "2057.00",
+    "Gold Efficiency Ratio": "91.42%"
+  },
+  {
+    "Item": "Enchantment: Warrior (Enchant Only)",
+    "Cost": "1500",
+    "Efficiency": "557.00",
+    "Gold Value": "2057.00",
+    "Gold Efficiency Ratio": "137.13%"
+  },
+  {
+    "Item": "Trinity Force",
+    "Cost": "3703",
+    "Efficiency": "812.17",
+    "Gold Value": "4515.17",
+    "Gold Efficiency Ratio": "121.93%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (0 Stacks)",
+    "Cost": "2600",
+    "Efficiency": "-650.00",
+    "Gold Value": "1950.00",
+    "Gold Efficiency Ratio": "75.00%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (Half Stacked)",
+    "Cost": "2600",
+    "Efficiency": "178.00",
+    "Gold Value": "2778.00",
+    "Gold Efficiency Ratio": "106.85%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (Fully Stacked)",
+    "Cost": "2600",
+    "Efficiency": "1,006.00",
+    "Gold Value": "3606.00",
+    "Gold Efficiency Ratio": "138.69%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (0 stacks - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "775.00",
+    "Gold Value": "3375.00",
+    "Gold Efficiency Ratio": "129.81%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (half stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "1,603.00",
+    "Gold Value": "4203.00",
+    "Gold Efficiency Ratio": "161.65%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (fully stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "2,431.00",
+    "Gold Value": "5031.00",
+    "Gold Efficiency Ratio": "193.50%"
+  },
+  {
+    "Item": "Avarice Blade",
+    "Cost": "800",
+    "Efficiency": "-300.00",
+    "Gold Value": "500.00",
+    "Gold Efficiency Ratio": "62.50%"
+  },
+  {
+    "Item": "Zeal",
+    "Cost": "1100",
+    "Efficiency": "197.50",
+    "Gold Value": "1297.50",
+    "Gold Efficiency Ratio": "117.95%"
+  },
+  {
+    "Item": "Statikk Shiv",
+    "Cost": "2500",
+    "Efficiency": "-63.00",
+    "Gold Value": "2437.00",
+    "Gold Efficiency Ratio": "97.48%"
+  },
+  {
+    "Item": "Youmuu's Ghostblade",
+    "Cost": "2700",
+    "Efficiency": "-312.67",
+    "Gold Value": "2387.33",
+    "Gold Efficiency Ratio": "88.42%"
+  },
+  {
+    "Item": "Phantom Dancer",
+    "Cost": "2800",
+    "Efficiency": "647.50",
+    "Gold Value": "3447.50",
+    "Gold Efficiency Ratio": "123.13%"
+  },
+  {
+    "Item": "Infinity Edge",
+    "Cost": "3800",
+    "Efficiency": "80.00",
+    "Gold Value": "3880.00",
+    "Gold Efficiency Ratio": "102.11%"
+  },
+  {
+    "Item": "Trinity Force",
+    "Cost": "3703",
+    "Efficiency": "496.17",
+    "Gold Value": "4199.17",
+    "Gold Efficiency Ratio": "113.40%"
+  },
+  {
+    "Item": "Recurve Bow",
+    "Cost": "1,100",
+    "Efficiency": "-200.00",
+    "Gold Value": "900.00",
+    "Gold Efficiency Ratio": "81.82%"
+  },
+  {
+    "Item": "Berserker's Greaves",
+    "Cost": "1000",
+    "Efficiency": "335.00",
+    "Gold Value": "1335.00",
+    "Gold Efficiency Ratio": "133.50%"
+  },
+  {
+    "Item": "Zeal",
+    "Cost": "1100",
+    "Efficiency": "197.50",
+    "Gold Value": "1297.50",
+    "Gold Efficiency Ratio": "117.95%"
+  },
+  {
+    "Item": "Stinger",
+    "Cost": "1250",
+    "Efficiency": "266.67",
+    "Gold Value": "1516.67",
+    "Gold Efficiency Ratio": "121.33%"
+  },
+  {
+    "Item": "Wit's End",
+    "Cost": "2600",
+    "Efficiency": "-500.00",
+    "Gold Value": "2100.00",
+    "Gold Efficiency Ratio": "80.77%"
+  },
+  {
+    "Item": "Statikk Shiv",
+    "Cost": "2500",
+    "Efficiency": "-63.00",
+    "Gold Value": "2437.00",
+    "Gold Efficiency Ratio": "97.48%"
+  },
+  {
+    "Item": "Nashor's Tooth",
+    "Cost": "3000",
+    "Efficiency": "573.33",
+    "Gold Value": "3573.33",
+    "Gold Efficiency Ratio": "119.11%"
+  },
+  {
+    "Item": "Youmuu's Ghostblade",
+    "Cost": "2700",
+    "Efficiency": "-312.67",
+    "Gold Value": "2387.33",
+    "Gold Efficiency Ratio": "88.42%"
+  },
+  {
+    "Item": "Runaan's Hurricane",
+    "Cost": "2400",
+    "Efficiency": "-300.00",
+    "Gold Value": "2100.00",
+    "Gold Efficiency Ratio": "87.50%"
+  },
+  {
+    "Item": "Phantom Dancer",
+    "Cost": "2800",
+    "Efficiency": "647.50",
+    "Gold Value": "3447.50",
+    "Gold Efficiency Ratio": "123.13%"
+  },
+  {
+    "Item": "Zephyr",
+    "Cost": "2850",
+    "Efficiency": "261.67",
+    "Gold Value": "3111.67",
+    "Gold Efficiency Ratio": "109.18%"
+  },
+  {
+    "Item": "Trinity Force",
+    "Cost": "3703",
+    "Efficiency": "496.17",
+    "Gold Value": "4199.17",
+    "Gold Efficiency Ratio": "113.40%"
+  },
+  {
+    "Item": "Enchantment: Devourer",
+    "Cost": "1500",
+    "Efficiency": "0.00",
+    "Gold Value": "1500.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (Half Stacked)",
+    "Cost": "2600",
+    "Efficiency": "178.00",
+    "Gold Value": "2778.00",
+    "Gold Efficiency Ratio": "106.85%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (Fully Stacked)",
+    "Cost": "2600",
+    "Efficiency": "1,006.00",
+    "Gold Value": "3606.00",
+    "Gold Efficiency Ratio": "138.69%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (0 stacks - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "775.00",
+    "Gold Value": "3375.00",
+    "Gold Efficiency Ratio": "129.81%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (half stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "1,603.00",
+    "Gold Value": "4203.00",
+    "Gold Efficiency Ratio": "161.65%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (fully stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "2,431.00",
+    "Gold Value": "5031.00",
+    "Gold Efficiency Ratio": "193.50%"
+  },
+  {
+    "Item": "Bilgewater Cutlass",
+    "Cost": "1400",
+    "Efficiency": "-60.00",
+    "Gold Value": "1340.00",
+    "Gold Efficiency Ratio": "95.71%"
+  },
+  {
+    "Item": "Blade of the Ruined King",
+    "Cost": "3200",
+    "Efficiency": "-550.00",
+    "Gold Value": "2650.00",
+    "Gold Efficiency Ratio": "82.81%"
+  },
+  {
+    "Item": "Bloodthirster (no shield)",
+    "Cost": "3500",
+    "Efficiency": "480.00",
+    "Gold Value": "3980.00",
+    "Gold Efficiency Ratio": "113.71%"
+  },
+  {
+    "Item": "Bloodthirster (full hp shield)",
+    "Cost": "3500",
+    "Efficiency": "1,413.33",
+    "Gold Value": "4913.33",
+    "Gold Efficiency Ratio": "140.38%"
+  },
+  {
+    "Item": "Hextech Gunblade",
+    "Cost": "3400",
+    "Efficiency": "880.00",
+    "Gold Value": "4280.00",
+    "Gold Efficiency Ratio": "125.88%"
+  },
+  {
+    "Item": "Ravenous Hydra",
+    "Cost": "3300",
+    "Efficiency": "420.00",
+    "Gold Value": "3720.00",
+    "Gold Efficiency Ratio": "112.73%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (0 stacks - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "775.00",
+    "Gold Value": "3375.00",
+    "Gold Efficiency Ratio": "129.81%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (half stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "1,603.00",
+    "Gold Value": "4203.00",
+    "Gold Efficiency Ratio": "161.65%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (fully stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "2,431.00",
+    "Gold Value": "5031.00",
+    "Gold Efficiency Ratio": "193.50%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (0 stacks - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "775.00",
+    "Gold Value": "3375.00",
+    "Gold Efficiency Ratio": "129.81%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (half stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "1,603.00",
+    "Gold Value": "4203.00",
+    "Gold Efficiency Ratio": "161.65%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (fully stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "2,431.00",
+    "Gold Value": "5031.00",
+    "Gold Efficiency Ratio": "193.50%"
+  },
+  {
+    "Item": "Hextech Revolver",
+    "Cost": "1200",
+    "Efficiency": "0.00",
+    "Gold Value": "1200.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "Hextech Gunblade",
+    "Cost": "3400",
+    "Efficiency": "880.00",
+    "Gold Value": "4280.00",
+    "Gold Efficiency Ratio": "125.88%"
+  },
+  {
+    "Item": "Will of the Ancients",
+    "Cost": "2500",
+    "Efficiency": "-443.33",
+    "Gold Value": "2056.67",
+    "Gold Efficiency Ratio": "82.27%"
+  },
+  {
+    "Item": "Fiendish Codex",
+    "Cost": "820",
+    "Efficiency": "149.17",
+    "Gold Value": "969.17",
+    "Gold Efficiency Ratio": "118.19%"
+  },
+  {
+    "Item": "Seeker's Armguard (empty)",
+    "Cost": "1200",
+    "Efficiency": "-56.25",
+    "Gold Value": "1143.75",
+    "Gold Efficiency Ratio": "95.31%"
+  },
+  {
+    "Item": "Seeker's Armguard (full)",
+    "Cost": "1200",
+    "Efficiency": "570.00",
+    "Gold Value": "1770.00",
+    "Gold Efficiency Ratio": "147.50%"
+  },
+  {
+    "Item": "Hextech Revolver",
+    "Cost": "1200",
+    "Efficiency": "0.00",
+    "Gold Value": "1200.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "Mejai's Soulstealer (empty)",
+    "Cost": "1400",
+    "Efficiency": "-965.00",
+    "Gold Value": "435.00",
+    "Gold Efficiency Ratio": "31.07%"
+  },
+  {
+    "Item": "Mejai's Soulstealer (bought)",
+    "Cost": "1400",
+    "Efficiency": "-95.00",
+    "Gold Value": "1305.00",
+    "Gold Efficiency Ratio": "93.21%"
+  },
+  {
+    "Item": "Mejai's Soulstealer (full)",
+    "Cost": "1400",
+    "Efficiency": "2,990.00",
+    "Gold Value": "4390.00",
+    "Gold Efficiency Ratio": "313.57%"
+  },
+  {
+    "Item": "Sheen",
+    "Cost": "1200",
+    "Efficiency": "-256.25",
+    "Gold Value": "943.75",
+    "Gold Efficiency Ratio": "78.65%"
+  },
+  {
+    "Item": "Haunting Guise",
+    "Cost": "1500",
+    "Efficiency": "92.08",
+    "Gold Value": "1592.08",
+    "Gold Efficiency Ratio": "106.14%"
+  },
+  {
+    "Item": "Twin Shadows",
+    "Cost": "2400",
+    "Efficiency": "-106.33",
+    "Gold Value": "2293.67",
+    "Gold Efficiency Ratio": "95.57%"
+  },
+  {
+    "Item": "Morellonomicon",
+    "Cost": "2300",
+    "Efficiency": "793.33",
+    "Gold Value": "3093.33",
+    "Gold Efficiency Ratio": "134.49%"
+  },
+  {
+    "Item": "Void Staff",
+    "Cost": "2500",
+    "Efficiency": "-760.00",
+    "Gold Value": "1740.00",
+    "Gold Efficiency Ratio": "69.60%"
+  },
+  {
+    "Item": "Will of the Ancients",
+    "Cost": "2500",
+    "Efficiency": "-443.33",
+    "Gold Value": "2056.67",
+    "Gold Efficiency Ratio": "82.27%"
+  },
+  {
+    "Item": "Nashor's Tooth",
+    "Cost": "3000",
+    "Efficiency": "573.33",
+    "Gold Value": "3573.33",
+    "Gold Efficiency Ratio": "119.11%"
+  },
+  {
+    "Item": "Abyssal Scepter",
+    "Cost": "2440",
+    "Efficiency": "82.50",
+    "Gold Value": "2522.50",
+    "Gold Efficiency Ratio": "103.38%"
+  },
+  {
+    "Item": "Archangel's Staff (empty)",
+    "Cost": "3000",
+    "Efficiency": "-236.88",
+    "Gold Value": "2763.13",
+    "Gold Efficiency Ratio": "92.10%"
+  },
+  {
+    "Item": "Archangel's Staff (full)",
+    "Cost": "3000",
+    "Efficiency": "1,752.50",
+    "Gold Value": "4752.50",
+    "Gold Efficiency Ratio": "158.42%"
+  },
+  {
+    "Item": "Seraph's Embrace",
+    "Cost": "3000",
+    "Efficiency": "1,752.50",
+    "Gold Value": "4752.50",
+    "Gold Efficiency Ratio": "158.42%"
+  },
+  {
+    "Item": "Athene's Unholy Grail",
+    "Cost": "2700",
+    "Efficiency": "458.33",
+    "Gold Value": "3158.33",
+    "Gold Efficiency Ratio": "116.98%"
+  },
+  {
+    "Item": "Rod of Ages (empty)",
+    "Cost": "2800",
+    "Efficiency": "105.00",
+    "Gold Value": "2905.00",
+    "Gold Efficiency Ratio": "103.75%"
+  },
+  {
+    "Item": "Rod of Ages (full)",
+    "Cost": "2800",
+    "Efficiency": "2,308.33",
+    "Gold Value": "5108.33",
+    "Gold Efficiency Ratio": "182.44%"
+  },
+  {
+    "Item": "Liandry's Torment",
+    "Cost": "3000",
+    "Efficiency": "55.00",
+    "Gold Value": "3055.00",
+    "Gold Efficiency Ratio": "101.83%"
+  },
+  {
+    "Item": "Rylai's Crystal Scepter",
+    "Cost": "3000",
+    "Efficiency": "241.67",
+    "Gold Value": "3241.67",
+    "Gold Efficiency Ratio": "108.06%"
+  },
+  {
+    "Item": "Lich Bane",
+    "Cost": "3000",
+    "Efficiency": "-562.50",
+    "Gold Value": "2437.50",
+    "Gold Efficiency Ratio": "81.25%"
+  },
+  {
+    "Item": "Zhonya's Hourglass",
+    "Cost": "3300",
+    "Efficiency": "310.00",
+    "Gold Value": "3610.00",
+    "Gold Efficiency Ratio": "109.39%"
+  },
+  {
+    "Item": "Rabadon's Deathcap",
+    "Cost": "3500",
+    "Efficiency": "-890.00",
+    "Gold Value": "2610.00",
+    "Gold Efficiency Ratio": "74.57%"
+  },
+  {
+    "Item": "Rabadon's Deathcap (stacked with itself)",
+    "Cost": "3500",
+    "Efficiency": "23.50",
+    "Gold Value": "3523.50",
+    "Gold Efficiency Ratio": "100.67%"
+  },
+  {
+    "Item": "Iceborn Gauntlet",
+    "Cost": "2900",
+    "Efficiency": "269.17",
+    "Gold Value": "3169.17",
+    "Gold Efficiency Ratio": "109.28%"
+  },
+  {
+    "Item": "Hextech Gunblade",
+    "Cost": "3400",
+    "Efficiency": "880.00",
+    "Gold Value": "4280.00",
+    "Gold Efficiency Ratio": "125.88%"
+  },
+  {
+    "Item": "Enchantment: Runeglaive",
+    "Cost": "2250",
+    "Efficiency": "-445.83",
+    "Gold Value": "1804.17",
+    "Gold Efficiency Ratio": "80.19%"
+  },
+  {
+    "Item": "Enchantment: Runeglaive (Enchant Only)",
+    "Cost": "1400",
+    "Efficiency": "404.17",
+    "Gold Value": "1804.17",
+    "Gold Efficiency Ratio": "128.87%"
+  },
+  {
+    "Item": "Ardent Censer",
+    "Cost": "2100",
+    "Efficiency": "122.67",
+    "Gold Value": "2222.67",
+    "Gold Efficiency Ratio": "105.84%"
+  },
+  {
+    "Item": "Trinity Force",
+    "Cost": "3703",
+    "Efficiency": "812.17",
+    "Gold Value": "4515.17",
+    "Gold Efficiency Ratio": "121.93%"
+  },
+  {
+    "Item": "Aether Wisp",
+    "Cost": "850",
+    "Efficiency": "0.00",
+    "Gold Value": "850.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "Banner of Command",
+    "Cost": "3000",
+    "Efficiency": "225.00",
+    "Gold Value": "3225.00",
+    "Gold Efficiency Ratio": "107.50%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (0 Stacks)",
+    "Cost": "2600",
+    "Efficiency": "-650.00",
+    "Gold Value": "1950.00",
+    "Gold Efficiency Ratio": "75.00%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (Half Stacked)",
+    "Cost": "2600",
+    "Efficiency": "178.00",
+    "Gold Value": "2778.00",
+    "Gold Efficiency Ratio": "106.85%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (Fully Stacked)",
+    "Cost": "2600",
+    "Efficiency": "1,006.00",
+    "Gold Value": "3606.00",
+    "Gold Efficiency Ratio": "138.69%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (0 stacks - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "775.00",
+    "Gold Value": "3375.00",
+    "Gold Efficiency Ratio": "129.81%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (half stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "1,603.00",
+    "Gold Value": "4203.00",
+    "Gold Efficiency Ratio": "161.65%"
+  },
+  {
+    "Item": "Guinsoo's Rageblade (fully stacked - below 50% HP)",
+    "Cost": "2600",
+    "Efficiency": "2,431.00",
+    "Gold Value": "5031.00",
+    "Gold Efficiency Ratio": "193.50%"
+  },
+  {
+    "Item": "Luden's Echo",
+    "Cost": "3100",
+    "Efficiency": "-213.50",
+    "Gold Value": "2886.50",
+    "Gold Efficiency Ratio": "93.11%"
+  },
+  {
+    "Item": "Zeke's Harbinger",
+    "Cost": "2300",
+    "Efficiency": "304.17",
+    "Gold Value": "2604.17",
+    "Gold Efficiency Ratio": "113.22%"
+  },
+  {
+    "Item": "Ionian Boots of Lucidity",
+    "Cost": "1000",
+    "Efficiency": "60.00",
+    "Gold Value": "1060.00",
+    "Gold Efficiency Ratio": "106.00%"
+  },
+  {
+    "Item": "Kindlegem",
+    "Cost": "850",
+    "Efficiency": "0.00",
+    "Gold Value": "850.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "Fiendish Codex",
+    "Cost": "820",
+    "Efficiency": "149.17",
+    "Gold Value": "969.17",
+    "Gold Efficiency Ratio": "118.19%"
+  },
+  {
+    "Item": "Stinger",
+    "Cost": "1250",
+    "Efficiency": "266.67",
+    "Gold Value": "1516.67",
+    "Gold Efficiency Ratio": "121.33%"
+  },
+  {
+    "Item": "The Brutalizer",
+    "Cost": "1337",
+    "Efficiency": "0.00",
+    "Gold Value": "1337.00",
+    "Gold Efficiency Ratio": "100.00%"
+  },
+  {
+    "Item": "Glacial Shroud",
+    "Cost": "950",
+    "Efficiency": "266.67",
+    "Gold Value": "1216.67",
+    "Gold Efficiency Ratio": "128.07%"
+  },
+  {
+    "Item": "Locket of the Iron Solari",
+    "Cost": "2800",
+    "Efficiency": "-346.67",
+    "Gold Value": "2453.33",
+    "Gold Efficiency Ratio": "87.62%"
+  },
+  {
+    "Item": "Morellonomicon",
+    "Cost": "2300",
+    "Efficiency": "793.33",
+    "Gold Value": "3093.33",
+    "Gold Efficiency Ratio": "134.49%"
+  },
+  {
+    "Item": "Spirit Visage",
+    "Cost": "2750",
+    "Efficiency": "93.33",
+    "Gold Value": "2843.33",
+    "Gold Efficiency Ratio": "103.39%"
+  },
+  {
+    "Item": "Nashor's Tooth",
+    "Cost": "3000",
+    "Efficiency": "573.33",
+    "Gold Value": "3573.33",
+    "Gold Efficiency Ratio": "119.11%"
+  },
+  {
+    "Item": "Youmuu's Ghostblade",
+    "Cost": "2700",
+    "Efficiency": "-312.67",
+    "Gold Value": "2387.33",
+    "Gold Efficiency Ratio": "88.42%"
+  },
+  {
+    "Item": "Athene's Unholy Grail",
+    "Cost": "2700",
+    "Efficiency": "458.33",
+    "Gold Value": "3158.33",
+    "Gold Efficiency Ratio": "116.98%"
+  },
+  {
+    "Item": "Zephyr",
+    "Cost": "2850",
+    "Efficiency": "261.67",
+    "Gold Value": "3111.67",
+    "Gold Efficiency Ratio": "109.18%"
+  },
+  {
+    "Item": "The Black Cleaver",
+    "Cost": "3000",
+    "Efficiency": "140.00",
+    "Gold Value": "3140.00",
+    "Gold Efficiency Ratio": "104.67%"
+  },
+  {
+    "Item": "Frozen Heart",
+    "Cost": "2450",
+    "Efficiency": "983.33",
+    "Gold Value": "3433.33",
+    "Gold Efficiency Ratio": "140.14%"
+  },
+  {
+    "Item": "Iceborn Gauntlet",
+    "Cost": "2900",
+    "Efficiency": "269.17",
+    "Gold Value": "3169.17",
+    "Gold Efficiency Ratio": "109.28%"
+  },
+  {
+    "Item": "Enchantment: Warrior (Item + Enchant)",
+    "Cost": "2250",
+    "Efficiency": "-193.00",
+    "Gold Value": "2057.00",
+    "Gold Efficiency Ratio": "91.42%"
+  },
+  {
+    "Item": "Enchantment: Warrior (Enchant Only)",
+    "Cost": "1500",
+    "Efficiency": "557.00",
+    "Gold Value": "2057.00",
+    "Gold Efficiency Ratio": "137.13%"
+  },
+  {
+    "Item": "Enchantment: Runeglaive",
+    "Cost": "2250",
+    "Efficiency": "-445.83",
+    "Gold Value": "1804.17",
+    "Gold Efficiency Ratio": "80.19%"
+  },
+  {
+    "Item": "Enchantment: Runeglaive (Enchant Only)",
+    "Cost": "1400",
+    "Efficiency": "404.17",
+    "Gold Value": "1804.17",
+    "Gold Efficiency Ratio": "128.87%"
+  },
+  {
+    "Item": "Enchantment: Juggernaut (Item + Enchant)",
+    "Cost": "2250",
+    "Efficiency": "-600.00",
+    "Gold Value": "1650.00",
+    "Gold Efficiency Ratio": "73.33%"
+  },
+  {
+    "Item": "Enchantment: Juggernaut (Enchant Only)",
+    "Cost": "1500",
+    "Efficiency": "150.00",
+    "Gold Value": "1650.00",
+    "Gold Efficiency Ratio": "110.00%"
+  },
+  {
+    "Item": "Essence Reaver",
+    "Cost": "3200",
+    "Efficiency": "546.67",
+    "Gold Value": "3746.67",
+    "Gold Efficiency Ratio": "117.08%"
+  },
+  {
+    "Item": "Ardent Censer",
+    "Cost": "2200",
+    "Efficiency": "22.67",
+    "Gold Value": "2222.67",
+    "Gold Efficiency Ratio": "101.03%"
+  },
+  {
+    "Item": "Forbidden Idol",
+    "Cost": "600",
+    "Efficiency": "76.67",
+    "Gold Value": "676.67",
+    "Gold Efficiency Ratio": "112.78%"
+  },
+  {
+    "Item": "Banner of Command",
+    "Cost": "3000",
+    "Efficiency": "225.00",
+    "Gold Value": "3225.00",
+    "Gold Efficiency Ratio": "107.50%"
+  },
+  {
+    "Item": "Mikael's Crucible",
+    "Cost": "2450",
+    "Efficiency": "-613.33",
+    "Gold Value": "1836.67",
+    "Gold Efficiency Ratio": "74.97%"
+  },
+  {
+    "Item": "Will of the Ancients",
+    "Cost": "2500",
+    "Efficiency": "-443.33",
+    "Gold Value": "2056.67",
+    "Gold Efficiency Ratio": "82.27%"
+  },
+  {
+    "Item": "Zeke's Harbinger",
+    "Cost": "2300",
+    "Efficiency": "304.17",
+    "Gold Value": "2604.17",
+    "Gold Efficiency Ratio": "113.22%"
+  },
+  {
+    "Item": "Tear of the Goddess (empty)",
+    "Cost": "720",
+    "Efficiency": "-40.00",
+    "Gold Value": "680.00",
+    "Gold Efficiency Ratio": "94.44%"
+  },
+  {
+    "Item": "Tear of the Goddess (full)",
+    "Cost": "720",
+    "Efficiency": "1,460.00",
+    "Gold Value": "2180.00",
+    "Gold Efficiency Ratio": "302.78%"
+  },
+  {
+    "Item": "Catalyst the Protector",
+    "Cost": "1200",
+    "Efficiency": "-66.67",
+    "Gold Value": "1133.33",
+    "Gold Efficiency Ratio": "94.44%"
+  },
+  {
+    "Item": "Sheen",
+    "Cost": "1200",
+    "Efficiency": "-256.25",
+    "Gold Value": "943.75",
+    "Gold Efficiency Ratio": "78.65%"
+  },
+  {
+    "Item": "Glacial Shroud",
+    "Cost": "950",
+    "Efficiency": "266.67",
+    "Gold Value": "1216.67",
+    "Gold Efficiency Ratio": "128.07%"
+  },
+  {
+    "Item": "Manamune (no mana)",
+    "Cost": "2200",
+    "Efficiency": "-440.00",
+    "Gold Value": "1760.00",
+    "Gold Efficiency Ratio": "80.00%"
+  },
+  {
+    "Item": "Manamune (full)",
+    "Cost": "2200",
+    "Efficiency": "1,600.00",
+    "Gold Value": "3800.00",
+    "Gold Efficiency Ratio": "172.73%"
+  },
+  {
+    "Item": "Muramana",
+    "Cost": "2200",
+    "Efficiency": "1,600.00",
+    "Gold Value": "3800.00",
+    "Gold Efficiency Ratio": "172.73%"
+  },
+  {
+    "Item": "Archangel's Staff (empty)",
+    "Cost": "3000",
+    "Efficiency": "-236.88",
+    "Gold Value": "2763.13",
+    "Gold Efficiency Ratio": "92.10%"
+  },
+  {
+    "Item": "Archangel's Staff (full)",
+    "Cost": "3000",
+    "Efficiency": "1,752.50",
+    "Gold Value": "4752.50",
+    "Gold Efficiency Ratio": "158.42%"
+  },
+  {
+    "Item": "Seraph's Embrace",
+    "Cost": "3000",
+    "Efficiency": "1,752.50",
+    "Gold Value": "4752.50",
+    "Gold Efficiency Ratio": "158.42%"
+  },
+  {
+    "Item": "Rod of Ages (empty)",
+    "Cost": "2800",
+    "Efficiency": "105.00",
+    "Gold Value": "2905.00",
+    "Gold Efficiency Ratio": "103.75%"
+  },
+  {
+    "Item": "Rod of Ages (full)",
+    "Cost": "2800",
+    "Efficiency": "2,308.33",
+    "Gold Value": "5108.33",
+    "Gold Efficiency Ratio": "182.44%"
+  },
+  {
+    "Item": "Lich Bane",
+    "Cost": "3000",
+    "Efficiency": "-562.50",
+    "Gold Value": "2437.50",
+    "Gold Efficiency Ratio": "81.25%"
+  },
+  {
+    "Item": "Frozen Heart",
+    "Cost": "2450",
+    "Efficiency": "983.33",
+    "Gold Value": "3433.33",
+    "Gold Efficiency Ratio": "140.14%"
+  },
+  {
+    "Item": "Iceborn Gauntlet",
+    "Cost": "2900",
+    "Efficiency": "269.17",
+    "Gold Value": "3169.17",
+    "Gold Efficiency Ratio": "109.28%"
+  },
+  {
+    "Item": "Righteous Glory",
+    "Cost": "2500",
+    "Efficiency": "-206.67",
+    "Gold Value": "2293.33",
+    "Gold Efficiency Ratio": "91.73%"
+  },
+  {
+    "Item": "Trinity Force",
+    "Cost": "3703",
+    "Efficiency": "812.17",
+    "Gold Value": "4515.17",
+    "Gold Efficiency Ratio": "121.93%"
+  },
+  {
+    "Item": "Zeke's Harbinger",
+    "Cost": "2300",
+    "Efficiency": "304.17",
+    "Gold Value": "2604.17",
+    "Gold Efficiency Ratio": "113.22%"
+  },
+  {
+    "Item": "Berserker's Greaves",
+    "Cost": "1000",
+    "Efficiency": "335.00",
+    "Gold Value": "1335.00",
+    "Gold Efficiency Ratio": "133.50%"
+  },
+  {
+    "Item": "Boots of Mobility (in combat)",
+    "Cost": "800",
+    "Efficiency": "-475.00",
+    "Gold Value": "325.00",
+    "Gold Efficiency Ratio": "40.63%"
+  },
+  {
+    "Item": "Boots of Mobility (out of combat)",
+    "Cost": "800",
+    "Efficiency": "565.00",
+    "Gold Value": "1365.00",
+    "Gold Efficiency Ratio": "170.63%"
+  },
+  {
+    "Item": "Boots of Swiftness",
+    "Cost": "1000",
+    "Efficiency": "-220.00",
+    "Gold Value": "780.00",
+    "Gold Efficiency Ratio": "78.00%"
+  },
+  {
+    "Item": "Ionian Boots of Lucidity",
+    "Cost": "1000",
+    "Efficiency": "60.00",
+    "Gold Value": "1060.00",
+    "Gold Efficiency Ratio": "106.00%"
+  },
+  {
+    "Item": "Mercury's Treads",
+    "Cost": "1200",
+    "Efficiency": "-115.00",
+    "Gold Value": "1085.00",
+    "Gold Efficiency Ratio": "90.42%"
+  },
+  {
+    "Item": "Ninja Tabi",
+    "Cost": "1000",
+    "Efficiency": "85.00",
+    "Gold Value": "1085.00",
+    "Gold Efficiency Ratio": "108.50%"
+  },
+  {
+    "Item": "Sorcerer's Shoes",
+    "Cost": "1100",
+    "Efficiency": "0.00",
+    "Gold Value": "1100.00",
+    "Gold Efficiency Ratio": "100.00%"
+  }
+]
