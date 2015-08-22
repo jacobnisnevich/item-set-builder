@@ -320,7 +320,7 @@ consumable {
 }
 
 .map-selected, .champ-selected {
-    border: 1px solid white;
+    outline: 1px solid white;
 
     -webkit-filter: contrast(100%);
     -moz-filter: contrast(100%);
