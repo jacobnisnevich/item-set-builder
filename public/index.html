@@ -29,6 +29,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- item-set-builder -->
+    <script src="js/globals.js"></script>
     <script src="js/item-block.js"></script>
     <script src="js/buttons.js"></script>
     <script src="js/drag-and-drop.js"></script>
@@ -47,6 +48,28 @@
         </div>
     </nav>
     <div class="section grey darken-2" id="builder">
+        <div id="download-instructions-box" class="modal modal-fixed-footer gray">
+            <div class="modal-content grey darken-3 grey-text text-lighten-2">
+                <h4>Download Instructions</h4>
+                <p>To use the item set in your League of Legends client simply follow in the instructions below:</p>
+                <div id="global-set-instructions">
+                    <p>1. As you have chosen a global item set that all champions can use, navigate to:</p>
+                    <code>League of Legends\Config\Global\Recommended\</code>
+                    <p>2. Copy the <b id="fileName"></b> file to the folder that you have navigated to.</p>
+                    <p>3. Your item set should now be visible in the item shop to all champions</p>
+                </div>
+                <div id="champ-set-instructions">
+                    <p>1. As you have chosen a champion specific item set, navigate to:</p>
+                    <code>League of Legends\Config\Champions\<b id="champKey"></b>\Recommended\</code>
+                    <p>2. Copy the <b id="fileName"></b> file to the folder that you have navigated to.</p>
+                    <p>3. Your item set should now be visible in the item shop to your specific champion, <b id="champKey"></b></p>
+                </div>
+            </div>
+            <div class="modal-footer grey darken-3">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat grey lighten-1">Ok</a>
+            </div>
+        </div>
+
         <div id="builder-app" class="container">
             <div class="row">
                 <div id="toolbar" class="grey darken-3 grey-text text-lighten-2 col s12 z-depth-3 valign-wrapper">
@@ -54,7 +77,6 @@
                     <a id="upload-button" class="waves-effect waves-light btn grey darken-2 valign">Upload</a>
                     <a id="download-button" class="waves-effect waves-light btn grey darken-2 valign">Download</a>
                     <a id="save-button" class="waves-effect waves-light btn grey darken-2 valign">Save</a>
-
                     <input type="file" id="hidden-upload-button" style="display:none" onchange="handleFileUpload(this.files)">
                 </div>
             </div>
@@ -195,11 +217,33 @@
                                         <div class="col s8">
                                             <input placeholder="New Item Set" id="set-form-name" type="text" class="validate">
                                         </div>
-                                        <div class="col s4 valign-wrapper set-info-form-label-container">
-                                            <h5 class="valign set-info-form-label">Maps:</h5>
+                                        <div class="col s12 valign-wrapper set-info-form-label-container">
+                                            <h5 class="valign set-info-form-label">Map Selection</h5>
+                                            <i id="map-help-tooltip" class="material-icons help-tooltip">info</i>
                                         </div>
-                                        <div class="col s8">
-                                            <input placeholder="Summoner's Rift" id="set-form-maps" type="text" class="validate">
+                                        <div class="col s12">
+                                            <div class="row map-container">
+                                                <div class="col s6 no-padding">
+                                                    <img class="map-select" src="images/maps/SR-thin.png" alt="Summoner's Rift" data-map="SR" data-mode="CLASSIC">
+                                                </div>
+                                                <div class="col s6 no-padding">
+                                                    <img class="map-select" src="images/maps/CS-thin.png" alt="The Crystal Scar" data-map="CS" data-mode="ODIN">
+                                                </div>
+                                                <div class="col s6 no-padding">
+                                                    <img class="map-select" src="images/maps/TT-thin.png" alt="The Twisted Treeline" data-map="TT" data-mode="CLASSIC">
+                                                </div>
+                                                <div class="col s6 no-padding">
+                                                    <img class="map-select" src="images/maps/HA-thin.png" alt="Howling Abyss" data-map="HA" data-mode="ARAM">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 valign-wrapper set-info-form-label-container">
+                                            <h5 class="valign set-info-form-label">Champions Selection</h5>
+                                            <i id="champ-help-tooltip" class="material-icons help-tooltip">info</i>
+                                        </div>
+                                        <div class="col s12">
+                                            <div class="row champ-container">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

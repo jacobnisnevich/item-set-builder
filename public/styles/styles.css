@@ -83,8 +83,15 @@ footer.page-footer {
     padding: 0;
 }
 
-#all-items {
+#all-items, #set-info {
     overflow-y: scroll;
+}
+
+#all-items-container, #set-info {
+    height: 63vh;
+}
+
+#all-items {
     height: 55vh;
 }
 
@@ -113,6 +120,8 @@ consumable {
 .set-info-form-label {
     margin-left: auto;
     font-size: 16px;
+    text-align: left;
+    width: 100%;
 }
 
 .code {
@@ -269,4 +278,69 @@ consumable {
 .form-body {
     overflow-y: scroll;
     height: 53vh;
+}
+
+.map-container, .champ-container {
+    margin: 5px !important;
+    padding: 5px;
+}
+
+.champ-container {
+    line-height: 0.8;
+}
+
+.map-select, .champ-select {
+    width: 95%;
+
+    -webkit-filter: contrast(50%);
+    -moz-filter: contrast(50%);
+    -ms-filter: contrast(50%);
+    -o-filter: contrast(50%);
+    filter: contrast(50%);
+
+    -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+    -moz-transition: all 0.5s ease; /* Firefox */
+    -ms-transition: all 0.5s ease; /* IE 9 */
+    -o-transition: all 0.5s ease; /* Opera */
+    transition: all 0.5s ease;
+}
+
+.map-select:hover, .champ-select:hover {
+    -webkit-filter: contrast(100%);
+    -moz-filter: contrast(100%);
+    -ms-filter: contrast(100%);
+    -o-filter: contrast(100%);
+    filter: contrast(100%);
+
+    -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+    -moz-transition: all 0.5s ease; /* Firefox */
+    -ms-transition: all 0.5s ease; /* IE 9 */
+    -o-transition: all 0.5s ease; /* Opera */
+    transition: all 0.5s ease;
+}
+
+.map-selected, .champ-selected {
+    border: 1px solid white;
+
+    -webkit-filter: contrast(100%);
+    -moz-filter: contrast(100%);
+    -ms-filter: contrast(100%);
+    -o-filter: contrast(100%);
+    filter: contrast(100%);
+
+    -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+    -moz-transition: all 0.5s ease; /* Firefox */
+    -ms-transition: all 0.5s ease; /* IE 9 */
+    -o-transition: all 0.5s ease; /* Opera */
+    transition: all 0.5s ease;
+}
+
+.help-tooltip {
+    cursor: pointer;
+}
+
+code {
+    padding: 10px;
+    margin: 5px;
+    border: 2px grey solid;
 }

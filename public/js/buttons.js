@@ -20,10 +20,28 @@ $(document).ready(function() {
 
     $("#download-button").click(function() {
         createJSONFile();
+        $('#download-instructions-box').openModal();
+
+        var fileName = 'Unnamed Item Set.json';
+        if (global.setName) {
+            fileName = global.setName + '.json';
+        }
+
+        if (global.selectedChamp) {
+            $("#champ-set-instructions").show();
+            $("#global-set-instructions").hide();
+            $("#champKey").text(global.selectedChamp);
+            $("#fileName").text(fileName);
+        } else {
+            $("#global-set-instructions").show();
+            $("#champ-set-instructions").hide();
+            $("#fileName").text(fileName);
+        }
     });
 
     $("#set-form-name").on('input', function() {
-        $("#download-button").attr('download', $("#set-form-name").val() + ".json")
+        global.setName = $("#set-form-name").val();
+        $("#download-button").attr('download', global.setName + ".json")
     });
 
     $("#save-button").click(function() {
@@ -108,6 +126,16 @@ function loadFromJSON(obj) {
 
     removeItemBlocks();
 
+    global = {
+        setName: obj.title,
+        selectedMap: obj.map,
+        selectedMode: obj.mode,
+        selectedChamp: ''
+    };
+
+    $('#set-form-name').val(global.setName)
+    $('*[data-map="' + global.selectedMap + '"]').addClass('map-selected');
+
     obj.blocks.forEach(function(block) {
         blockName = block.type;
         itemsArray = [];
@@ -128,24 +156,35 @@ function createJSONFile() {
     data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
     
     $("#download-button").attr('href', 'data:' + data);
-    if ($("#set-form-name").val() == "") {
-        $("#download-button").attr('download', "Unnamed_Item_Set.json");
+    if (global.setName) {
+        $("#download-button").attr('download', global.setName + ".json");
+    } else {
+        $("#download-button").attr('download', "Unnamed Item Set.json");
     }
 }
 
 function createJSONObject() {
+    var mapChoice;
+    if (global.selectedMap == '') {
+        mapChoice = 'any'
+    } else {
+        mapChoice = global.selectedMap;
+    }
+
+    var modeChoice;
+    if (global.selectedMode == '') {
+        modeChoice = 'any'
+    } else {
+        modeChoice = global.selectedMode;
+    }
+
     var obj = {
-        "map": "any",
-        "isGlobalForChampions": false,
-        "associatedChampions": [],
-        "title": $("#set-form-name").val(),
+        "title": global.setName,        
+        "type": 'custom',
+        "map": mapChoice,
+        "mode": modeChoice,
         "priority": false,
-        "mode": "any",
-        "isGlobalForMaps": true,
-        "associatedMaps": [],
-        "type": "custom",
-        "sortrank": 1,
-        "champion": "any",
+        "sortrank": 0,
         "blocks": []
     };
 

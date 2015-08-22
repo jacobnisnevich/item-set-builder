@@ -20,6 +20,9 @@ $(document).ready(function() {
         toggleFilterMenu();
     });
 
+    new Opentip("#champ-help-tooltip", "Pick one specific champion or none for a global item set");
+    new Opentip("#map-help-tooltip", "Pick one specific map or none for a global item set");  
+
     $.get("/getItems", function(data) {
         dataJSON = JSON.parse(data);
         for (var itemId in dataJSON) {
@@ -32,6 +35,46 @@ $(document).ready(function() {
                     });
                 }
             }
+        }
+    });
+
+    $.get("/getChamps", function(data) {
+        dataJSON = JSON.parse(data);
+        sortedKeys = Object.keys(dataJSON).sort()
+        sortedKeys.forEach(function(champName) {
+            $(".champ-container").append('<div class="col s1 no-padding"><img class="champ-select" data-champ="' + dataJSON[champName]["key"] + '" id="' + dataJSON[champName]["key"] + '" src="images/champs/' + dataJSON[champName]["key"] + '.png" alt="' + dataJSON[champName]["name"] + '"></div>');
+            new Opentip("#" + dataJSON[champName]["key"], dataJSON[champName]["name"]);              
+        });
+    });
+
+    $(document).on('click', ".map-select", function() {
+        if (global.selectedMap == '') {
+            global.selectedMap = $(this).data('map');
+            global.selectedMode = $(this).data('mode');
+            $(this).addClass('map-selected');
+        } else if (global.selectedMap == $(this).data('map')) {
+            $('*[data-map="' + global.selectedMap + '"]').removeClass('map-selected');
+            global.selectedMap = '';
+            global.selectedMode = '';      
+        } else {
+            $('*[data-map="' + global.selectedMap + '"]').removeClass('map-selected');
+            global.selectedMap = $(this).data('map');
+            global.selectedMode = $(this).data('mode');
+            $(this).addClass('map-selected');
+        }
+    });
+
+    $(document).on('click', ".champ-select", function() {
+        if (global.selectedChamp == '') {
+            global.selectedChamp = $(this).data('champ');
+            $(this).addClass('champ-selected');
+        } else if (global.selectedChamp == $(this).data('champ')) {
+            $('*[data-champ="' + global.selectedChamp + '"]').removeClass('champ-selected');
+            global.selectedChamp = '';   
+        } else {
+            $('*[data-champ="' + global.selectedChamp + '"]').removeClass('champ-selected');
+            global.selectedChamp = $(this).data('champ');
+            $(this).addClass('champ-selected');
         }
     });
 
