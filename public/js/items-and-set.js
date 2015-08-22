@@ -14,7 +14,10 @@ $(document).ready(function() {
 
     $(".button-collapse").sideNav();
 
-    $(".filter-menu").draggable({ handle: ".filter-form-title" });
+    $(".filter-menu").draggable({
+        handle: ".filter-form-title",
+        containment: "#builder"
+    });
 
     $('.filter-items-button').click(function() {
         toggleFilterMenu();
