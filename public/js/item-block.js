@@ -7,7 +7,7 @@ $(document).ready(function() {
     });
 
     $(document).on('click', ".edit-item-block-button", function() {
-        var blockName = $(this).parent().parent().find('.item-block-name');
+        var blockName = $(this).parent().parent().find('.collapsible-header');
         blockName.attr('contentEditable', true);
         blockName.focus();
         blockName.select();
