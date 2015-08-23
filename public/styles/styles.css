@@ -20,6 +20,10 @@ nav .brand-logo {
     line-height: 56px;
 }
 
+.nav-wrapper-container {
+    height: 50px;
+}
+
 footer.page-footer {
     margin-top: 0px;
     padding-top: 0px;
