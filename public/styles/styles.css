@@ -24,6 +24,15 @@ nav .brand-logo {
     height: 50px;
 }
 
+.tabs .tab a {
+    color: rgb(183, 178, 16) !important;
+}
+
+[type="checkbox"]:checked+label:before {
+    border-right: 2px solid rgb(183, 178, 16);
+    border-bottom: 2px solid rgb(183, 178, 16);
+}
+
 footer.page-footer {
     margin-top: 0px;
     padding-top: 0px;
