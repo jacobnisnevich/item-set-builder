@@ -1,0 +1,10 @@
+branch-defaults:
+  jn-gold-efficiency-new:
+    environment: item-set-builder-dev
+global:
+  application_name: item-set-builder
+  default_ec2_keyname: null
+  default_platform: Ruby 2.2 (Puma)
+  default_region: us-west-1
+  profile: eb-cli
+  sc: git
