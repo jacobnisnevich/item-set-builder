@@ -1,6 +1,8 @@
 branch-defaults:
   jn-gold-efficiency-new:
     environment: item-set-builder-dev
+  master:
+    environment: item-set-builder-dev
 global:
   application_name: item-set-builder
   default_ec2_keyname: null
