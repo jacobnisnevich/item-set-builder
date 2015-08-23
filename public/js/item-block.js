@@ -7,14 +7,14 @@ $(document).ready(function() {
     });
 
     $(document).on('click', ".edit-item-block-button", function() {
-        var blockName = $(this).parent().parent().find('.collapsible-header');
+        var blockName = $(this).parent().parent().find('.item-block-name');
         blockName.attr('contentEditable', true);
         blockName.focus();
         blockName.select();
     });
 
     $(document).on('click', ".toggle-item-block-button", function() {
-        var blockHeader = $(this).parent().parent().find('.collapsible-header');
+        var blockHeader = $(this).parent().parent().find('.item-block-name');
         blockHeader.click();
     });
 

@@ -2,8 +2,6 @@ require 'sinatra'
 require 'json'
 require 'httparty'
 
-set :port, '80'
-
 require File.expand_path('../lib/item-set-builder.rb', __FILE__)
 
 itemAPI = 'https://global.api.pvp.net/api/lol/static-data/na/v1.2/item?locale=en_US&itemListData=all&api_key=' + ENV["LOL_KEY"]
