@@ -28,6 +28,7 @@ id_to_name.each do |id, name|
       end
 
       item_case[item_case_name] = {}
+      item_case[item_case_name]["Case Name"] = item_case_name
       item_case[item_case_name]["Efficiency"] = matching_item_case["Efficiency"]
       item_case[item_case_name]["Gold Value"] = matching_item_case["Gold Value"]
       item_case[item_case_name]["Gold Efficiency Ratio"] = matching_item_case["Gold Efficiency Ratio"]
