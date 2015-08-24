@@ -6,11 +6,10 @@ id_to_name = JSON.parse(file)
 file = File.read('../item-efficiency-nodupes.json')
 item_efficiency = JSON.parse(file)
 
-item_efficiency_combined = []
+item_efficiency_combined = {}
 
 id_to_name.each do |id, name|
   item = {}
-  item[id] = name
 
   matching_items = item_efficiency.select {|item| item["Item"].to_s().start_with?(name)}
 
@@ -18,15 +17,14 @@ id_to_name.each do |id, name|
     item["base"] = true
   else
     item["base"] = false
-    item["cost"] = matching_items[0]["Cost"]
     item["cases"] = []
     matching_items.each do |matching_item_case| 
       item_case = {}
 
       if matching_item_case["Item"].scan(/\(([^\)]+)\)/).empty?
-        item_case_name = "normal"
+        item_case_name = "Bought"
       else
-        item_case_name = matching_item_case["Item"].scan(/\(([^\)]+)\)/)[0][0]
+        item_case_name = matching_item_case["Item"].scan(/\(([^\)]+)\)/)[0][0].capitalize
       end
 
       item_case[item_case_name] = {}
@@ -37,8 +35,7 @@ id_to_name.each do |id, name|
       item["cases"].push(item_case)
     end
   end
-
-  item_efficiency_combined.push(item)
+  item_efficiency_combined[id] = { "efficiency": item }
 end
 
 File.open('../item-efficiency-combined.json', 'w') do |file|
