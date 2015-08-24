@@ -357,3 +357,15 @@ code {
     margin: 5px;
     border: 2px grey solid;
 }
+
+.item-efficiency-negative {
+    color: red;
+}
+
+.item-efficiency-neutral {
+    color: white;
+}
+
+.item-efficiency-positive {
+    color: green;
+}

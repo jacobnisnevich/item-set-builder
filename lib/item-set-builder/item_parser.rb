@@ -19,6 +19,28 @@ class ItemParser
   end
 
   def getItems()
-    dataHash = @item_json['data']
+    return mergeWithAPI(@item_json)['data']
+  end
+
+  private
+
+  def mergeWithAPI(items)
+    file = File.read(Dir.pwd + '/lib/item-efficiency-combined.json')
+    item_efficiency_combined = JSON.parse(file)
+
+    new_item_data = {}
+
+    items["data"].each do |id, item|
+      if !item_efficiency_combined[id].nil?
+        new_item = item.merge(item_efficiency_combined[id])
+      else
+        new_item = item
+      end
+      new_item_data[id] = new_item
+    end
+
+    items["data"] = new_item_data
+
+    return items
   end
 end

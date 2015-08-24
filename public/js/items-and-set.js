@@ -31,7 +31,32 @@ $(document).ready(function() {
         for (var itemId in dataJSON) {
             if (dataJSON.hasOwnProperty(itemId)) {
                 $("#all-items").append('<img draggable="true" ondragstart="drag(event)" id="' + itemId + '" class="item" src="/images/items/' + itemId + '.png" alt="' + dataJSON[itemId]['name'] + '"/>');
-                new Opentip("#" + itemId, "<img src='/images/gold.png'>&nbsp;" + dataJSON[itemId]['gold']['total'] + "<br><br>" + dataJSON[itemId]['description'], dataJSON[itemId]['name'])
+                var tooltipDescription = "<img src='/images/gold.png'>&nbsp;" + dataJSON[itemId]['gold']['total'] + "<br><br>" + dataJSON[itemId]['description'];
+                if (dataJSON[itemId]['efficiency'] != null) {
+                    if (!dataJSON[itemId]['efficiency']['base']) {
+                        tooltipDescription = tooltipDescription.concat("<br><hr>")
+                        $.each(dataJSON[itemId]['efficiency']['cases'], function(index, item_case) {
+                            var caseName = Object.keys(item_case)[0];
+                            var efficiencyRatio = item_case[caseName]['Gold Efficiency Ratio'];
+                            var efficiencyRatioNumber = parseFloat(item_case[caseName]['Gold Efficiency Ratio']);
+                            var efficiencyClass;
+                            if (efficiencyRatioNumber > 100) {
+                                efficiencyClass = 'item-efficiency-positive';
+                            } else if (efficiencyRatioNumber < 100) {
+                                efficiencyClass = 'item-efficiency-negative';
+                            } else {
+                                efficiencyClass = 'item-efficiency-neutral';
+                            }
+                            tooltipDescription = tooltipDescription.concat("<b>Case: " + caseName + "</b><br>");
+                            tooltipDescription = tooltipDescription.concat("Gold Efficiency Ratio: <b class=" + efficiencyClass + ">" + efficiencyRatio + "</b><br><br>");
+                        });
+                    } else {
+                        tooltipDescription = tooltipDescription.concat("<br><hr>")
+                        tooltipDescription = tooltipDescription.concat("<b>Case: Base Item</b><br>");
+                        tooltipDescription = tooltipDescription.concat("Gold Efficiency Ratio: <b class='item-efficiency-neutral'>100%</b><br><br>");
+                    }
+                }
+                new Opentip("#" + itemId, tooltipDescription, dataJSON[itemId]['name'])
                 if (dataJSON[itemId]['tags']) {
                     dataJSON[itemId]['tags'].forEach(function(tag) {
                         $("#" + itemId).addClass(tag);
