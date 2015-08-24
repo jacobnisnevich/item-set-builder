@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="styles/opentip.css">
 
     <!-- Materialize-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <script src="js/libraries/materialize.min.js"></script>
+    <link rel="stylesheet" href="styles/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- item-set-builder -->
@@ -41,9 +41,9 @@
 </head>
 <body>
     <nav class="grey darken-4 z-depth-4">
-        <div class="container">
+        <div class="container nav-wrapper-container">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Item Set Builder</a>
+                <a href="#" class="brand-logo thin">bildr</a>
             </div>
         </div>
     </nav>
@@ -255,7 +255,7 @@
                     <ul id="item-set-blocks" class="collapsible" data-collapsible="expandable">
                         <li>
                             <div class="item-block-buttons noselect"><i class="material-icons toggle-item-block-button text-grey text-darken-2">swap_vert</i><i class="material-icons edit-item-block-button">spellcheck</i></div>
-                            <div class="collapsible-header grey-text text-darken-2">New Item Block</div>
+                            <div class="collapsible-header grey-text text-darken-2"><span class="item-block-name">New Item Block</span></div>
                             <div class="collapsible-body grey lighten-3 grey-text text-darken-2">
                                 <div class="item-slots clearfix">
                                     <div class="item-slot slot-1" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -299,7 +299,7 @@
     </div>
     <footer class="page-footer grey darken-4">
         <div class="container">
-            <p class="grey-text text-lighten-4" style="text-align: center">Item Set Builder is built with Materialize, Ruby, and Sinatra and is proudly open-source.</p>
+            <p class="grey-text text-lighten-4 thin" style="text-align: center">bildr is built with Materialize, Ruby, and Sinatra and is proudly open-source.</p>
         </div>
         <div class="footer-copyright black">
             <div class="container">
