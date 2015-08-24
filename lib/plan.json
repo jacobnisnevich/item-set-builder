@@ -29,21 +29,19 @@ var idtoname = {
 var parsed = [
   "3041": {
     "name": "Mejai's Soulstealer",
+    "cost": "1400",
     "cases": [
       "empty": {
-        "Cost": "1400",
         "Efficiency": "-965.00",
         "Gold Value": "435.00",
         "Gold Efficiency Ratio": "31.07%"
       },
       "bought": {
-        "Cost": "1400",
         "Efficiency": "-95.00",
         "Gold Value": "1305.00",
         "Gold Efficiency Ratio": "93.21%"
       },
       "full": {
-        "Cost": "1400",
         "Efficiency": "2,990.00",
         "Gold Value": "4390.00",
         "Gold Efficiency Ratio": "313.57%"
