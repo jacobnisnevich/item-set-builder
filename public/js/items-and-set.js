@@ -53,7 +53,7 @@ $(document).ready(function() {
                     } else {
                         tooltipDescription = tooltipDescription.concat("<br><hr>")
                         tooltipDescription = tooltipDescription.concat("<b>Case: Base Item</b><br>");
-                        tooltipDescription = tooltipDescription.concat("Gold Efficiency Ratio: <b class='item-efficiency-neutral'>100%</b>");
+                        tooltipDescription = tooltipDescription.concat("Gold Efficiency Ratio: <b class='item-efficiency-neutral'>100%</b><br><br>");
                     }
                 }
                 new Opentip("#" + itemId, tooltipDescription, dataJSON[itemId]['name'])
