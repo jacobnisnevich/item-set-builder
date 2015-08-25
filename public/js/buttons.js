@@ -7,6 +7,7 @@ $(document).ready(function() {
 
     $("#reset-button").click(function() {
         resetItemBlocks();
+        resetSetInfo();
         $("#item-search-box").val('');
         $('input[type=checkbox]').each(function() {
             $(this).prop('checked', false);
@@ -83,6 +84,18 @@ function clearSessionData() {
 function resetItemBlocks() {
     removeItemBlocks();
     createItemBlock('New Item Block', [], []);
+}
+
+function resetSetInfo() {
+    $('#set-form-name').val('');
+    global.setName = 'Unnamed_Item_Set';
+
+    $('.map-selected').removeClass('map-selected');
+    global.selectedMap = '';
+    global.selectedMode = '';
+
+    $('.champ-selected').removeClass('map-selected');
+    global.selectedChamp = '';
 }
 
 function removeItemBlocks() {
