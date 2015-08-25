@@ -7,6 +7,11 @@ $(document).ready(function() {
 
     $("#reset-button").click(function() {
         resetItemBlocks();
+        $("#item-search-box").val('');
+        $('input[type=checkbox]').each(function() {
+            $(this).prop('checked', false);
+        });
+        $(".item", $("#all-items")).show();
     });
 
     $("#upload-button").click(function() {
