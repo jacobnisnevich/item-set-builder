@@ -30,4 +30,6 @@ $(document).ready(function() {
     $(document).on('focusout', ".item-block-name", function() {
         $(this).attr('contentEditable', false);
     });
+
+    $(this).find(".item-block-name").last().click();
 });
