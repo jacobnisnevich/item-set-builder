@@ -161,6 +161,8 @@ function loadFromJSON(obj) {
 
         createItemBlock(blockName, itemsArray, itemCountsArray);
     });
+
+    $(".item-block-name").click();
 }
 
 function createJSONFile() {
