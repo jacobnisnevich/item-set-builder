@@ -54,7 +54,7 @@ If you are working on a item set in **bildr** but need to close your browser or 
 
 Saving your item set works by utilizing the ```localStorage``` functionality of modern browsers. If for some reason you neeed to clear your saved item set, simply hit *Reset* and then *Save*.
 
-*(Note: you can only have one item set saved at a time and clicking *Save* will overwrite any previously saved item set)*
+*(Note: you can only have one item set saved at a time and clicking* Save *will overwrite any previously saved item set)*
 
 ### Item Block Manipulation
 
