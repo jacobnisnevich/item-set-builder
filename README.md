@@ -86,3 +86,15 @@ http://bildr.co/getItems
 In the _Set Info_ tab of the left-side menu, users can set the item set name, specific map and mode, and specific champion. Leaving the map and champion un-selected leaves the item set as global. Uploading and downloading the item set will incorporate this information in the JSON data. 
 
 Champion data is collected from the Riot Games  `static-data` API endpoint with champion icon images taken from [Data Dragon](http://ddragon.leagueoflegends.com/tool). Map images are screen-captured from the League of Legends client and cropped horizontally.
+
+## Creators
+
+**Jacob Nisnevich**
+* https://github.com/jacobnisnevich
+
+**Jason Yang**
+* https://github.com/jasonyang96
+
+## License
+
+**MIT**: http://rem.mit-license.org
