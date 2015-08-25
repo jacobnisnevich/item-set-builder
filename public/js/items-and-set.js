@@ -112,13 +112,75 @@ $(document).ready(function() {
             $(this).prop('checked', false);
         });
 
+        var filters = [
+            "jungle",
+            "lane",
+            "consumable",
+            "goldper",
+            "trinket",
+            "vision",
+            "armor",
+            "health",
+            "healthregen",
+            "spellblock",
+            "attackspeed",
+            "criticalStrike",
+            "damage",
+            "lifesteal",
+            "cooldownreduction",
+            "mana",
+            "manaregen",
+            "spelldamage",
+            "boots",
+            "nonbootsmovement",
+        ]
+
+        var parent_filters = {
+            "tools": ["consumable", "goldper", "trinket vision"],
+            "defense": ["armor", "health", "healthregen", "spellblock"],
+            "attack": ["attackspeed", "criticalstrike", "damage", "lifesteal"],
+            "magic": ["cooldownreduction", "mana", "manaregen", "spelldamage"],
+            "movement": ["boots", "nonbootsmovement"],
+        }
+
+        var custom_filters = {
+            "ap": "spelldamage",
+            "ad": "damage",
+            "as": "attackspeed",
+            "attack speed": "attackspeed",
+            "mr": "spellblock",
+            "hp": "health",
+            "cdr": "cooldownreduction",
+        }
+
         var search = $("#item-search-box").val().toLowerCase();
         var all_items = $(".item", $("#all-items"));
         if (search != '') {
             all_items.hide();
             all_items.filter(function() {
-                var alt = $(this)[0].alt.toLowerCase();
-                return alt.indexOf(search) > -1;
+                var className = false;
+                var altName = this.alt.toLowerCase().indexOf(search) > -1;
+                var item_class_name = this.className.toLowerCase();
+                if (filters.indexOf(search) > -1) {
+                    altName = false;
+                    className = item_class_name.indexOf(" " + search) > -1;
+                }
+                else if (parent_filters[search]) {
+                    altName = false;
+                    $.each(parent_filters[search], function(index,object) {
+                        if (item_class_name.indexOf(" " + object) > -1) {
+                            className = true;
+                            return false;
+                        }
+                    });
+                }
+                else if (custom_filters[search]) {
+                    altName = false;
+                    if (item_class_name.indexOf(" " + custom_filters[search]) > -1) {
+                        className = true;
+                    }
+                }
+                return (altName || className);
             }).show();
         } else {
             all_items.show();
