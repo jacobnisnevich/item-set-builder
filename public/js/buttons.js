@@ -105,7 +105,7 @@ function removeItemBlocks() {
 function createItemBlock(name, itemsArray, itemCountsArray) {
     var itemsCount = 0;
 
-    var itemBlockString = '<li><div class="item-block-buttons noselect"><i class="material-icons toggle-item-block-button text-grey text-darken-2">swap_vert</i><i class="material-icons edit-item-block-button">spellcheck</i></div>';
+    var itemBlockString = '<li><div class="item-block-buttons noselect"><i class="material-icons toggle-item-block-button text-grey text-darken-2">swap_vert</i><i class="material-icons edit-item-block-button">spellcheck</i></div><div class="item-block-close-button noselect"><i class="material-icons close-item-block-button text-grey text-darken-2">clear</i></div>';
     itemBlockString = itemBlockString.concat('<div class="collapsible-header grey-text text-darken-2"><span class="item-block-name">' + name + '</span></div>');
     itemBlockString = itemBlockString.concat('<div class="collapsible-body grey lighten-3 grey-text text-darken-2"><div class="item-slots clearfix">');
 
@@ -146,7 +146,7 @@ function loadFromJSON(obj) {
         selectedChamp: ''
     };
 
-    $('#set-form-name').val(global.setName)
+    $('#set-form-name').val(global.setName);
     $('*[data-map="' + global.selectedMap + '"]').addClass('map-selected');
 
     obj.blocks.forEach(function(block) {
