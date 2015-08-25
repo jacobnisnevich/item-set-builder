@@ -146,7 +146,7 @@ function loadFromJSON(obj) {
         selectedChamp: ''
     };
 
-    $('#set-form-name').val(global.setName)
+    $('#set-form-name').val(global.setName);
     $('*[data-map="' + global.selectedMap + '"]').addClass('map-selected');
 
     obj.blocks.forEach(function(block) {
