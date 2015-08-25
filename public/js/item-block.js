@@ -4,6 +4,7 @@ $(document).ready(function() {
         $(".collapsible").collapsible({
             accordion: false
         });
+        $(this).parent().find(".item-block-name").last().click();
     });
 
     $(document).on('click', ".edit-item-block-button", function() {
