@@ -4,6 +4,7 @@ $(document).ready(function() {
         $(".collapsible").collapsible({
             accordion: false
         });
+        $(this).parent().find(".item-block-name").last().click();
     });
 
     $(document).on('click', ".edit-item-block-button", function() {
@@ -29,4 +30,6 @@ $(document).ready(function() {
     $(document).on('focusout', ".item-block-name", function() {
         $(this).attr('contentEditable', false);
     });
+
+    $(this).find(".item-block-name").last().click();
 });
