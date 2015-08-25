@@ -1,14 +1,13 @@
 $(document).ready(function() {
 	Opentip.styles.leagueItems = {
-        extends: "alert",
-        stem: true,
-        borderColor: "rgb(182, 234, 187)",
-        borderWidth: 1,
-        background: [[0, "rgba(30, 30, 30, 0.9)"]],
-        borderRadius: 5,
-        offset: [ 0, 0 ],
-        tipJoint: "bottom left",
-        stem: false
+        "extends": "alert",
+        "borderColor": "rgb(182, 234, 187)",
+        "borderWidth": 1,
+        "background": [[0, "rgba(30, 30, 30, 0.9)"]],
+        "borderRadius": 5,
+        "offset": [ 0, 0 ],
+        "tipJoint": "bottom left",
+        "stem": false
     };
     Opentip.defaultStyle = "leagueItems";
 
@@ -132,16 +131,16 @@ $(document).ready(function() {
             "manaregen",
             "spelldamage",
             "boots",
-            "nonbootsmovement",
-        ]
+            "nonbootsmovement"
+        ];
 
         var parent_filters = {
             "tools": ["consumable", "goldper", "trinket vision"],
             "defense": ["armor", "health", "healthregen", "spellblock"],
             "attack": ["attackspeed", "criticalstrike", "damage", "lifesteal"],
             "magic": ["cooldownreduction", "mana", "manaregen", "spelldamage"],
-            "movement": ["boots", "nonbootsmovement"],
-        }
+            "movement": ["boots", "nonbootsmovement"]
+        };
 
         var custom_filters = {
             "ap": "spelldamage",
@@ -150,8 +149,8 @@ $(document).ready(function() {
             "attack speed": "attackspeed",
             "mr": "spellblock",
             "hp": "health",
-            "cdr": "cooldownreduction",
-        }
+            "cdr": "cooldownreduction"
+        };
 
         var search = $("#item-search-box").val().toLowerCase();
         var all_items = $(".item", $("#all-items"));
