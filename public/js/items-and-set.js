@@ -82,15 +82,31 @@ $(document).ready(function() {
             "cdr": "cooldownreduction",
         }
 
-        var className = false;
         var search = $("#item-search-box").val().toLowerCase();
         var all_items = $(".item", $("#all-items"));
         if (search != '') {
             all_items.hide();
             all_items.filter(function() {
+                var className = false;
+                var altName = this.alt.toLowerCase().indexOf(search) > -1;
                 var item_class_name = this.className.toLowerCase();
                 if (filters.indexOf(search) > -1) {
                     className = item_class_name.indexOf(search) > -1;
+                }
+                else if (parent_filters[search]) {
+                    $.each(parent_filters[search], function(index,object) {
+                        if (item_class_name.indexOf(" " + object) > -1) {
+                            className = true;
+                            return false;
+                        }
+                    });
+                }
+                else if (custom_filters[search]) {
+                    altName = false;
+                    if (item_class_name.hasClass(custom_filters[search])) {
+                        className = true;
+                    }
+                    returnval = className;
                 }
                 // else if (parent_filters.includes(search)) {
                 //     parent_filters[search].each(function() {
@@ -100,7 +116,7 @@ $(document).ready(function() {
                 // else if (custom_filters.includes(search)) {
                 //     className = item_class_name.indexOf(custom_filters[search]);
                 // }
-                return (this.alt.toLowerCase().indexOf(search) > -1 || className);
+                return (altName || className);
             }).show();
         } else {
             all_items.show();
