@@ -67,6 +67,9 @@ $(document).ready(function() {
             $('.summary-total-efficiency-lower').text((Number(dataJSON.totalEfficiencyLower) * 100).toFixed(2) + '%');
             $('.summary-total-efficiency-upper').text((Number(dataJSON.totalEfficiencyUpper) * 100).toFixed(2) + '%');
 
+            $(".summary-total-efficiency-lower").removeClass("item-efficiency-positive item-efficiency-negative item-efficiency-neutral");
+            $(".summary-total-efficiency-upper").removeClass("item-efficiency-positive item-efficiency-negative item-efficiency-neutral");
+
             if (dataJSON.totalEfficiencyLower > 1) {
                 $('.summary-total-efficiency-lower').addClass('item-efficiency-positive');
             } else if (dataJSON.totalEfficiencyLower < 1) {
