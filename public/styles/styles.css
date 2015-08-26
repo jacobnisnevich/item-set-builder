@@ -125,6 +125,15 @@ footer.page-footer {
     padding-right: 15px;
 }
 
+@media (max-width: 1250px) {
+    .menu-button-text {
+        display: none;
+    }
+    i.right {
+        margin-left: 0px;
+    }
+}
+
 .spinner-white,
 .spinner-white-only {
     border-color: #DDDDDD;
