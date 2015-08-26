@@ -50,6 +50,82 @@ $(document).ready(function() {
         saveSessionData();
     });
 
+    $("#summary-button").click(function() {
+        $('#set-summary-box').openModal();
+
+        $('.summary-progress').show();
+        $('.summary-content').hide();
+
+        $.post('/setSummary', createJSONObject(), function(data) {
+            dataJSON = JSON.parse(data);
+
+            $('.summary-title').text(dataJSON.title);
+
+            $('.summary-total-cost').text(dataJSON.totalCost);
+            $('.summary-total-worth-lower').text(dataJSON.totalWorthLower);
+            $('.summary-total-worth-upper').text(dataJSON.totalWorthUpper);
+            $('.summary-total-efficiency-lower').text((Number(dataJSON.totalEfficiencyLower) * 100).toFixed(2) + '%');
+            $('.summary-total-efficiency-upper').text((Number(dataJSON.totalEfficiencyUpper) * 100).toFixed(2) + '%');
+
+            if (dataJSON.totalEfficiencyLower > 1) {
+                $('.summary-total-efficiency-lower').addClass('item-efficiency-positive');
+            } else if (dataJSON.totalEfficiencyLower < 1) {
+                $('.summary-total-efficiency-lower').addClass('item-efficiency-negative');
+            } else {
+                $('.summary-total-efficiency-lower').addClass('item-efficiency-neutral');
+            }
+
+            if (dataJSON.totalEfficiencyUpper > 1) {
+                $('.summary-total-efficiency-upper').addClass('item-efficiency-positive');
+            } else if (dataJSON.totalEfficiencyUpper < 1) {
+                $('.summary-total-efficiency-upper').addClass('item-efficiency-negative');
+            } else {
+                $('.summary-total-efficiency-upper').addClass('item-efficiency-neutral');
+            }
+
+            var yValues = [];
+            var xValues = [];
+
+            $.each(dataJSON.tagDistribution, function(index, object) {
+                yValues.push(index.replace(/([a-z])([A-Z])/g, '$1 $2'));
+                xValues.push(object);
+            });
+
+            var chartData = {
+                "type": "bar",
+                "background-color": "#9e9e9e",
+                "scale-x": {
+                    "values": yValues,
+                    "items-overlap": true,
+                    "item": {
+                        "font-angle": -45,
+                        "auto-align": true
+                    }
+                },
+                "plotarea":{
+                    "y": 20
+                },
+                "series": [
+                    { 
+                        "values": xValues,
+                        "background-color": "#757575"
+                    }
+                ]
+            }
+
+            zingchart.render({ 
+                id:'summary-tags-chart',
+                data: chartData,
+                height: 500,
+                width: $('#set-summary-box').width() - 50
+            });
+
+
+            $('.summary-progress').hide();
+            $('.summary-content').show();
+        });
+    })
+
     $("#about-button").click(function() {
         $('#help-about-box').openModal();
     });
