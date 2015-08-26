@@ -28,6 +28,9 @@ get '/getChamps' do
   response.parsed_response['data'].to_json
 end
 
-post '/uploadJSON' do
-  params[:files][0][:tempfile].read.to_json
+post '/setSummary' do
+  response = HTTParty.get(itemAPI)
+  itemParser = ItemParser.new(response.parsed_response)
+  setParser = SetParser.new(params, itemParser.getItems)
+  setParser.summary.to_json
 end

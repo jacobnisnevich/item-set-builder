@@ -19,6 +19,9 @@
     <script src="js/libraries/jquery.iframe-transport.js"></script>
     <script src="js/libraries/jquery.fileupload.js"></script>
 
+    <!-- Charts -->
+    <script src="http://cdn.zingchart.com/zingchart.min.js"></script>
+
     <!-- OpenTip-->
     <script src="js/libraries/opentip-jquery.min.js"></script>
     <link rel="stylesheet" href="styles/opentip.css">
@@ -31,14 +34,14 @@
     <!-- item-set-builder -->
 
     <!-- un-minified -->
-    <!-- <script src="js/src/globals.js"></script>
+    <script src="js/src/globals.js"></script>
     <script src="js/src/item-block.js"></script>
     <script src="js/src/buttons.js"></script>
     <script src="js/src/drag-and-drop.js"></script>
-    <script src="js/src/items-and-set.js"></script> -->
+    <script src="js/src/items-and-set.js"></script>
 
     <!-- minified -->
-    <script src="js/bildr-min-0.1.0.js"></script>
+    <!-- <script src="js/bildr-min-0.1.0.js"></script> -->
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- favicon -->
@@ -53,6 +56,7 @@
         </div>
     </nav>
     <div class="section grey darken-2" id="builder">
+
         <!-- Modal Box Containers -->
         <div id="download-instructions-box" class="modal modal-fixed-footer gray">
             <div class="modal-content grey darken-3 grey-text text-lighten-2">
@@ -69,6 +73,66 @@
                     <code>League of Legends\Config\Champions\<b id="champKey"></b>\Recommended\</code>
                     <p>2. Copy the <b class="fileName"></b> file to the folder that you have navigated to.</p>
                     <p>3. Your item set should now be visible in the item shop to your specific champion, <b id="champKey"></b></p>
+                </div>
+            </div>
+            <div class="modal-footer grey darken-3">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Ok</a>
+            </div>
+        </div>
+
+        <div id="set-summary-box" class="modal modal-fixed-footer gray">
+            <div class="modal-content grey darken-3 grey-text text-lighten-2">
+                <div class="summary-box summary-progress">
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-white-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div><div class="gap-patch">
+                                <div class="circle"></div>
+                            </div><div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-box summary-content">
+                    <div class="summary-title-container grey darken-2 grey-text text-darken-4 row z-depth-3">
+                        <span>Item Set Summary:&nbsp;</span>
+                        <span class="summary-title thin white-text"></span>
+                    </div>
+                    <div class="summary-efficiency grey grey-text text-darken-4 row z-depth-3">
+                        <div class="col s12" style="padding-bottom: 20px;">Item Set Efficiency:</div>
+                        <div class="col s4">
+                            <div class="row">
+                                <div class="col s8 offset-s3 grey darken-1 z-depth-1">
+                                    <div>TOTAL COST</div>
+                                    <div class="summary-total-cost white-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="row">
+                                <div class="col s8 offset-s2 grey darken-1 grey-text text-darken-4 z-depth-1">
+                                    <div>TOTAL WORTH</div>
+                                    <div class="white-text"><span class="summary-total-worth-lower"></span>&nbsp;-&nbsp;<span class="summary-total-worth-upper"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="row">
+                                <div class="col s8 offset-s1 grey darken-1 grey-text text-darken-4 z-depth-1">
+                                    <div>TOTAL EFFICIENCY</div>
+                                    <div class="white-text"><span class="summary-total-efficiency-lower"></span>&nbsp;-&nbsp;<span class="summary-total-efficiency-upper"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-tags grey grey-text text-darken-4 row z-depth-3">
+                        <div class="col s12" style="padding-bottom: 20px;">Item Tag Distribution:</div>
+                        <div class="col s12">
+                            <div id="summary-tags-chart"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer grey darken-3">
