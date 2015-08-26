@@ -87,8 +87,8 @@
 
         <div id="builder-app" class="container">
             <div class="fixed-action-btn" style="bottom: 150px; right: 48px;">
-                <a class="btn-floating btn-large grey">
-                    <i class="large material-icons">delete</i>
+                <a ondrop="drop(event)" ondragover="allowDrop(event)" class="btn-floating btn-large grey">
+                    <i id="trash" class="large material-icons">delete</i>
                 </a>
             </div>
             <div class="row">
