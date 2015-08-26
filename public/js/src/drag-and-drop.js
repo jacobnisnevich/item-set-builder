@@ -2,27 +2,25 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-var parent_item_slots;
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
     ev.dataTransfer.setData("parent", ev.target.parentElement.className);
-    parent_item_slots = $(ev.target.parentElement).parent().children();
+    global.parent_item_slots = $(ev.target.parentElement).parent().children();
     if (ev.target.parentElement.className.indexOf("item-slots")) {
         ev.dataTransfer.setData("index", $(ev.target.parentElement).parent().children().index($(ev.target.parentElement)));
     }
 }
 
-var MAX_ITEMS = 10;
 function drop(ev) {
     ev.preventDefault();
     //if dropping into trash
     if (ev.target.id == "trash") {
-        if (parent_item_slots.filter(".item-slot").length == 0) {//from all-items
+        if (global.parent_item_slots.filter(".item-slot").length == 0) {//from all-items
             return;
         }
         var index = Number(ev.dataTransfer.getData("index"));
-        scootRight(ev,data, index, MAX_ITEMS - 1, parent_item_slots);
-        parent_item_slots.eq(MAX_ITEMS - 1).children().remove("img");
+        scootRight(ev,data, index, global.MAX_ITEMS - 1, global.parent_item_slots);
+        global.parent_item_slots.eq(global.MAX_ITEMS - 1).children().remove("img");
         return;
     }
 
@@ -31,7 +29,7 @@ function drop(ev) {
     var slot_filled = $(ev.target.parentElement).not(".item-slot").length == 0;
     var item_slots;
     var index_drop;  //index of dropped item
-    var index_empty = MAX_ITEMS; //index of first empty slot
+    var index_empty = global.MAX_ITEMS; //index of first empty slot
     if(slot_filled) {
         item_slots = $(ev.target.parentElement).parent().children();
         index_drop = item_slots.index(ev.target.parentElement);
