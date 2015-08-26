@@ -34,6 +34,10 @@ nav .brand-logo {
     color: rgb(183, 178, 16) !important;
 }
 
+.tabs .indicator {
+    background-color: rgb(202, 195, 33);
+}
+
 [type="checkbox"]:checked+label:before {
     border-right: 2px solid rgb(183, 178, 16);
     border-bottom: 2px solid rgb(183, 178, 16);
@@ -183,11 +187,11 @@ footer.page-footer {
     padding: 0;
 }
 
-#all-items, #set-info {
+#all-items, #set-info, #preset-builds {
     overflow-y: scroll;
 }
 
-#all-items-container, #set-info {
+#all-items-container, #set-info, #preset-builds {
     height: 63vh;
 }
 
