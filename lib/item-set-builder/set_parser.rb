@@ -21,11 +21,13 @@ class SetParser
         itemID = item["id"]
         itemData = @items[itemID]
 
-        itemData["tags"].each do |tag|
-          if itemTags[tag].nil?
-            itemTags[tag] = 1
-          else
-            itemTags[tag] = itemTags[tag] + 1
+        if !itemData["tags"].nil?
+          itemData["tags"].each do |tag|
+            if itemTags[tag].nil?
+              itemTags[tag] = 1
+            else
+              itemTags[tag] = itemTags[tag] + 1
+            end
           end
         end
 
