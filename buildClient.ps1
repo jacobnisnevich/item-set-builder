@@ -3,7 +3,7 @@ Split-Path $MyInvocation.MyCommand.Path | Set-Location
 $javaPath           = "C:\Program Files (x86)\Java\jre1.8.0_45\bin\java.exe" 
 $closurePath        = "c:\tools\closure-compiler\compiler.jar"
 
-$version = "0.1.0"
+$version = "0.1.1"
 
 $combinedOutputPath = "public\js\bildr.js"
 $minifiedOutputPath = "public\js\bildr-min-$version.js"
