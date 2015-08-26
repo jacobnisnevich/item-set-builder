@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>README</title>
+
+    <!-- JQuery -->
+    <script src="js/libraries/jquery.js"></script>
+
+    <!-- Materialize-->
+    <script src="js/libraries/materialize.min.js"></script>
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        h1 {
+            font-size: 3.2rem
+        }
+        h2 {
+            font-size: 2.3rem;
+            display: inline-block;
+            border-bottom: 1px solid #ADADAD;
+            margin: 0.5rem 0;
+        }
+        h3 {
+            font-size: 1.5rem
+        }
+    </style>
+</head>
+
+<body id="preview">
+    <div class="grey-text text-lighten-3">
+        <h1 class="thin"><a id="bildr_0"></a>bildr</h1>
+        <p><strong>bildr</strong> is a HTML5 web application built with a Ruby and Sinatra back-end and a MaterializeCSS front-end. bildr was created to allow for easy and quick creation of item sets outside of the League of Legends client while providing more information than the client’s item set builder, such as item efficiency statisitics. This application was made as a submission for the <a href="https://developer.riotgames.com/discussion/announcements/show/2lxEyIcE">Riot Games API Challenge 2.0</a>.</p>
+        <p>The site can be viewed at <a href="http://bildr.co">bildr.co</a>.</p>
+        <h2><a id="Installation_and_Setup_6"></a>Installation and Set-up</h2>
+        <p><strong><em>If you want to run the app locally.</em></strong>
+        </p>
+        <h3><a id="Prerequisites_10"></a>Prerequisites</h3>
+        <ol>
+            <li>Ruby</li>
+            <li>Bundler</li>
+            <li>A Riot Games API key</li>
+        </ol>
+        <h3><a id="Setup_16"></a>Set-up</h3>
+        <ol>
+            <li>First clone the repository with <code>git clone https://github.com/jacobnisnevich/item-set-builder.git</code>
+            </li>
+            <li>Navigate to the cloned directory with <code>cd item-set-builder/</code>
+            </li>
+            <li>Run bundler to install the required Ruby gems with <code>bundle install</code>
+            </li>
+            <li>Set up a system environment variable named <code>LOL_KEY</code> and set it equal to your Riot Games API key. If you are using Windows, set the variable in <em>Control Panel | System Properties | Environment Variables</em>. If you are using Linux or OS X simply run <code>export LOL_KEY=&lt;YOUR API KEY&gt;</code>
+            </li>
+        </ol>
+        <h3><a id="Usage_23"></a>Usage</h3>
+        <ol>
+            <li>Start the application with <code>ruby app.rb</code> from the application’s root directory</li>
+            <li>The application can be viewed from any browser at <a href="http://localhost:4567">localhost:4567</a>
+            </li>
+        </ol>
+        <h2><a id="Features_and_Functionality_28"></a>Features and Functionality</h2>
+        <h3><a id="Upload_Item_Sets_30"></a>Upload Item Sets</h3>
+        <p><strong>bildr</strong> lets you use previously saved League of Legends item sets as templates or starting points for further item set customization. To use a previously created item set navigate to:</p>
+        <pre><code>League of Legends<span class="hljs-command">\Config</span><span class="hljs-command">\Global</span><span class="hljs-command">\Recommended</span><span class="hljs-command">\
+    </span></code></pre>
+        <p>for global item sets. Or to:</p>
+        <pre><code>League of Legends<span class="hljs-command">\Config</span><span class="hljs-command">\Champions</span><span class="hljs-command">\{</span>championKey<span class="hljs-special">}</span><span class="hljs-command">\Recommended</span><span class="hljs-command">\
+    </span></code></pre>
+        <p>for a champion specific item set. <strong>bildr</strong> will automatically parse the JSON into visual, manipulable item blocks.</p>
+        <h3><a id="Download_Item_Sets_46"></a>Download Item Sets</h3>
+        <p>When you’re done with your item set, you can download the item set by simply clicking the <em>Download</em> button in the navigation bar. When downloaded, the application will notify you where to place the completed item set, either to the global directory or champion-specific directory as listed above.</p>
+        <h3><a id="Saving_to_Browser_Storage_50"></a>Saving to Browser Storage</h3>
+        <p>If you are working on a item set in <strong>bildr</strong> but need to close your browser or restart your computer for some reason, the application gives you the option to save your in progress item set with the <em>Save</em> button.</p>
+        <p>Saving your item set works by utilizing the <code>localStorage</code> functionality of modern browsers. If for some reason you neeed to clear your saved item set, simply hit <em>Reset</em> and then <em>Save</em>.</p>
+        <p><em>(Note: you can only have one item set saved at a time and clicking</em> Save <em>will overwrite any previously saved item set)</em>
+        </p>
+        <h3><a id="Item_Block_Manipulation_58"></a>Item Block Manipulation</h3>
+        <p>In the item block manipulation panel, the user has four possible ways to manipulate item sets:</p>
+        <ol>
+            <li>Expand and collapse the item blocks</li>
+            <li>Rename the item blocks</li>
+            <li>Create new item blocks</li>
+            <li>Delete existing item blocks</li>
+        </ol>
+        <p>Item blocks are simply extensions of the MaterializeCSS collapsible object and have all the functionality of these constructs.</p>
+        <h3><a id="Item_Selection_and_DragandDrop_69"></a>Item Selection and Drag-and-Drop</h3>
+        <p>Selecting items is as simple as picking them from the <em>All Items</em> tab in the left-side menu and dropping them into an open item slot. <strong>bildr</strong> supports dropping items into filled item slots by pushing all items down or stacking where applicable. Furthermore, <strong>bildr</strong> follows the League of Legends stacking rules, with no more than five health or mana potions, three stealth wards, and two vision wards.</p>
+        <p>In order to help find the items you want, <strong>bildr</strong> incorporates the filtering system found in the League of Legends item shop, with support for filtering by multiple stats and searching for specific stats in the search bar.</p>
+        <p>The drag-and-drop functionality built in to <strong>bildr</strong> utilizes the HTML5 standard for drag-and-drop, and as such supports a wide variety of browsers. Unfortunately, mobile browsers are not supported at this time.</p>
+        <p>In addition to all the information found in the League of Legends shop being available in tooltips over each item, the tooltips also include information on gold efficiency where applicable. The item data is taken from the League of Legends <code>static-data</code> API endpoint with item images taken from <a href="http://ddragon.leagueoflegends.com/tool">Data Dragon</a>. The information for item efficiency is parsed into a usable JSON format with Ruby scripts from a <a href="https://docs.google.com/spreadsheets/d/1ASPk9DIQug-3x7d2ZZ5PU7c7-NiE9Tj5q3MgeIYZoc4/edit#gid=2147374466">fan-made spreadsheet</a> and merged into a single file with the data from the Riot Games API. This merged data can be retrieved publicly from:</p>
+        <pre><code><span class="hljs-string">http:</span><span class="hljs-comment">//bildr.co/getItems</span>
+    </code></pre>
+        <h3><a id="Item_Set_Info_and_Properties_83"></a>Item Set Info and Properties</h3>
+        <p>In the <em>Set Info</em> tab of the left-side menu, users can set the item set name, specific map and mode, and specific champion. Leaving the map and champion un-selected leaves the item set as global. Uploading and downloading the item set will incorporate this information in the JSON data.</p>
+        <p>Champion data is collected from the Riot Games <code>static-data</code> API endpoint with champion icon images taken from <a href="http://ddragon.leagueoflegends.com/tool">Data Dragon</a>. Map images are screen-captured from the League of Legends client and cropped horizontally.</p>
+        <h2><a id="Creators_89"></a>Creators</h2>
+        <p><strong>Jacob Nisnevich</strong>
+        </p>
+        <ul>
+            <li><a href="https://github.com/jacobnisnevich">https://github.com/jacobnisnevich</a>
+            </li>
+        </ul>
+        <p><strong>Jason Yang</strong>
+        </p>
+        <ul>
+            <li><a href="https://github.com/jasonyang96">https://github.com/jasonyang96</a>
+            </li>
+        </ul>
+        <h2><a id="License_97"></a>License</h2>
+        <p><strong>MIT</strong>: <a href="http://rem.mit-license.org">http://rem.mit-license.org</a>
+        </p>
+        <p><strong>bildr</strong> isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</p>
+    </div>
+</body>
+
+</html>
