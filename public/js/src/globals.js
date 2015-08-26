@@ -3,6 +3,7 @@ var global = {
 	selectedMap: '',
 	selectedMode: '',
 	selectedChamp: '',
-	parent_item_slots: '',
+	source_item_slots: '',
+	source_index_empty: '',
 	MAX_ITEMS: 10,
 };

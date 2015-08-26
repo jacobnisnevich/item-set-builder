@@ -3,9 +3,18 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
+    var isEmpty = false;
     ev.dataTransfer.setData("text", ev.target.id);
     ev.dataTransfer.setData("parent", ev.target.parentElement.className);
-    global.parent_item_slots = $(ev.target.parentElement).parent().children();
+    global.source_item_slots = $(ev.target.parentElement).parent().children();
+    global.source_item_slots.each(function() {
+        if ($(this).find('img').length == 0) {
+            global.source_index_empty = $(this).parent().children().index($(this));
+            isEmpty = true;
+            return false;
+        }
+    });
+    if (!isEmpty) {global.source_index_empty = -1}
     if (ev.target.parentElement.className.indexOf("item-slots")) {
         ev.dataTransfer.setData("index", $(ev.target.parentElement).parent().children().index($(ev.target.parentElement)));
     }
@@ -15,12 +24,12 @@ function drop(ev) {
     ev.preventDefault();
     //if dropping into trash
     if (ev.target.id == "trash") {
-        if (global.parent_item_slots.filter(".item-slot").length == 0) {//from all-items
+        if (global.source_item_slots.filter(".item-slot").length == 0) {//from all-items
             return;
         }
         var index = Number(ev.dataTransfer.getData("index"));
-        scootRight(ev,data, index, global.MAX_ITEMS - 1, global.parent_item_slots);
-        global.parent_item_slots.eq(global.MAX_ITEMS - 1).children().remove("img");
+        scootRight(ev,data, index, global.MAX_ITEMS - 1, global.source_item_slots);
+        global.source_item_slots.eq(global.MAX_ITEMS - 1).children().remove("img");
         return;
     }
 
@@ -51,8 +60,10 @@ function drop(ev) {
         });
     }
 
-    //if dragging item from item-set block
-    if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1) {
+    if (false) {
+
+    }
+    else if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1) { //if dragging item from item-set block to same item-set block
         var index_source = Number(ev.dataTransfer.getData("index"));
         if (slot_filled) {
             if (index_source > index_drop) { //source > destination
