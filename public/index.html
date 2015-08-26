@@ -31,14 +31,14 @@
     <!-- item-set-builder -->
 
     <!-- un-minified -->
-    <!--<script src="js/src/globals.js"></script>
+    <script src="js/src/globals.js"></script>
     <script src="js/src/item-block.js"></script>
     <script src="js/src/buttons.js"></script>
     <script src="js/src/drag-and-drop.js"></script>
-    <script src="js/src/items-and-set.js"></script>-->
+    <script src="js/src/items-and-set.js"></script>
 
-    <!-- minified -->
-    <script src="js/bildr-min-0.1.0.js"></script>
+    <!-- minified
+    <script src="js/bildr-min-0.1.0.js"></script> -->
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- favicon -->
@@ -53,6 +53,7 @@
         </div>
     </nav>
     <div class="section grey darken-2" id="builder">
+        <!-- Modal Box Containers -->
         <div id="download-instructions-box" class="modal modal-fixed-footer gray">
             <div class="modal-content grey darken-3 grey-text text-lighten-2">
                 <h4>Download Instructions</h4>
@@ -71,7 +72,16 @@
                 </div>
             </div>
             <div class="modal-footer grey darken-3">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat grey lighten-1">Ok</a>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Ok</a>
+            </div>
+        </div>
+
+        <div id="help-about-box" class="modal modal-fixed-footer gray">
+            <div class="modal-content grey darken-3 grey-text text-lighten-2">
+                <iframe src="README.html"></iframe>
+            </div>
+            <div class="modal-footer grey darken-3">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Ok</a>
             </div>
         </div>
 

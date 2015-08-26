@@ -13,6 +13,7 @@ $(document).ready(function() {
             $(this).prop('checked', false);
         });
         $(".item", $("#all-items")).show();
+        $(".item-block-name").click();
     });
 
     $("#upload-button").click(function() {
@@ -47,6 +48,10 @@ $(document).ready(function() {
 
     $("#save-button").click(function() {
         saveSessionData();
+    });
+
+    $("#about-button").click(function() {
+        $('#help-about-box').openModal();
     });
 });
 
@@ -161,6 +166,8 @@ function loadFromJSON(obj) {
 
         createItemBlock(blockName, itemsArray, itemCountsArray);
     });
+
+    $(".item-block-name").click();
 }
 
 function createJSONFile() {

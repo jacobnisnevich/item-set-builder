@@ -89,6 +89,10 @@ $(document).ready(function() {
     $("#save-button").click(function() {
         saveSessionData();
     });
+
+    $("#about-button").click(function() {
+        $('#help-about-box').openModal();
+    });
 });
 
 // Event handling functions
