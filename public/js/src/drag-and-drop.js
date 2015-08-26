@@ -14,7 +14,7 @@ function drag(ev) {
             return false;
         }
     });
-    if (!isEmpty) {global.source_index_empty = -1}
+    if (!isEmpty) {global.source_index_empty = global.MAX_ITEMS - 1}
     if (ev.target.parentElement.className.indexOf("item-slots")) {
         ev.dataTransfer.setData("index", $(ev.target.parentElement).parent().children().index($(ev.target.parentElement)));
     }
@@ -28,8 +28,8 @@ function drop(ev) {
             return;
         }
         var index = Number(ev.dataTransfer.getData("index"));
-        scootRight(ev,data, index, global.MAX_ITEMS - 1, global.source_item_slots);
-        global.source_item_slots.eq(global.MAX_ITEMS - 1).children().remove("img");
+        scootRight(ev,data, index, global.source_index_empty, global.source_item_slots);
+        global.source_item_slots.eq(global.source_index_empty).children().remove("img");
         return;
     }
 
@@ -60,10 +60,8 @@ function drop(ev) {
         });
     }
 
-    if (false) {
-
-    }
-    else if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1) { //if dragging item from item-set block to same item-set block
+    //if dragging item from item-set block to same item-set block
+    if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1 && item_slots.is(global.source_item_slots)) {
         var index_source = Number(ev.dataTransfer.getData("index"));
         if (slot_filled) {
             if (index_source > index_drop) { //source > destination
@@ -118,7 +116,7 @@ function drop(ev) {
             scootRight(ev, data, index_source, index_empty - 1, item_slots);
         }
     }
-    else { //came from all-items box
+    else { //came from all-items box or from another item-slot block
         //if slot has item
         if (slot_filled) {
             //stack if item is stackable
@@ -145,6 +143,14 @@ function drop(ev) {
         else { //empty, append to end
             item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
         }
+    }
+
+    //delete source item if source is another item-slot block
+    if (global.source_item_slots.filter(".item-slot").length > 0 && !global.source_item_slots.is(item_slots)) {
+        var index = Number(ev.dataTransfer.getData("index"));
+        scootRight(ev,data, index, global.source_index_empty, global.source_item_slots);
+        global.source_item_slots.eq(global.source_index_empty).children().remove("img");
+        return;
     }
 }
 
