@@ -3,9 +3,10 @@ class ChampGGParser
 
   def initialize()
     @item_set = {}
-    @item_set["title"] = "custom"
-    @item_set["type"] = "SR"
-    @item_set["map"] = "CLASSIC"
+    @item_set["title"] = ""
+    @item_set["type"] = "custom"
+    @item_set["map"] = "SR"
+    @item_set["mode"] = "CLASSIC"
     @item_set["priority"] = false
     @item_set["sortrank"] = 0
     @item_set["blocks"] = []
@@ -15,9 +16,11 @@ class ChampGGParser
     page = Nokogiri::HTML(open("http://champion.gg/champion/#{champKey}"))
 
     if type == 'mostFrequent'
+      @item_set["title"] = "Most Frequent #{champKey} Build"
       createItemBlock('Most Frequent Starting Build', getStartingItems(page, type))
       createItemBlock('Most Frequent Core Build', getCoreBuildItems(page, type))
     else
+      @item_set["title"] = "Highest Winrate #{champKey} Build"
       createItemBlock('Highest Winrate Starting Build', getStartingItems(page, type))
       createItemBlock('Highest Winrate Core Build', getCoreBuildItems(page, type))
     end
@@ -61,7 +64,7 @@ class ChampGGParser
     ['3340', '3341', '3342'].each do |trinket|
       startingBuildItems.push(trinket)
     end
-    
+
     return startingBuildItems
   end
 
