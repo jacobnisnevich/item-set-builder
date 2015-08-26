@@ -13,6 +13,7 @@ $(document).ready(function() {
             $(this).prop('checked', false);
         });
         $(".item", $("#all-items")).show();
+        $(".item-block-name").click();
     });
 
     $("#upload-button").click(function() {
@@ -165,6 +166,8 @@ function loadFromJSON(obj) {
 
         createItemBlock(blockName, itemsArray, itemCountsArray);
     });
+
+    $(".item-block-name").click();
 }
 
 function createJSONFile() {
