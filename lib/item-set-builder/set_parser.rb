@@ -17,46 +17,48 @@ class SetParser
     itemTags = {}
 
     @set["blocks"].each do |index, itemBlock|
-      itemBlock["items"].each do |index, item|
-        itemID = item["id"]
-        itemData = @items[itemID]
+      if !itemBlock["items"].nil?
+        itemBlock["items"].each do |index, item|
+          itemID = item["id"]
+          itemData = @items[itemID]
 
-        if !itemData["tags"].nil?
-          itemData["tags"].each do |tag|
-            if itemTags[tag].nil?
-              itemTags[tag] = 1
-            else
-              itemTags[tag] = itemTags[tag] + 1
-            end
-          end
-        end
-
-        if itemData["efficiency"]["base"] == true
-          totalCost = totalCost + itemData["gold"]["base"]
-          totalWorthLower = totalWorthLower + itemData["gold"]["base"]
-          totalWorthUpper = totalWorthUpper + itemData["gold"]["base"]
-        else
-          totalCost = totalCost + itemData["gold"]["base"]
-
-          itemCases = itemData["efficiency"]["cases"]
-
-          bestCase = 0
-          worstCase = Float::INFINITY
-
-          itemCases.each do |itemCase|
-            itemCaseWorth = itemCase[itemCase.keys[0]]["Gold Value"].to_i
-
-            if itemCaseWorth > bestCase
-              bestCase = itemCaseWorth
-            end
-
-            if itemCaseWorth < worstCase
-              worstCase = itemCaseWorth
+          if !itemData["tags"].nil?
+            itemData["tags"].each do |tag|
+              if itemTags[tag].nil?
+                itemTags[tag] = 1
+              else
+                itemTags[tag] = itemTags[tag] + 1
+              end
             end
           end
 
-          totalWorthUpper = totalWorthUpper + bestCase
-          totalWorthLower = totalWorthLower + worstCase
+          if itemData["efficiency"]["base"] == true
+            totalCost = totalCost + itemData["gold"]["base"]
+            totalWorthLower = totalWorthLower + itemData["gold"]["base"]
+            totalWorthUpper = totalWorthUpper + itemData["gold"]["base"]
+          else
+            totalCost = totalCost + itemData["gold"]["base"]
+
+            itemCases = itemData["efficiency"]["cases"]
+
+            bestCase = 0
+            worstCase = Float::INFINITY
+
+            itemCases.each do |itemCase|
+              itemCaseWorth = itemCase[itemCase.keys[0]]["Gold Value"].to_i
+
+              if itemCaseWorth > bestCase
+                bestCase = itemCaseWorth
+              end
+
+              if itemCaseWorth < worstCase
+                worstCase = itemCaseWorth
+              end
+            end
+
+            totalWorthUpper = totalWorthUpper + bestCase
+            totalWorthLower = totalWorthLower + worstCase
+          end
         end
       end
     end
@@ -71,7 +73,7 @@ class SetParser
       summaryHash["totalEfficiencyLower"] = "NaN"
     end
 
-    if totalWorthLower > 0
+    if totalWorthUpper > 0
       summaryHash["totalEfficiencyUpper"] = totalWorthUpper / totalCost.to_f
     else 
       summaryHash["totalEfficiencyUpper"] = "NaN"
