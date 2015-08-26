@@ -177,8 +177,9 @@
                             <div class="row">
                                 <div class="col s12 no-padding">
                                     <ul class="tabs grey-text text-lighten-2">
-                                        <li class="tab grey darken-4 col s6"><a class="active" href="#all-items-container">All Items</a></li>
-                                        <li class="tab grey darken-4 col s6"><a href="#set-info">Set Info</a></li>
+                                        <li class="tab grey darken-4 col s4"><a class="active" href="#all-items-container">All Items</a></li>
+                                        <li class="tab grey darken-4 col s4"><a href="#set-info">Set Info</a></li>
+                                        <li class="tab grey darken-4 col s4"><a href="#preset-builds">Preset Builds</a></li>
                                     </ul>
                                 </div> 
                                 <div id="all-items-container" class="col s12">
@@ -332,7 +333,30 @@
                                             <i id="champ-help-tooltip" class="material-icons help-tooltip">info</i>
                                         </div>
                                         <div class="col s12">
-                                            <div class="row champ-container">
+                                            <div id="champion-selection" class="row champ-container">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="preset-builds" class="col s12">
+                                    <div class="row">
+                                        <div class="col s12 valign-wrapper set-info-form-label-container">
+                                            <h5 class="valign set-info-form-label">Choose Build From Champion.gg</h5>
+                                        </div>
+                                        <div class="col s12 valign-wrapper set-info-form-label-container build-type-form">
+                                            <form action="#">
+                                                <p>
+                                                    <input name="build-type" type="radio" value="mostFrequent" id="most-frequent" checked/>
+                                                    <label for="most-frequent" class="grey-text text-lighten-3">Most Frequent</label>
+                                                </p>
+                                                <p>
+                                                    <input name="build-type" type="radio" value="highestWinrate" id="highest-winrate" />
+                                                    <label for="highest-winrate" class="grey-text text-lighten-3">Highest Winrate</label>
+                                                </p>
+                                            </form>
+                                        </div>
+                                        <div class="col s12">
+                                            <div id="champion-build-selection" class="row champ-container">
                                             </div>
                                         </div>
                                     </div>

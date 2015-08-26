@@ -39,6 +39,15 @@ nav .brand-logo {
     border-bottom: 2px solid rgb(183, 178, 16);
 }
 
+[type="radio"]:checked + label:after {
+    border: 2px solid rgb(183, 178, 16);
+    background-color: rgb(183, 178, 16);
+}
+
+.build-type-form {
+    margin: 10px 0 20px 0;
+}
+
 footer.page-footer {
     margin-top: 0px;
     padding-top: 0px;
@@ -420,6 +429,8 @@ consumable {
     -ms-transition: all 0.5s ease; /* IE 9 */
     -o-transition: all 0.5s ease; /* Opera */
     transition: all 0.5s ease;
+
+    cursor: pointer;
 }
 
 .map-selected, .champ-selected {

@@ -34,3 +34,8 @@ post '/setSummary' do
   setParser = SetParser.new(params, itemParser.getItems)
   setParser.summary.to_json
 end
+
+post '/getChampBuild' do 
+  champGGParser = ChampGGParser.new()
+  champGGParser.getChampionBuild(params[:key], params[:type]).to_json
+end

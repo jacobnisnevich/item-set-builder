@@ -561,7 +561,7 @@ $(document).ready(function() {
     });
 
     new Opentip("#champ-help-tooltip", "Pick one specific champion or none for a global item set");
-    new Opentip("#map-help-tooltip", "Pick one specific map or none for a global item set");  
+    new Opentip("#map-help-tooltip", "Pick one specific map or none for a global item set"); 
 
     $.get("/getItems", function(data) {
         dataJSON = JSON.parse(data);
@@ -629,7 +629,7 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', ".champ-select", function() {
+    $(document).on('click', "#champion-selection .champ-select", function() {
         if (global.selectedChamp == '') {
             global.selectedChamp = $(this).data('champ');
             $(this).addClass('champ-selected');
@@ -641,6 +641,18 @@ $(document).ready(function() {
             global.selectedChamp = $(this).data('champ');
             $(this).addClass('champ-selected');
         }
+    });
+
+    $(document).on('click', "#champion-build-selection .champ-select", function() {
+        var champBuildOptions = {
+            "key": $(this).data('champ'),
+            "type": $("input[name=build-type]:checked").val()
+        };
+
+        $.post("/getChampBuild", champBuildOptions, function(data) {
+            dataJSON = JSON.parse(data);
+            loadFromJSON(dataJSON);
+        });
     });
 
     $("#item-search-box").on('input', function() {
