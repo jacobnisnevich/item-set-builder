@@ -26,11 +26,15 @@ $(document).ready(function() {
             fileName = global.setName + '.json';
             var returnval = false;
             $.each(global.sortedKeys, function() {
-                if (global.setName == this) {
+                var champName = this;
+                $.each(global.mapNames, function() {
+                    if (global.setName == champName + this) {
                     alert("DOH!");
                     returnval = true;
                     return false;
-                }
+                    }
+                });
+                return !returnval;
             });
             if (returnval) {return}
         }
