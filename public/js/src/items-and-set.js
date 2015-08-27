@@ -117,6 +117,17 @@ $(document).ready(function() {
         });
     });
 
+    $(document).on('click', ".preset-select", function() {
+        var presetBuildOptions = {
+            "preset": $(this).text()
+        };
+
+        $.post("/getStarterPreset", presetBuildOptions, function(data) {
+            dataJSON = JSON.parse(data);
+            loadFromJSON(dataJSON);
+        });
+    });
+
     $("#item-search-box").on('input', function() {
         //uncheck all checkboxes
         $('input[type=checkbox]').each(function() {
