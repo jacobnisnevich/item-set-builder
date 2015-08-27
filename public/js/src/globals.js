@@ -4,5 +4,5 @@ var global = {
 	selectedMode: '',
 	selectedChamp: '',
 	sortedKeys: '',
-	mapNames: ["SR", "TT", "DM", "ASC", "PG"],
+	mapNames: ["SR", "TT", "DM", "ASC", "PG"]
 };

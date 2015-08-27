@@ -3,7 +3,9 @@ var global = {
 	setName: 'Unnamed_Item_Set',
 	selectedMap: '',
 	selectedMode: '',
-	selectedChamp: ''
+	selectedChamp: '',
+	sortedKeys: '',
+	mapNames: ["SR", "TT", "DM", "ASC", "PG"]
 };
 $(document).ready(function() {
     $("#item-set-add-block-button").click(function() {
@@ -63,13 +65,26 @@ $(document).ready(function() {
     });
 
     $("#download-button").click(function() {
-        createJSONFile();
-        $('#download-instructions-box').openModal();
-
         var fileName = 'Unnamed Item Set.json';
         if (global.setName) {
             fileName = global.setName + '.json';
+            var returnval = false;
+            $.each(global.sortedKeys, function() {
+                var champName = this;
+                $.each(global.mapNames, function() {
+                    if (global.setName == champName + this) {
+                    Materialize.toast("<span>Oh no, it seems you have a reserved set name! Find out more info <span><a href='https://developer.riotgames.com/docs/item-sets' target='_blank'>here<a>", 4000);
+                    returnval = true;
+                    return false;
+                    }
+                });
+                return !returnval;
+            });
+            if (returnval) {return}
         }
+
+        createJSONFile();
+        $('#download-instructions-box').openModal();
 
         if (global.selectedChamp) {
             $("#champ-set-instructions").show();
@@ -265,12 +280,10 @@ function loadFromJSON(obj) {
 
     removeItemBlocks();
 
-    global = {
-        setName: obj.title,
-        selectedMap: obj.map,
-        selectedMode: obj.mode,
-        selectedChamp: ''
-    };
+    global.setName = obj.title;
+    global.selectedMap = obj.map;
+    global.selectedMode = obj.mode;
+    global.selectedChamp = '';
 
     $('#set-form-name').val(global.setName);
     $('*[data-map="' + global.selectedMap + '"]').addClass('map-selected');
@@ -605,8 +618,8 @@ $(document).ready(function() {
 
     $.get("/getChamps", function(data) {
         dataJSON = JSON.parse(data);
-        sortedKeys = Object.keys(dataJSON).sort()
-        sortedKeys.forEach(function(champName) {
+        global.sortedKeys = Object.keys(dataJSON).sort()
+        global.sortedKeys.forEach(function(champName) {
             $(".champ-container").append('<div class="col s1 no-padding"><img class="champ-select" data-champ="' + dataJSON[champName]["key"] + '" id="' + dataJSON[champName]["key"] + '" src="images/champs/' + dataJSON[champName]["key"] + '.png" alt="' + dataJSON[champName]["name"] + '"></div>');
             new Opentip("#" + dataJSON[champName]["key"], dataJSON[champName]["name"]);              
         });

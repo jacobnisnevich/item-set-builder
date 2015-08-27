@@ -236,12 +236,10 @@ function loadFromJSON(obj) {
 
     removeItemBlocks();
 
-    global = {
-        setName: obj.title,
-        selectedMap: obj.map,
-        selectedMode: obj.mode,
-        selectedChamp: ''
-    };
+    global.setName = obj.title;
+    global.selectedMap = obj.map;
+    global.selectedMode = obj.mode;
+    global.selectedChamp = '';
 
     $('#set-form-name').val(global.setName);
     $('*[data-map="' + global.selectedMap + '"]').addClass('map-selected');
