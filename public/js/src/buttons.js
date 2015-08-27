@@ -21,13 +21,22 @@ $(document).ready(function() {
     });
 
     $("#download-button").click(function() {
-        createJSONFile();
-        $('#download-instructions-box').openModal();
-
         var fileName = 'Unnamed Item Set.json';
         if (global.setName) {
             fileName = global.setName + '.json';
+            var returnval = false;
+            $.each(global.sortedKeys, function() {
+                if (global.setName == this) {
+                    alert("DOH!");
+                    returnval = true;
+                    return false;
+                }
+            });
+            if (returnval) {return}
         }
+
+        createJSONFile();
+        $('#download-instructions-box').openModal();
 
         if (global.selectedChamp) {
             $("#champ-set-instructions").show();

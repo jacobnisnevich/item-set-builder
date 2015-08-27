@@ -67,8 +67,8 @@ $(document).ready(function() {
 
     $.get("/getChamps", function(data) {
         dataJSON = JSON.parse(data);
-        sortedKeys = Object.keys(dataJSON).sort()
-        sortedKeys.forEach(function(champName) {
+        global.sortedKeys = Object.keys(dataJSON).sort()
+        global.sortedKeys.forEach(function(champName) {
             $(".champ-container").append('<div class="col s1 no-padding"><img class="champ-select" data-champ="' + dataJSON[champName]["key"] + '" id="' + dataJSON[champName]["key"] + '" src="images/champs/' + dataJSON[champName]["key"] + '.png" alt="' + dataJSON[champName]["name"] + '"></div>');
             new Opentip("#" + dataJSON[champName]["key"], dataJSON[champName]["name"]);              
         });
