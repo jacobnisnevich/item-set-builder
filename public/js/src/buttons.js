@@ -22,35 +22,25 @@ $(document).ready(function() {
 
     $("#download-button").click(function() {
         var fileName = 'Unnamed Item Set.json';
-        if (global.setName) {
-            fileName = global.setName + '.json';
-            var returnval = false;
-            $.each(global.sortedKeys, function() {
-                var champName = this;
-                $.each(global.mapNames, function() {
-                    if (global.setName == champName + this) {
-                    Materialize.toast("<span>Oh no, it seems you have a reserved set name! Find out more info <span><a href='https://developer.riotgames.com/docs/item-sets' target='_blank'>here<a>", 4000);
-                    returnval = true;
-                    return false;
-                    }
-                });
-                return !returnval;
-            });
-            if (returnval) {return}
-        }
 
-        createJSONFile();
-        $('#download-instructions-box').openModal();
+        var validateResult = isValidFileName(fileName);
 
-        if (global.selectedChamp) {
-            $("#champ-set-instructions").show();
-            $("#global-set-instructions").hide();
-            $("#champKey").text(global.selectedChamp);
-            $(".fileName").text(fileName);
+        if (validateResult) {          
+            createJSONFile();
+            $('#download-instructions-box').openModal();
+
+            if (global.selectedChamp) {
+                $("#champ-set-instructions").show();
+                $("#global-set-instructions").hide();
+                $("#champKey").text(global.selectedChamp);
+                $(".fileName").text(fileName);
+            } else {
+                $("#global-set-instructions").show();
+                $("#champ-set-instructions").hide();
+                $(".fileName").text(fileName);
+            }
         } else {
-            $("#global-set-instructions").show();
-            $("#champ-set-instructions").hide();
-            $(".fileName").text(fileName);
+            return;
         }
     });
 
@@ -127,7 +117,7 @@ $(document).ready(function() {
                         "background-color": "#757575"
                     }
                 ]
-            }
+            };
 
             zingchart.render({ 
                 id:'summary-tags-chart',
@@ -147,7 +137,34 @@ $(document).ready(function() {
     });
 });
 
+// Validation Functions
+
+function isValidFileName(fileName) {
+    var isValid = true;
+
+    if (global.setName) {
+        fileName = global.setName + '.json';
+        global.sortedKeys.forEach(function(champKey) {
+            var champName = champKey;
+            if (isValid) {
+                global.mapNames.forEach(function(mapName) {
+                    if (global.setName == champName + mapName) {
+                        Materialize.toast("<span>Oh no, it seems you have a reserved set name! Find out more info <span><a href='https://developer.riotgames.com/docs/item-sets' target='_blank'>here<a>", 4000);
+                        isValid = false;
+                        return;
+                    }
+                });
+            } else {
+                return;
+            }
+        });
+    }
+
+    return isValid;
+}
+
 // Event handling functions
+
 function handleFileUpload(files) {
     var file = files[0];
 
