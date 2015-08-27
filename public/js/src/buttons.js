@@ -29,7 +29,7 @@ $(document).ready(function() {
                 var champName = this;
                 $.each(global.mapNames, function() {
                     if (global.setName == champName + this) {
-                    alert("DOH!");
+                    Materialize.toast("<span>Oh no, it seems you have a reserved set name! Find out more info <span><a href='https://developer.riotgames.com/docs/item-sets' target='_blank'>here<a>", 4000);
                     returnval = true;
                     return false;
                     }
