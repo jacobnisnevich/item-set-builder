@@ -1,7 +1,7 @@
 javaPath    = "C:/Program Files (x86)/Java/jre1.8.0_45/bin/java.exe" 
 closurePath = "C:/Tools/closure-compiler/compiler.jar"
 
-version = "0.1.1"
+version = "0.1.2"
 
 combinedOutputPath = "public/js/bildr.js"
 minifiedOutputPath = "public/js/bildr-min-#{version}.js"
