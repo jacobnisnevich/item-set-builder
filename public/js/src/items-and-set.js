@@ -129,7 +129,8 @@ $(document).ready(function() {
     });
 
     $("#item-search-box").on('input', function() {
-        //uncheck all checkboxes
+        // Uncheck all checkboxes
+
         $('input[type=checkbox]').each(function() {
             $(this).prop('checked', false);
         });
@@ -158,11 +159,33 @@ $(document).ready(function() {
         ];
 
         var parent_filters = {
-            "tools": ["consumable", "goldper", "trinket vision"],
-            "defense": ["armor", "health", "healthregen", "spellblock"],
-            "attack": ["attackspeed", "criticalstrike", "damage", "lifesteal"],
-            "magic": ["cooldownreduction", "mana", "manaregen", "spelldamage"],
-            "movement": ["boots", "nonbootsmovement"]
+            "tools": [
+                "consumable", 
+                "goldper", 
+                "trinket vision"
+            ], 
+            "defense": [
+                "armor", 
+                "health", 
+                "healthregen", 
+                "spellblock"
+            ],
+            "attack": [
+                "attackspeed", 
+                "criticalstrike", 
+                "damage", 
+                "lifesteal"
+            ],
+            "magic": [
+                "cooldownreduction", 
+                "mana", 
+                "manaregen", 
+                "spelldamage"
+            ],
+            "movement": [
+                "boots", 
+                "nonbootsmovement"
+            ]
         };
 
         var custom_filters = {
