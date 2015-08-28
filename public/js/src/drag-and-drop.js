@@ -127,7 +127,7 @@ function drop(ev) {
     else { // came from all-items box or from another item-slot block
         var number = Number(ev.dataTransfer.getData("number"));
         // if dragging from one item-set block to another
-        if (global.source_item_slots.filter(".item-slot").length > 0 && !global.source_item_slots.is(item_slots)) {
+        if (global.source_item_slots.filter(".item-slot").length > 0 && !global.source_item_slots.is(item_slots) && !isFull(item_slots)) {
             // delete source item if source is another item-slot block
             var index = Number(ev.dataTransfer.getData("index"));
             scootRight(index, global.source_index_empty, global.source_item_slots);
