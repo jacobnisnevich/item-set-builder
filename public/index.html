@@ -58,6 +58,31 @@
     <div class="section grey darken-2" id="builder">
 
         <!-- Modal Box Containers -->
+        <div id="reset-confirmation-box" class="modal modal-fixed-footer gray">
+            <div class="modal-content grey darken-3 grey-text text-lighten-2">
+                <h4>Confirm Reset</h4>
+                <p>Are you sure you want to reset your item set entirely? Note that you will be unable to recover it unless you have saved it previously.</p>
+            </div>
+            <div class="modal-footer grey darken-3">
+                <a id="reset-confirm-button" href="#!" class="modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Confirm Reset</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Cancel</a>
+            </div>
+        </div>
+
+        <div id="upload-instructions-box" class="modal modal-fixed-footer gray">
+            <div class="modal-content grey darken-3 grey-text text-lighten-2">
+                <h4>Upload Instructions</h4>
+                <p>To use a previously created item set navigate to:</p>
+                <code>League of Legends\Config\Global\Recommended\</code>
+                <p>for global item sets. Or to:</p>
+                <code>League of Legends\Config\Champions\{championKey}\Recommended\</code>
+                <p>for a champion specific item set.</p>
+            </div>
+            <div class="modal-footer grey darken-3">
+                <a id="upload-confirm-button" href="#!" class="modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Upload File</a>
+            </div>
+        </div>
+
         <div id="download-instructions-box" class="modal modal-fixed-footer gray">
             <div class="modal-content grey darken-3 grey-text text-lighten-2">
                 <h4>Download Instructions</h4>
@@ -76,7 +101,7 @@
                 </div>
             </div>
             <div class="modal-footer grey darken-3">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Ok</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Ok</a>
             </div>
         </div>
 
@@ -136,7 +161,7 @@
                 </div>
             </div>
             <div class="modal-footer grey darken-3">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Ok</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Ok</a>
             </div>
         </div>
 

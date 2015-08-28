@@ -6,8 +6,13 @@ $(document).ready(function() {
     }
 
     $("#reset-button").click(function() {
+        $("#reset-confirmation-box").openModal();
+    });
+
+    $("#reset-confirm-button").click(function() {
         resetItemBlocks();
         resetSetInfo();
+
         $("#item-search-box").val('');
         $('input[type=checkbox]').each(function() {
             $(this).prop('checked', false);
@@ -17,6 +22,10 @@ $(document).ready(function() {
     });
 
     $("#upload-button").click(function() {
+        $('#upload-instructions-box').openModal();
+    });
+
+    $("#upload-confirm-button").click(function() {
         $("#hidden-upload-button").click();
     });
 

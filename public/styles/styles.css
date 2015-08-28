@@ -513,3 +513,15 @@ code {
 .item-efficiency-positive {
     color: #00D800;
 }
+
+#upload-instructions-box, #reset-confirmation-box {
+    width: 35% !important;
+    height: 40% !important;
+    min-width: 500px;
+    min-height: 300px;
+}
+
+.modal .modal-footer .btn-flat {
+    float: right;
+    margin: 6px 5px;
+}
