@@ -19,6 +19,9 @@
     <script src="js/libraries/jquery.iframe-transport.js"></script>
     <script src="js/libraries/jquery.fileupload.js"></script>
 
+    <!-- Charts -->
+    <script src="http://cdn.zingchart.com/zingchart.min.js"></script>
+
     <!-- OpenTip-->
     <script src="js/libraries/opentip-jquery.min.js"></script>
     <link rel="stylesheet" href="styles/opentip.css">
@@ -31,14 +34,14 @@
     <!-- item-set-builder -->
 
     <!-- un-minified -->
-    <script src="js/src/globals.js"></script>
+    <!-- <script src="js/src/globals.js"></script>
     <script src="js/src/item-block.js"></script>
     <script src="js/src/buttons.js"></script>
     <script src="js/src/drag-and-drop.js"></script>
-    <script src="js/src/items-and-set.js"></script>
+    <script src="js/src/items-and-set.js"></script> -->
 
-    <!-- minified
-    <script src="js/bildr-min-0.1.0.js"></script> -->
+    <!-- minified -->
+    <script src="js/bildr-min-0.1.2.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- favicon -->
@@ -53,6 +56,7 @@
         </div>
     </nav>
     <div class="section grey darken-2" id="builder">
+
         <!-- Modal Box Containers -->
         <div id="download-instructions-box" class="modal modal-fixed-footer gray">
             <div class="modal-content grey darken-3 grey-text text-lighten-2">
@@ -69,6 +73,66 @@
                     <code>League of Legends\Config\Champions\<b id="champKey"></b>\Recommended\</code>
                     <p>2. Copy the <b class="fileName"></b> file to the folder that you have navigated to.</p>
                     <p>3. Your item set should now be visible in the item shop to your specific champion, <b id="champKey"></b></p>
+                </div>
+            </div>
+            <div class="modal-footer grey darken-3">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat grey lighten-1">Ok</a>
+            </div>
+        </div>
+
+        <div id="set-summary-box" class="modal modal-fixed-footer gray">
+            <div class="modal-content grey darken-3 grey-text text-lighten-2">
+                <div class="summary-box summary-progress">
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-white-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div><div class="gap-patch">
+                                <div class="circle"></div>
+                            </div><div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-box summary-content">
+                    <div class="summary-title-container grey darken-2 grey-text text-darken-4 row z-depth-3">
+                        <span>Item Set Summary:&nbsp;</span>
+                        <span class="summary-title thin white-text"></span>
+                    </div>
+                    <div class="summary-efficiency grey grey-text text-darken-4 row z-depth-3">
+                        <div class="col s12" style="padding-bottom: 20px;">Item Set Efficiency:</div>
+                        <div class="col s4">
+                            <div class="row">
+                                <div class="col s8 offset-s3 grey darken-1 z-depth-1">
+                                    <div>TOTAL COST</div>
+                                    <div class="summary-total-cost white-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="row">
+                                <div class="col s8 offset-s2 grey darken-1 grey-text text-darken-4 z-depth-1">
+                                    <div>TOTAL WORTH</div>
+                                    <div class="white-text"><span class="summary-total-worth-lower"></span>&nbsp;-&nbsp;<span class="summary-total-worth-upper"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="row">
+                                <div class="col s8 offset-s1 grey darken-1 grey-text text-darken-4 z-depth-1">
+                                    <div>TOTAL EFFICIENCY</div>
+                                    <div class="white-text"><span class="summary-total-efficiency-lower"></span>&nbsp;-&nbsp;<span class="summary-total-efficiency-upper"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-tags grey grey-text text-darken-4 row z-depth-3">
+                        <div class="col s12" style="padding-bottom: 20px;">Item Tag Distribution:</div>
+                        <div class="col s12">
+                            <div id="summary-tags-chart"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer grey darken-3">
@@ -94,15 +158,15 @@
             <div class="row">
                 <div id="toolbar" class="grey darken-3 grey-text text-lighten-2 col s12 z-depth-3 valign-wrapper">
                     <div id="menu-buttons-left">
-                        <a id="reset-button" class="waves-effect waves-light btn grey darken-2 valign">Reset<i class="material-icons right">clear</i></a>
-                        <a id="upload-button" class="waves-effect waves-light btn grey darken-2 valign">Upload<i class="material-icons right">file_upload</i></a>
-                        <a id="download-button" class="waves-effect waves-light btn grey darken-2 valign">Download<i class="material-icons right">file_download</i></a>
-                        <a id="save-button" class="waves-effect waves-light btn grey darken-2 valign">Save<i class="material-icons right">save</i></a>
+                        <a id="reset-button" class="waves-effect waves-light btn grey darken-2 valign"><span class="menu-button-text">Reset</span><i class="material-icons right">clear</i></a>
+                        <a id="upload-button" class="waves-effect waves-light btn grey darken-2 valign"><span class="menu-button-text">Upload</span><i class="material-icons right">file_upload</i></a>
+                        <a id="download-button" class="waves-effect waves-light btn grey darken-2 valign"><span class="menu-button-text">Download</span><i class="material-icons right">file_download</i></a>
+                        <a id="save-button" class="waves-effect waves-light btn grey darken-2 valign"><span class="menu-button-text">Save</span><i class="material-icons right">save</i></a>
                         <input type="file" id="hidden-upload-button" style="display:none" onchange="handleFileUpload(this.files)">
                     </div>
                     <div id="menu-buttons-right">
-                        <a id="about-button" class="waves-effect waves-light btn grey darken-2 valign">About / Help<i class="material-icons right">help</i></a>
-                        <a id="summary-button" class="waves-effect waves-light btn grey darken-2 valign">Set Summary<i class="material-icons right">assessment</i></a>
+                        <a id="about-button" class="waves-effect waves-light btn grey darken-2 valign"><span class="menu-button-text">About / Help</span><i class="material-icons right">help</i></a>
+                        <a id="summary-button" class="waves-effect waves-light btn grey darken-2 valign"><span class="menu-button-text">Set Summary</span><i class="material-icons right">assessment</i></a>
                     </div>
                 </div>
             </div>
@@ -112,9 +176,10 @@
                         <div class="col s11 grey darken-3 grey-text text-lighten-2 z-depth-3">
                             <div class="row">
                                 <div class="col s12 no-padding">
-                                    <ul class="tabs grey-text text-lighten-2">
-                                        <li class="tab grey darken-4 col s6"><a class="active" href="#all-items-container">All Items</a></li>
-                                        <li class="tab grey darken-4 col s6"><a href="#set-info">Set Info</a></li>
+                                    <ul class="tabs grey-text text-lighten-20" style="font-size: 13px">
+                                        <li class="tab grey darken-4 col s4"><a class="active" href="#all-items-container">All Items</a></li>
+                                        <li class="tab grey darken-4 col s4"><a href="#set-info">Set Info</a></li>
+                                        <li class="tab grey darken-4 col s4"><a href="#preset-builds">Presets</a></li>
                                     </ul>
                                 </div> 
                                 <div id="all-items-container" class="col s12">
@@ -268,7 +333,64 @@
                                             <i id="champ-help-tooltip" class="material-icons help-tooltip">info</i>
                                         </div>
                                         <div class="col s12">
-                                            <div class="row champ-container">
+                                            <div id="champion-selection" class="row champ-container">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="preset-builds" class="col s12">
+                                    <div class="row">
+                                        <div class="col s12 valign-wrapper set-info-form-label-container">
+                                            <h5 class="valign set-info-form-label">Choose Preset Starter Build</h5>
+                                        </div>
+                                        <div class="col s12">
+                                            <div class="row map-container">
+                                                <div class="col s4 very-little-padding thin">
+                                                    <div class="preset-select grey darken-2 z-depth-2 valign-wrapper"><span>Support AP</span></div>
+                                                </div>
+                                                <div class="col s4 very-little-padding thin">
+                                                    <div class="preset-select grey darken-2 z-depth-2 valign-wrapper"><span>Support Melee</span></div>
+                                                </div>
+                                                <div class="col s4 very-little-padding thin">
+                                                    <div class="preset-select grey darken-2 z-depth-2 valign-wrapper"><span>AD Carry</span></div>
+                                                </div>
+                                                <div class="col s4 very-little-padding thin">
+                                                    <div class="preset-select grey darken-2 z-depth-2 valign-wrapper"><span>Mid Lane AP</span></div>
+                                                </div>
+                                                <div class="col s4 very-little-padding thin">
+                                                    <div class="preset-select grey darken-2 z-depth-2 valign-wrapper"><span>Mid Lane AD</span></div>
+                                                </div>
+                                                <div class="col s4 very-little-padding thin">
+                                                    <div class="preset-select grey darken-2 z-depth-2 valign-wrapper"><span>Jungle</span></div>
+                                                </div>
+                                                <div class="col s4 very-little-padding thin">
+                                                    <div class="preset-select grey darken-2 z-depth-2 valign-wrapper"><span>Top Lane Tank</span></div>
+                                                </div>
+                                                <div class="col s4 very-little-padding thin">
+                                                    <div class="preset-select grey darken-2 z-depth-2 valign-wrapper"><span>Top Lane AD</span></div>
+                                                </div>
+                                                <div class="col s4 very-little-padding thin">
+                                                    <div class="preset-select grey darken-2 z-depth-2 valign-wrapper"><span>Top Lane AP</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 valign-wrapper set-info-form-label-container">
+                                            <h5 class="valign set-info-form-label">Choose Build From Champion.gg</h5>
+                                        </div>
+                                        <div class="col s12 valign-wrapper set-info-form-label-container build-type-form">
+                                            <form action="#">
+                                                <p>
+                                                    <input name="build-type" type="radio" value="mostFrequent" id="most-frequent" checked/>
+                                                    <label for="most-frequent" class="grey-text text-lighten-3">Most Frequent</label>
+                                                </p>
+                                                <p>
+                                                    <input name="build-type" type="radio" value="highestWinrate" id="highest-winrate" />
+                                                    <label for="highest-winrate" class="grey-text text-lighten-3">Highest Winrate</label>
+                                                </p>
+                                            </form>
+                                        </div>
+                                        <div class="col s12">
+                                            <div id="champion-build-selection" class="row champ-container">
                                             </div>
                                         </div>
                                     </div>
@@ -326,7 +448,7 @@
     </div>
     <footer class="page-footer grey darken-4">
         <div class="container">
-            <p class="grey-text text-lighten-4 thin" style="text-align: center">bildr is built with Materialize, Ruby, and Sinatra and is proudly open-source.</p>
+            <p class="grey-text text-lighten-4 thin" style="text-align: center"><b>bildr</b> isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</p>
         </div>
         <div class="footer-copyright black">
             <div class="container">

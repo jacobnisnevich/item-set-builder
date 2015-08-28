@@ -23,7 +23,7 @@ $(document).ready(function() {
     });
 
     new Opentip("#champ-help-tooltip", "Pick one specific champion or none for a global item set");
-    new Opentip("#map-help-tooltip", "Pick one specific map or none for a global item set");  
+    new Opentip("#map-help-tooltip", "Pick one specific map or none for a global item set"); 
 
     $.get("/getItems", function(data) {
         dataJSON = JSON.parse(data);
@@ -67,8 +67,8 @@ $(document).ready(function() {
 
     $.get("/getChamps", function(data) {
         dataJSON = JSON.parse(data);
-        sortedKeys = Object.keys(dataJSON).sort()
-        sortedKeys.forEach(function(champName) {
+        global.sortedKeys = Object.keys(dataJSON).sort()
+        global.sortedKeys.forEach(function(champName) {
             $(".champ-container").append('<div class="col s1 no-padding"><img class="champ-select" data-champ="' + dataJSON[champName]["key"] + '" id="' + dataJSON[champName]["key"] + '" src="images/champs/' + dataJSON[champName]["key"] + '.png" alt="' + dataJSON[champName]["name"] + '"></div>');
             new Opentip("#" + dataJSON[champName]["key"], dataJSON[champName]["name"]);              
         });
@@ -91,7 +91,7 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', ".champ-select", function() {
+    $(document).on('click', "#champion-selection .champ-select", function() {
         if (global.selectedChamp == '') {
             global.selectedChamp = $(this).data('champ');
             $(this).addClass('champ-selected');
@@ -103,6 +103,29 @@ $(document).ready(function() {
             global.selectedChamp = $(this).data('champ');
             $(this).addClass('champ-selected');
         }
+    });
+
+    $(document).on('click', "#champion-build-selection .champ-select", function() {
+        var champBuildOptions = {
+            "key": $(this).data('champ'),
+            "type": $("input[name=build-type]:checked").val()
+        };
+
+        $.post("/getChampBuild", champBuildOptions, function(data) {
+            dataJSON = JSON.parse(data);
+            loadFromJSON(dataJSON);
+        });
+    });
+
+    $(document).on('click', ".preset-select", function() {
+        var presetBuildOptions = {
+            "preset": $(this).text()
+        };
+
+        $.post("/getStarterPreset", presetBuildOptions, function(data) {
+            dataJSON = JSON.parse(data);
+            loadFromJSON(dataJSON);
+        });
     });
 
     $("#item-search-box").on('input', function() {

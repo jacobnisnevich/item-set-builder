@@ -6,4 +6,6 @@ var global = {
 	source_item_slots: '',
 	source_index_empty: '',
 	MAX_ITEMS: 10,
+	sortedKeys: '',
+	mapNames: ["SR", "TT", "DM", "ASC", "PG"]
 };

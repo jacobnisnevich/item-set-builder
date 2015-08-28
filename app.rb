@@ -4,6 +4,8 @@ require 'httparty'
 
 require File.expand_path('../lib/item-set-builder.rb', __FILE__)
 
+HTTParty::Basement.default_options.update(verify: false)
+
 itemAPI = 'https://global.api.pvp.net/api/lol/static-data/na/v1.2/item?locale=en_US&itemListData=all&api_key=' + ENV["LOL_KEY"]
 champAPI = 'https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?api_key=' + ENV["LOL_KEY"]
 
@@ -28,6 +30,19 @@ get '/getChamps' do
   response.parsed_response['data'].to_json
 end
 
-post '/uploadJSON' do
-  params[:files][0][:tempfile].read.to_json
+post '/setSummary' do
+  response = HTTParty.get(itemAPI)
+  itemParser = ItemParser.new(response.parsed_response)
+  setParser = SetParser.new(params, itemParser.getItems)
+  setParser.summary.to_json
+end
+
+post '/getChampBuild' do 
+  champGGParser = ChampGGParser.new()
+  champGGParser.getChampionBuild(params[:key], params[:type]).to_json
+end
+
+post '/getStarterPreset' do
+  starterPresets = StarterPresets.new()
+  starterPresets.getStarterPreset(params[:preset]).to_json
 end

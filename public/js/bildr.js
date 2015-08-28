@@ -1,8 +1,11 @@
+
 var global = {
 	setName: 'Unnamed_Item_Set',
 	selectedMap: '',
 	selectedMode: '',
-	selectedChamp: ''
+	selectedChamp: '',
+	sortedKeys: '',
+	mapNames: ["SR", "TT", "DM", "ASC", "PG"]
 };
 $(document).ready(function() {
     $("#item-set-add-block-button").click(function() {
@@ -54,6 +57,7 @@ $(document).ready(function() {
             $(this).prop('checked', false);
         });
         $(".item", $("#all-items")).show();
+        $(".item-block-name").click();
     });
 
     $("#upload-button").click(function() {
@@ -61,23 +65,26 @@ $(document).ready(function() {
     });
 
     $("#download-button").click(function() {
-        createJSONFile();
-        $('#download-instructions-box').openModal();
-
         var fileName = 'Unnamed Item Set.json';
-        if (global.setName) {
-            fileName = global.setName + '.json';
-        }
 
-        if (global.selectedChamp) {
-            $("#champ-set-instructions").show();
-            $("#global-set-instructions").hide();
-            $("#champKey").text(global.selectedChamp);
-            $(".fileName").text(fileName);
+        var validateResult = isValidFileName(fileName);
+
+        if (validateResult) {          
+            createJSONFile();
+            $('#download-instructions-box').openModal();
+
+            if (global.selectedChamp) {
+                $("#champ-set-instructions").show();
+                $("#global-set-instructions").hide();
+                $("#champKey").text(global.selectedChamp);
+                $(".fileName").text(fileName);
+            } else {
+                $("#global-set-instructions").show();
+                $("#champ-set-instructions").hide();
+                $(".fileName").text(fileName);
+            }
         } else {
-            $("#global-set-instructions").show();
-            $("#champ-set-instructions").hide();
-            $(".fileName").text(fileName);
+            return;
         }
     });
 
@@ -90,12 +97,118 @@ $(document).ready(function() {
         saveSessionData();
     });
 
+    $("#summary-button").click(function() {
+        $('#set-summary-box').openModal();
+
+        $('.summary-progress').show();
+        $('.summary-content').hide();
+
+        $.post('/setSummary', createJSONObject(), function(data) {
+            dataJSON = JSON.parse(data);
+
+            $('.summary-title').text(dataJSON.title);
+
+            $('.summary-total-cost').text(dataJSON.totalCost);
+            $('.summary-total-worth-lower').text(dataJSON.totalWorthLower);
+            $('.summary-total-worth-upper').text(dataJSON.totalWorthUpper);
+            $('.summary-total-efficiency-lower').text((Number(dataJSON.totalEfficiencyLower) * 100).toFixed(2) + '%');
+            $('.summary-total-efficiency-upper').text((Number(dataJSON.totalEfficiencyUpper) * 100).toFixed(2) + '%');
+
+            $(".summary-total-efficiency-lower").removeClass("item-efficiency-positive item-efficiency-negative item-efficiency-neutral");
+            $(".summary-total-efficiency-upper").removeClass("item-efficiency-positive item-efficiency-negative item-efficiency-neutral");
+
+            if (dataJSON.totalEfficiencyLower > 1) {
+                $('.summary-total-efficiency-lower').addClass('item-efficiency-positive');
+            } else if (dataJSON.totalEfficiencyLower < 1) {
+                $('.summary-total-efficiency-lower').addClass('item-efficiency-negative');
+            } else {
+                $('.summary-total-efficiency-lower').addClass('item-efficiency-neutral');
+            }
+
+            if (dataJSON.totalEfficiencyUpper > 1) {
+                $('.summary-total-efficiency-upper').addClass('item-efficiency-positive');
+            } else if (dataJSON.totalEfficiencyUpper < 1) {
+                $('.summary-total-efficiency-upper').addClass('item-efficiency-negative');
+            } else {
+                $('.summary-total-efficiency-upper').addClass('item-efficiency-neutral');
+            }
+
+            var yValues = [];
+            var xValues = [];
+
+            $.each(dataJSON.tagDistribution, function(index, object) {
+                yValues.push(index.replace(/([a-z])([A-Z])/g, '$1 $2'));
+                xValues.push(object);
+            });
+
+            var chartData = {
+                "type": "bar",
+                "background-color": "#9e9e9e",
+                "scale-x": {
+                    "values": yValues,
+                    "items-overlap": true,
+                    "item": {
+                        "font-angle": -45,
+                        "auto-align": true
+                    }
+                },
+                "plotarea":{
+                    "y": 20
+                },
+                "series": [
+                    { 
+                        "values": xValues,
+                        "background-color": "#757575"
+                    }
+                ]
+            };
+
+            zingchart.render({ 
+                id:'summary-tags-chart',
+                data: chartData,
+                height: 500,
+                width: $('#set-summary-box').width() - 50
+            });
+
+
+            $('.summary-progress').hide();
+            $('.summary-content').show();
+        });
+    })
+
     $("#about-button").click(function() {
         $('#help-about-box').openModal();
     });
 });
 
+// Validation Functions
+
+function isValidFileName(fileName) {
+    var isValid = true;
+
+    if (global.setName) {
+        fileName = global.setName + '.json';
+        global.sortedKeys.forEach(function(champKey) {
+            var champName = champKey;
+            if (isValid) {
+                global.mapNames.forEach(function(mapName) {
+                    if (global.setName == champName + mapName) {
+                        Materialize.toast("<span>Oh no, it seems you have a reserved set name! Find out more info <span><a href='https://developer.riotgames.com/docs/item-sets' target='_blank'>here<a>", 4000);
+                        isValid = false;
+                        return;
+                    }
+                });
+            } else {
+                return;
+            }
+        });
+    }
+
+    return isValid;
+}
+
 // Event handling functions
+
 function handleFileUpload(files) {
     var file = files[0];
 
@@ -184,12 +297,10 @@ function loadFromJSON(obj) {
 
     removeItemBlocks();
 
-    global = {
-        setName: obj.title,
-        selectedMap: obj.map,
-        selectedMode: obj.mode,
-        selectedChamp: ''
-    };
+    global.setName = obj.title;
+    global.selectedMap = obj.map;
+    global.selectedMode = obj.mode;
+    global.selectedChamp = '';
 
     $('#set-form-name').val(global.setName);
     $('*[data-map="' + global.selectedMap + '"]').addClass('map-selected');
@@ -206,6 +317,8 @@ function loadFromJSON(obj) {
 
         createItemBlock(blockName, itemsArray, itemCountsArray);
     });
+
+    $(".item-block-name").click();
 }
 
 function createJSONFile() {
@@ -478,7 +591,7 @@ $(document).ready(function() {
     });
 
     new Opentip("#champ-help-tooltip", "Pick one specific champion or none for a global item set");
-    new Opentip("#map-help-tooltip", "Pick one specific map or none for a global item set");  
+    new Opentip("#map-help-tooltip", "Pick one specific map or none for a global item set"); 
 
     $.get("/getItems", function(data) {
         dataJSON = JSON.parse(data);
@@ -522,8 +635,8 @@ $(document).ready(function() {
 
     $.get("/getChamps", function(data) {
         dataJSON = JSON.parse(data);
-        sortedKeys = Object.keys(dataJSON).sort()
-        sortedKeys.forEach(function(champName) {
+        global.sortedKeys = Object.keys(dataJSON).sort()
+        global.sortedKeys.forEach(function(champName) {
             $(".champ-container").append('<div class="col s1 no-padding"><img class="champ-select" data-champ="' + dataJSON[champName]["key"] + '" id="' + dataJSON[champName]["key"] + '" src="images/champs/' + dataJSON[champName]["key"] + '.png" alt="' + dataJSON[champName]["name"] + '"></div>');
             new Opentip("#" + dataJSON[champName]["key"], dataJSON[champName]["name"]);              
         });
@@ -546,7 +659,7 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', ".champ-select", function() {
+    $(document).on('click', "#champion-selection .champ-select", function() {
         if (global.selectedChamp == '') {
             global.selectedChamp = $(this).data('champ');
             $(this).addClass('champ-selected');
@@ -558,6 +671,29 @@ $(document).ready(function() {
             global.selectedChamp = $(this).data('champ');
             $(this).addClass('champ-selected');
         }
+    });
+
+    $(document).on('click', "#champion-build-selection .champ-select", function() {
+        var champBuildOptions = {
+            "key": $(this).data('champ'),
+            "type": $("input[name=build-type]:checked").val()
+        };
+
+        $.post("/getChampBuild", champBuildOptions, function(data) {
+            dataJSON = JSON.parse(data);
+            loadFromJSON(dataJSON);
+        });
+    });
+
+    $(document).on('click', ".preset-select", function() {
+        var presetBuildOptions = {
+            "preset": $(this).text()
+        };
+
+        $.post("/getStarterPreset", presetBuildOptions, function(data) {
+            dataJSON = JSON.parse(data);
+            loadFromJSON(dataJSON);
+        });
     });
 
     $("#item-search-box").on('input', function() {

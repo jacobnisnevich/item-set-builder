@@ -21,23 +21,26 @@ $(document).ready(function() {
     });
 
     $("#download-button").click(function() {
-        createJSONFile();
-        $('#download-instructions-box').openModal();
-
         var fileName = 'Unnamed Item Set.json';
-        if (global.setName) {
-            fileName = global.setName + '.json';
-        }
 
-        if (global.selectedChamp) {
-            $("#champ-set-instructions").show();
-            $("#global-set-instructions").hide();
-            $("#champKey").text(global.selectedChamp);
-            $(".fileName").text(fileName);
+        var validateResult = isValidFileName(fileName);
+
+        if (validateResult) {          
+            createJSONFile();
+            $('#download-instructions-box').openModal();
+
+            if (global.selectedChamp) {
+                $("#champ-set-instructions").show();
+                $("#global-set-instructions").hide();
+                $("#champKey").text(global.selectedChamp);
+                $(".fileName").text(fileName);
+            } else {
+                $("#global-set-instructions").show();
+                $("#champ-set-instructions").hide();
+                $(".fileName").text(fileName);
+            }
         } else {
-            $("#global-set-instructions").show();
-            $("#champ-set-instructions").hide();
-            $(".fileName").text(fileName);
+            return;
         }
     });
 
@@ -50,12 +53,118 @@ $(document).ready(function() {
         saveSessionData();
     });
 
+    $("#summary-button").click(function() {
+        $('#set-summary-box').openModal();
+
+        $('.summary-progress').show();
+        $('.summary-content').hide();
+
+        $.post('/setSummary', createJSONObject(), function(data) {
+            dataJSON = JSON.parse(data);
+
+            $('.summary-title').text(dataJSON.title);
+
+            $('.summary-total-cost').text(dataJSON.totalCost);
+            $('.summary-total-worth-lower').text(dataJSON.totalWorthLower);
+            $('.summary-total-worth-upper').text(dataJSON.totalWorthUpper);
+            $('.summary-total-efficiency-lower').text((Number(dataJSON.totalEfficiencyLower) * 100).toFixed(2) + '%');
+            $('.summary-total-efficiency-upper').text((Number(dataJSON.totalEfficiencyUpper) * 100).toFixed(2) + '%');
+
+            $(".summary-total-efficiency-lower").removeClass("item-efficiency-positive item-efficiency-negative item-efficiency-neutral");
+            $(".summary-total-efficiency-upper").removeClass("item-efficiency-positive item-efficiency-negative item-efficiency-neutral");
+
+            if (dataJSON.totalEfficiencyLower > 1) {
+                $('.summary-total-efficiency-lower').addClass('item-efficiency-positive');
+            } else if (dataJSON.totalEfficiencyLower < 1) {
+                $('.summary-total-efficiency-lower').addClass('item-efficiency-negative');
+            } else {
+                $('.summary-total-efficiency-lower').addClass('item-efficiency-neutral');
+            }
+
+            if (dataJSON.totalEfficiencyUpper > 1) {
+                $('.summary-total-efficiency-upper').addClass('item-efficiency-positive');
+            } else if (dataJSON.totalEfficiencyUpper < 1) {
+                $('.summary-total-efficiency-upper').addClass('item-efficiency-negative');
+            } else {
+                $('.summary-total-efficiency-upper').addClass('item-efficiency-neutral');
+            }
+
+            var yValues = [];
+            var xValues = [];
+
+            $.each(dataJSON.tagDistribution, function(index, object) {
+                yValues.push(index.replace(/([a-z])([A-Z])/g, '$1 $2'));
+                xValues.push(object);
+            });
+
+            var chartData = {
+                "type": "bar",
+                "background-color": "#9e9e9e",
+                "scale-x": {
+                    "values": yValues,
+                    "items-overlap": true,
+                    "item": {
+                        "font-angle": -45,
+                        "auto-align": true
+                    }
+                },
+                "plotarea":{
+                    "y": 20
+                },
+                "series": [
+                    { 
+                        "values": xValues,
+                        "background-color": "#757575"
+                    }
+                ]
+            };
+
+            zingchart.render({ 
+                id:'summary-tags-chart',
+                data: chartData,
+                height: 500,
+                width: $('#set-summary-box').width() - 50
+            });
+
+
+            $('.summary-progress').hide();
+            $('.summary-content').show();
+        });
+    })
+
     $("#about-button").click(function() {
         $('#help-about-box').openModal();
     });
 });
 
+// Validation Functions
+
+function isValidFileName(fileName) {
+    var isValid = true;
+
+    if (global.setName) {
+        fileName = global.setName + '.json';
+        global.sortedKeys.forEach(function(champKey) {
+            var champName = champKey;
+            if (isValid) {
+                global.mapNames.forEach(function(mapName) {
+                    if (global.setName == champName + mapName) {
+                        Materialize.toast("<span>Oh no, it seems you have a reserved set name! Find out more info <span><a href='https://developer.riotgames.com/docs/item-sets' target='_blank'>here<a>", 4000);
+                        isValid = false;
+                        return;
+                    }
+                });
+            } else {
+                return;
+            }
+        });
+    }
+
+    return isValid;
+}
+
 // Event handling functions
+
 function handleFileUpload(files) {
     var file = files[0];
 
@@ -144,12 +253,10 @@ function loadFromJSON(obj) {
 
     removeItemBlocks();
 
-    global = {
-        setName: obj.title,
-        selectedMap: obj.map,
-        selectedMode: obj.mode,
-        selectedChamp: ''
-    };
+    global.setName = obj.title;
+    global.selectedMap = obj.map;
+    global.selectedMode = obj.mode;
+    global.selectedChamp = '';
 
     $('#set-form-name').val(global.setName);
     $('*[data-map="' + global.selectedMap + '"]').addClass('map-selected');
