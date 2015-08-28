@@ -462,6 +462,36 @@ consumable {
     transition: all 0.5s ease;
 }
 
+.very-little-padding {
+    padding: 0 2px !important;
+}
+
+.preset-select {
+    height: 48px;
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+
+.preset-select:hover {
+    cursor: pointer;
+
+    -webkit-filter: contrast(50%);
+    -moz-filter: contrast(50%);
+    -ms-filter: contrast(50%);
+    -o-filter: contrast(50%);
+    filter: contrast(50%);
+
+    -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+    -moz-transition: all 0.5s ease; /* Firefox */
+    -ms-transition: all 0.5s ease; /* IE 9 */
+    -o-transition: all 0.5s ease; /* Opera */
+    transition: all 0.5s ease;
+}
+
+.preset-select span {
+    width: 100%;
+}
+
 .help-tooltip {
     cursor: pointer;
 }
