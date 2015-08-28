@@ -26,6 +26,9 @@
         h3 {
             font-size: 1.5rem
         }
+        h4 {
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 
@@ -76,6 +79,8 @@
         <p>Saving your item set works by utilizing the <code>localStorage</code> functionality of modern browsers. If for some reason you neeed to clear your saved item set, simply hit <em>Reset</em> and then <em>Save</em>.</p>
         <p><em>(Note: you can only have one item set saved at a time and clicking</em> Save <em>will overwrite any previously saved item set)</em>
         </p>
+        <h3><a id="Reset_Item_Set_58"></a>Reset Item Set</h3>
+        <p>Item sets that you are currently working with can be completely reset by clicking the <em>Reset</em> button in the horizontal menu bar. Note that this will reset all items in the item block viewer as well as information in the <em>Set Info</em> tab. Also note that there is no way to recover your item set after you have hit reset unless you have saved your item set as <em>Reset</em> does not reset your saved item set.</p>
         <h3><a id="Item_Block_Manipulation_58"></a>Item Block Manipulation</h3>
         <p>In the item block manipulation panel, the user has four possible ways to manipulate item sets:</p>
         <ol>
@@ -95,6 +100,14 @@
         <h3><a id="Item_Set_Info_and_Properties_83"></a>Item Set Info and Properties</h3>
         <p>In the <em>Set Info</em> tab of the left-side menu, users can set the item set name, specific map and mode, and specific champion. Leaving the map and champion un-selected leaves the item set as global. Uploading and downloading the item set will incorporate this information in the JSON data.</p>
         <p>Champion data is collected from the Riot Games <code>static-data</code> API endpoint with champion icon images taken from <a href="http://ddragon.leagueoflegends.com/tool">Data Dragon</a>. Map images are screen-captured from the League of Legends client and cropped horizontally.</p>
+        <h3><a id="Item_Set_Presets_93"></a>Item Set Presets</h3>
+        <p>If you don’t have any currently saved item sets to work with and don’t want to start from scratch, <em><em>bild</em>r</em> lets you choose from a variety of presets to serve as starting points for your item set builds. These preset item sets can be chosen from the <em>Presets</em> tab in the left-side menu.</p>
+        <h4><a id="Starting_Build_Presets_97"></a>Starting Build Presets</h4>
+        <p>The first kind of preset you can choose from is a preset starting build. Choose from Support AP, Support Melee, AD Carry, Mid Lane AP, Mid Lane AD, Jungle, Top Lane Tank, Top Lane AD, or Top Lane AP and have the appropriate items automatically placed into your item block viewer. These presets serve as a starting point for your item set, allowing you to jump straight into your core build items.</p>
+        <h4><a id="Championgg_Presets_101"></a><a href="http://Champion.gg">Champion.gg</a> Presets</h4>
+        <p>The second kind of preset item sets is a full item set scraped from <a href="http://champion.gg">Champion.gg</a>. Inspired by RiotBlackrook’s <a href="https://www.reddit.com/r/leagueoflegends/comments/2xfovt/i_wrote_a_script_to_generate_item_sets_from/">script</a> and <a href="https://github.com/dustinblackman/">dustinblackman</a>'s <a href="https://github.com/dustinblackman/Championify">Championify</a> app, <strong>bildr</strong> includes a Ruby implementation of these popular <a href="http://Champion.gg">Champion.gg</a> scrapers. <strong>bildr</strong> lets you choose item sets by <em>Most Frequent</em> or <em>Highest Winrate</em> for all champions.</p>
+        <h3><a id="Set_Summary_105"></a>Set Summary</h3>
+        <p>Another major feature of <strong>bildr</strong> is the <em>Set Summary</em> view that can be brought up by clicking the <em>Set Summary</em> button in the top navigation menu. The <em>Set Summary</em> view essentially compiles all individual item data for your build and includes total cost, total efficiency, and a distribution of item tags. The total efficiency display includes the lower and upper bounds for efficiency, as many items, stacking items in particular, can have a wide range of efficiencies. <em>Set Summary</em> allows you to compare similar builds by a variety of parameters such as efficiency and how many items each build contains of a particular type.</p>
         <h2><a id="Creators_89"></a>Creators</h2>
         <p><strong>Jacob Nisnevich</strong>
         </p>
