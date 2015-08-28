@@ -79,11 +79,7 @@ In order to help find the items you want, **bildr** incorporates the filtering s
 
 The drag-and-drop functionality built in to **bildr** utilizes the HTML5 standard for drag-and-drop, and as such supports a wide variety of browsers. Unfortunately, mobile browsers are not supported at this time.
 
-In addition to all the information found in the League of Legends shop being available in tooltips over each item, the tooltips also include information on gold efficiency where applicable. The item data is taken from the League of Legends `static-data` API endpoint with item images taken from [Data Dragon](http://ddragon.leagueoflegends.com/tool). The information for item efficiency is parsed into a usable JSON format with Ruby scripts from a [fan-made spreadsheet](https://docs.google.com/spreadsheets/d/1ASPk9DIQug-3x7d2ZZ5PU7c7-NiE9Tj5q3MgeIYZoc4/edit#gid=2147374466) and merged into a single file with the data from the Riot Games API. This merged data can be retrieved publicly from:
-
-```
-http://bildr.co/getItems
-```
+In addition to all the information found in the League of Legends shop being available in tooltips over each item, the tooltips also include information on gold efficiency where applicable. The item data is taken from the League of Legends `static-data` API endpoint with item images taken from [Data Dragon](http://ddragon.leagueoflegends.com/tool). The information for item efficiency is parsed into a usable JSON format with Ruby scripts from a [fan-made spreadsheet](https://docs.google.com/spreadsheets/d/1ASPk9DIQug-3x7d2ZZ5PU7c7-NiE9Tj5q3MgeIYZoc4/edit#gid=2147374466) and merged into a single file with the data from the Riot Games API.
 
 ### Item Set Info and Properties
 
