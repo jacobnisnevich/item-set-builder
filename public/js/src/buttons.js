@@ -1,4 +1,4 @@
-//scripts for Reset/Upload/Download/Save
+// Scripts for Reset/Upload/Download/Save
 
 $(document).ready(function() {
 	if (localStorage.getItem('itemSetBuilderData') != null && localStorage.getItem('itemSetBuilderData') != '') {
