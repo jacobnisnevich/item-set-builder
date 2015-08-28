@@ -56,6 +56,10 @@ Saving your item set works by utilizing the ```localStorage``` functionality of 
 
 *(Note: you can only have one item set saved at a time and clicking* Save *will overwrite any previously saved item set)*
 
+### Reset Item Set
+
+Item sets that you are currently working with can be completely reset by clicking the *Reset* button in the horizontal menu bar. Note that this will reset all items in the item block viewer as well as information in the _Set Info_ tab. Also note that there is no way to recover your item set after you have hit reset unless you have saved your item set as *Reset* does not reset your saved item set.
+
 ### Item Block Manipulation
 
 In the item block manipulation panel, the user has four possible ways to manipulate item sets:
@@ -86,6 +90,22 @@ http://bildr.co/getItems
 In the _Set Info_ tab of the left-side menu, users can set the item set name, specific map and mode, and specific champion. Leaving the map and champion un-selected leaves the item set as global. Uploading and downloading the item set will incorporate this information in the JSON data. 
 
 Champion data is collected from the Riot Games  `static-data` API endpoint with champion icon images taken from [Data Dragon](http://ddragon.leagueoflegends.com/tool). Map images are screen-captured from the League of Legends client and cropped horizontally.
+
+### Item Set Presets
+
+If you don't have any currently saved item sets to work with and don't want to start from scratch, **bild*r* lets you choose from a variety of presets to serve as starting points for your item set builds. These preset item sets can be chosen from the _Presets_ tab in the left-side menu.
+
+#### Starting Build Presets
+
+The first kind of preset you can choose from is a preset starting build. Choose from Support AP, Support Melee, AD Carry, Mid Lane AP, Mid Lane AD, Jungle, Top Lane Tank, Top Lane AD, or Top Lane AP and have the appropriate items automatically placed into your item block viewer. These presets serve as a starting point for your item set, allowing you to jump straight into your core build items.
+
+#### Champion.gg Presets
+
+The second kind of preset item sets is a full item set scraped from [Champion.gg](http://champion.gg). Inspired by RiotBlackrook's [script](https://www.reddit.com/r/leagueoflegends/comments/2xfovt/i_wrote_a_script_to_generate_item_sets_from/) and [dustinblackman](https://github.com/dustinblackman/)'s [Championify](https://github.com/dustinblackman/Championify) app, **bildr** includes a Ruby implementation of these popular Champion.gg scrapers. **bildr** lets you choose item sets by *Most Frequent* or *Highest Winrate* for all champions.
+
+### Set Summary
+
+Another major feature of **bildr** is the _Set Summary_ view that can be brought up by clicking the *Set Summary* button in the top navigation menu. The _Set Summary_ view essentially compiles all individual item data for your build and includes total cost, total efficiency, and a distribution of item tags. The total efficiency display includes the lower and upper bounds for efficiency, as many items, stacking items in particular, can have a wide range of efficiencies. _Set Summary_ allows you to compare similar builds by a variety of parameters such as efficiency and how many items each build contains of a particular type.
 
 ## Creators
 
