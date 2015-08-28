@@ -4,6 +4,9 @@ var global = {
 	selectedMap: '',
 	selectedMode: '',
 	selectedChamp: '',
+	source_item_slots: '',
+	source_index_empty: '',
+	MAX_ITEMS: 10,
 	sortedKeys: '',
 	mapNames: ["SR", "TT", "DM", "ASC", "PG"]
 };
@@ -380,8 +383,18 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
+    var isEmpty = false;
     ev.dataTransfer.setData("text", ev.target.id);
     ev.dataTransfer.setData("parent", ev.target.parentElement.className);
+    global.source_item_slots = $(ev.target.parentElement).parent().children();
+    global.source_item_slots.each(function() {
+        if ($(this).find('img').length == 0) {
+            global.source_index_empty = $(this).parent().children().index($(this));
+            isEmpty = true;
+            return false;
+        }
+    });
+    if (!isEmpty) {global.source_index_empty = global.MAX_ITEMS - 1}
     if (ev.target.parentElement.className.indexOf("item-slots")) {
         ev.dataTransfer.setData("index", $(ev.target.parentElement).parent().children().index($(ev.target.parentElement)));
     }
@@ -389,11 +402,23 @@ function drag(ev) {
 
 function drop(ev) {
     ev.preventDefault();
+    //if dropping into trash
+    if (ev.target.id == "trash") {
+        if (global.source_item_slots.filter(".item-slot").length == 0) {//from all-items
+            return;
+        }
+        var index = Number(ev.dataTransfer.getData("index"));
+        scootRight(index, global.source_index_empty, global.source_item_slots);
+        global.source_item_slots.eq(global.source_index_empty).children().remove("img");
+        return;
+    }
+
+    //else dropping into item-set builder
     var data = ev.dataTransfer.getData("text");
     var slot_filled = $(ev.target.parentElement).not(".item-slot").length == 0;
     var item_slots;
     var index_drop;  //index of dropped item
-    var index_empty = 10; //index of first empty slot
+    var index_empty = global.MAX_ITEMS; //index of first empty slot
     if(slot_filled) {
         item_slots = $(ev.target.parentElement).parent().children();
         index_drop = item_slots.index(ev.target.parentElement);
@@ -415,8 +440,15 @@ function drop(ev) {
         });
     }
 
-    //if dragging item from item-set block
-    if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1) {
+    //if dragging from one item-set block to another
+    if (global.source_item_slots.filter(".item-slot").length > 0 && !global.source_item_slots.is(item_slots)) {
+        //delete source item if source is another item-slot block
+        var index = Number(ev.dataTransfer.getData("index"));
+        scootRight(index, global.source_index_empty, global.source_item_slots);
+        global.source_item_slots.eq(global.source_index_empty).children().remove("img");
+    }
+    //if dragging item from item-set block to same item-set block
+    else if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1 && item_slots.is(global.source_item_slots)) {
         var index_source = Number(ev.dataTransfer.getData("index"));
         if (slot_filled) {
             if (index_source > index_drop) { //source > destination
@@ -431,15 +463,15 @@ function drop(ev) {
                         { 
                             $(countElement).html(++countNumber);
                             $(countElement).show();
-                            scootRight(ev, data, index_source, index_empty - 1, item_slots);
-                            item_slots.eq(index_empty - 1).remove();
+                            scootRight(index_source, index_empty - 1, item_slots);
+                            item_slots.eq(index_empty - 1).remove("img");
                         } else { //reached stack cap
-                            scootRight(ev, data, index_drop, index_source, item_slots);
+                            scootRight(index_drop, index_source, item_slots);
                         }
                     } //else swapping same item so do nothing
                 }
                 else { //not same item
-                    scootLeft(ev, data, index_drop, index_source, item_slots);
+                    scootLeft(index_drop, index_source, item_slots);
                 }
             }
             else { //source < destination
@@ -455,23 +487,23 @@ function drop(ev) {
                         { 
                             $(countElement).html(++countNumber);
                             $(countElement).show();
-                            scootRight(ev, data, index_source, index_empty - 1, item_slots);
-                            item_slots.eq(index_empty - 1).remove();
+                            scootRight(index_source, index_empty - 1, item_slots);
+                            item_slots.eq(index_empty - 1).remove("img");
                         } else { //reached stack cap
-                            scootLeft(ev, data, index_source, index_drop, item_slots);
+                            scootLeft(index_source, index_drop, item_slots);
                         }
                     } //else swapping same item so do nothing
                 }
                 else { //not same item
-                    scootRight(ev, data, index_source, index_drop, item_slots);
+                    scootRight(index_source, index_drop, item_slots);
                 }
             }
         }
         else { //empty, scoot
-            scootRight(ev, data, index_source, index_empty - 1, item_slots);
+            scootRight(index_source, index_empty - 1, item_slots);
         }
     }
-    else { //came from all-items box
+    else { //came from all-items box or from another item-slot block
         //if slot has item
         if (slot_filled) {
             //stack if item is stackable
@@ -487,12 +519,12 @@ function drop(ev) {
                     $(countElement).show();
                 } else if (!isFull()) { //not stackable item or reached stack cap
                     item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
-                    scootLeft(ev,data, index_drop, index_empty, item_slots);
+                    scootLeft(index_drop, index_empty, item_slots);
                 }
             }
             else if (!isFull()) { //not same item
                 item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
-                scootLeft(ev,data, index_drop, index_empty, item_slots);
+                scootLeft(index_drop, index_empty, item_slots);
             }
         }
         else { //empty, append to end
@@ -502,7 +534,7 @@ function drop(ev) {
 }
 
 //scoots items from index_end to index_start
-function scootLeft(ev, data, index_start, index_end, item_slots) {
+function scootLeft(index_start, index_end, item_slots) {
     for (var i = index_end - 1; i >= index_start; i--) {
         var leftCountElement = $(item_slots.eq(i).find('.item-count'));
         var leftCountNumber = Number(item_slots.eq(i).find('.item-count').html());
@@ -529,7 +561,7 @@ function scootLeft(ev, data, index_start, index_end, item_slots) {
 }
 
 //scoots items from index_start to index_end
-function scootRight(ev, data, index_start, index_end, item_slots) {
+function scootRight(index_start, index_end, item_slots) {
     for (var i = index_start; i < index_end; i++) {
         var leftCountElement = $(item_slots.eq(i + 1).find('.item-count'));
         var leftCountNumber = Number(item_slots.eq(i + 1).find('.item-count').html());
