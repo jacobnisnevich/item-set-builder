@@ -30,6 +30,8 @@ function drop(ev) {
         var index = Number(ev.dataTransfer.getData("index"));
         scootRight(index, global.source_index_empty, global.source_item_slots);
         global.source_item_slots.eq(global.source_index_empty).children().remove("img");
+        global.source_item_slots.eq(global.source_index_empty).find(".item-count").html(1);
+        global.source_item_slots.eq(global.source_index_empty).find(".item-count").hide();
         return;
     }
 
@@ -65,7 +67,9 @@ function drop(ev) {
         //delete source item if source is another item-slot block
         var index = Number(ev.dataTransfer.getData("index"));
         scootRight(index, global.source_index_empty, global.source_item_slots);
-        global.source_item_slots.eq(global.source_index_empty).children().remove("img");
+        global.source_item_slots.eq(global.source_item_slots).children().remove("img");
+        global.source_item_slots.eq(global.source_item_slots).find(".item-count").html(1);
+        global.source_item_slots.eq(global.source_index_empty).find(".item-count").hide();
     }
     //if dragging item from item-set block to same item-set block
     else if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1 && item_slots.is(global.source_item_slots)) {
@@ -85,6 +89,8 @@ function drop(ev) {
                             $(countElement).show();
                             scootRight(index_source, index_empty - 1, item_slots);
                             item_slots.eq(index_empty - 1).remove("img");
+                            item_slots.eq(index_empty - 1).find(".item-count").html(1);
+                            item_slots.eq(index_empty - 1).find(".item-count").hide();
                         } else { //reached stack cap
                             scootRight(index_drop, index_source, item_slots);
                         }
@@ -109,6 +115,8 @@ function drop(ev) {
                             $(countElement).show();
                             scootRight(index_source, index_empty - 1, item_slots);
                             item_slots.eq(index_empty - 1).remove("img");
+                            item_slots.eq(index_empty - 1).find(".item-count").html(1);
+                            item_slots.eq(index_empty - 1).find(".item-count").hide();
                         } else { //reached stack cap
                             scootLeft(index_source, index_drop, item_slots);
                         }
