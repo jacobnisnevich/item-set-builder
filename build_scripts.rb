@@ -1,5 +1,13 @@
-javaPath    = "C:/Program Files (x86)/Java/jre1.8.0_45/bin/java.exe" 
-closurePath = "C:/Tools/closure-compiler/compiler.jar"
+javaPath = ""
+closurePath = ""
+
+if ARGV[0] == "jacob"
+  javaPath = "C:/Program Files (x86)/Java/jre1.8.0_45/bin/java.exe" 
+  closurePath = "C:/Tools/closure-compiler/compiler.jar"
+elsif ARGV[0] == "jason"
+  javaPath = "/usr/bin/java" 
+  closurePath = "/Users/jasonyang/Desktop/compiler.jar"
+end
 
 version = "0.1.2"
 
