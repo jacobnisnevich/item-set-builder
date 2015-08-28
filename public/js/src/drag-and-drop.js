@@ -149,7 +149,7 @@ function drop(ev) {
                 { 
                     $(countElement).html(++countNumber);
                     $(countElement).show();
-                } else if (!isFull()) { // not stackable item or reached stack cap
+                } else if (!isFull(item_slots)) { // not stackable item or reached stack cap
                     item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
                     if (!isNaN(number) && number > 1) {
                         item_slots.eq(index_empty).children().filter(".item-count").html(number);
@@ -158,7 +158,7 @@ function drop(ev) {
                     scootLeft(index_drop, index_empty, item_slots);
                 }
             }
-            else if (!isFull()) { // not same item
+            else if (!isFull(item_slots)) { // not same item
                 item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
                 if (!isNaN(number) && number > 1) {
                     item_slots.eq(index_empty).children().filter(".item-count").html(number);
@@ -232,9 +232,9 @@ function scootRight(index_start, index_end, item_slots) {
 }
 
 // returns true if item-slots are full
-function isFull() {
+function isFull(itemSlots) {
     var returnval = true;
-    $(".item-slots").children().each(function() {
+    itemSlots.each(function() {
         if ($(this).find('img').length == 0) {
             returnval = false;
             return false;
