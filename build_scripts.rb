@@ -6,7 +6,7 @@ if ARGV[0] == "jacob"
   closurePath = "C:/Tools/closure-compiler/compiler.jar"
 elsif ARGV[0] == "jason"
   javaPath = "/usr/bin/java" 
-  closurePath = "/usr/local/bin/closure-compiler"
+  closurePath = "/Users/jasonyang/Desktop/compiler.jar"
 end
 
 version = "0.1.2"
