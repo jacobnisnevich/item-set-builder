@@ -151,6 +151,7 @@ function drop(ev) {
                     $(countElement).show();
                 } else if (!isFull(item_slots)) { // not stackable item or reached stack cap
                     item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
+                    item_slots.eq(index_empty).show();
                     if (!isNaN(number) && number > 1) {
                         item_slots.eq(index_empty).children().filter(".item-count").html(number);
                         item_slots.eq(index_empty).children().filter(".item-count").show();
@@ -160,6 +161,7 @@ function drop(ev) {
             }
             else if (!isFull(item_slots)) { // not same item
                 item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
+                item_slots.eq(index_empty).show();
                 if (!isNaN(number) && number > 1) {
                     item_slots.eq(index_empty).children().filter(".item-count").html(number);
                     item_slots.eq(index_empty).children().filter(".item-count").show();
@@ -169,6 +171,7 @@ function drop(ev) {
         }
         else { // empty, append to end
             item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
+            item_slots.eq(index_empty).show();
             if (!isNaN(number) && number > 1) {
                 item_slots.eq(index_empty).children().filter(".item-count").html(number);
                 item_slots.eq(index_empty).children().filter(".item-count").show();
