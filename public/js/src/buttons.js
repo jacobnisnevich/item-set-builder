@@ -256,7 +256,6 @@ function loadFromJSON(obj) {
     global.setName = obj.title;
     global.selectedMap = obj.map;
     global.selectedMode = obj.mode;
-    global.selectedChamp = '';
 
     $('#set-form-name').val(global.setName);
     $('*[data-map="' + global.selectedMap + '"]').addClass('map-selected');

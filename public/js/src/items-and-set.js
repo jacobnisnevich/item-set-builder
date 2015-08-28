@@ -96,10 +96,10 @@ $(document).ready(function() {
             global.selectedChamp = $(this).data('champ');
             $(this).addClass('champ-selected');
         } else if (global.selectedChamp == $(this).data('champ')) {
-            $('*[data-champ="' + global.selectedChamp + '"]').removeClass('champ-selected');
+            $('#champion-selection .champ-select[data-champ="' + global.selectedChamp + '"]').removeClass('champ-selected');
             global.selectedChamp = '';   
         } else {
-            $('*[data-champ="' + global.selectedChamp + '"]').removeClass('champ-selected');
+            $('#champion-selection .champ-select[data-champ="' + global.selectedChamp + '"]').removeClass('champ-selected');
             global.selectedChamp = $(this).data('champ');
             $(this).addClass('champ-selected');
         }
@@ -115,6 +115,10 @@ $(document).ready(function() {
             dataJSON = JSON.parse(data);
             loadFromJSON(dataJSON);
         });
+
+        $('#champion-selection .champ-select[data-champ="' + global.selectedChamp + '"]').removeClass('champ-selected');
+        global.selectedChamp = $(this).data('champ');
+        $('#champion-selection .champ-select[data-champ="' + global.selectedChamp + '"]').addClass('champ-selected');
     });
 
     $(document).on('click', ".preset-select", function() {

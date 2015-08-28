@@ -9,7 +9,7 @@ elsif ARGV[0] == "jason"
   closurePath = "/Users/jasonyang/Desktop/compiler.jar"
 end
 
-version = "0.1.2"
+version = "0.2.1"
 
 combinedOutputPath = "public/js/bildr.js"
 minifiedOutputPath = "public/js/bildr-min-#{version}.js"
