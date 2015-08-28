@@ -17,6 +17,7 @@ function drag(ev) {
     if (!isEmpty) {global.source_index_empty = global.MAX_ITEMS - 1}
     if (ev.target.parentElement.className.indexOf("item-slots")) {
         ev.dataTransfer.setData("index", $(ev.target.parentElement).parent().children().index($(ev.target.parentElement)));
+        ev.dataTransfer.setData("number", $(ev.target.parentElement).children().filter(".item-count").html());
     }
 }
 
@@ -62,17 +63,9 @@ function drop(ev) {
         });
     }
 
-    // if dragging from one item-set block to another
-    if (global.source_item_slots.filter(".item-slot").length > 0 && !global.source_item_slots.is(item_slots)) {
-        //delete source item if source is another item-slot block
-        var index = Number(ev.dataTransfer.getData("index"));
-        scootRight(index, global.source_index_empty, global.source_item_slots);
-        global.source_item_slots.eq(global.source_index_empty).children().remove("img");
-        global.source_item_slots.eq(global.source_index_empty).find(".item-count").html(1);
-        global.source_item_slots.eq(global.source_index_empty).find(".item-count").hide();
-    }
+    
     // if dragging item from item-set block to same item-set block
-    else if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1 && item_slots.is(global.source_item_slots)) {
+    if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1 && item_slots.is(global.source_item_slots)) {
         var index_source = Number(ev.dataTransfer.getData("index"));
         if (slot_filled) {
             if (index_source > index_drop) { //source > destination
@@ -132,6 +125,17 @@ function drop(ev) {
         }
     }
     else { // came from all-items box or from another item-slot block
+        var number = Number(ev.dataTransfer.getData("number"));
+        // if dragging from one item-set block to another
+        if (global.source_item_slots.filter(".item-slot").length > 0 && !global.source_item_slots.is(item_slots)) {
+            // delete source item if source is another item-slot block
+            var index = Number(ev.dataTransfer.getData("index"));
+            scootRight(index, global.source_index_empty, global.source_item_slots);
+            global.source_item_slots.eq(global.source_index_empty).children().remove("img");
+            global.source_item_slots.eq(global.source_index_empty).find(".item-count").html(1);
+            global.source_item_slots.eq(global.source_index_empty).find(".item-count").hide();
+        }
+
         // if slot has item
         if (slot_filled) {
             //stack if item is stackable
@@ -147,16 +151,28 @@ function drop(ev) {
                     $(countElement).show();
                 } else if (!isFull()) { // not stackable item or reached stack cap
                     item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
+                    if (!isNaN(number) && number > 1) {
+                        item_slots.eq(index_empty).children().filter(".item-count").html(number);
+                        item_slots.eq(index_empty).children().filter(".item-count").show();
+                    }
                     scootLeft(index_drop, index_empty, item_slots);
                 }
             }
             else if (!isFull()) { // not same item
                 item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
+                if (!isNaN(number) && number > 1) {
+                    item_slots.eq(index_empty).children().filter(".item-count").html(number);
+                    item_slots.eq(index_empty).children().filter(".item-count").show();
+                }
                 scootLeft(index_drop, index_empty, item_slots);
             }
         }
         else { // empty, append to end
             item_slots.eq(index_empty).append(document.getElementById(data).cloneNode(true));
+            if (!isNaN(number) && number > 1) {
+                item_slots.eq(index_empty).children().filter(".item-count").html(number);
+                item_slots.eq(index_empty).children().filter(".item-count").show();
+            }
         }
     }
 }
