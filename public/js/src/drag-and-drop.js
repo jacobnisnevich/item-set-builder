@@ -67,9 +67,9 @@ function drop(ev) {
         //delete source item if source is another item-slot block
         var index = Number(ev.dataTransfer.getData("index"));
         scootRight(index, global.source_index_empty, global.source_item_slots);
-        global.source_item_slots.eq(global.source_item_slots).children().remove("img");
-        global.source_item_slots.eq(global.source_item_slots).find(".item-count").html(1);
-        global.source_item_slots.eq(global.source_item_slots).find(".item-count").hide();
+        global.source_item_slots.eq(global.source_index_empty).children().remove("img");
+        global.source_item_slots.eq(global.source_index_empty).find(".item-count").html(1);
+        global.source_item_slots.eq(global.source_index_empty).find(".item-count").hide();
     }
     // if dragging item from item-set block to same item-set block
     else if (ev.dataTransfer.getData("parent").indexOf("item-slot") > -1 && item_slots.is(global.source_item_slots)) {
