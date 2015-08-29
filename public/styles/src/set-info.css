@@ -1,0 +1,84 @@
+/** Set Info **/
+
+/* Container */
+
+.set-info-form-label-container {
+    height: 50px;
+}
+
+.set-info-form-label {
+    margin-left: auto;
+    font-size: 16px;
+    text-align: left;
+    width: 100%;
+}
+
+.form-body {
+    overflow-y: scroll;
+    height: 53vh;
+}
+
+.map-container, .champ-container {
+    margin: 5px !important;
+    padding: 5px;
+}
+
+.champ-container {
+    line-height: 0.8;
+}
+
+.map-select, .champ-select {
+    width: 95%;
+
+    -webkit-filter: contrast(50%);
+    -moz-filter: contrast(50%);
+    -ms-filter: contrast(50%);
+    -o-filter: contrast(50%);
+    filter: contrast(50%);
+
+    -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+    -moz-transition: all 0.5s ease; /* Firefox */
+    -ms-transition: all 0.5s ease; /* IE 9 */
+    -o-transition: all 0.5s ease; /* Opera */
+    transition: all 0.5s ease;
+}
+
+.map-select:hover, .champ-select:hover {
+    -webkit-filter: contrast(100%);
+    -moz-filter: contrast(100%);
+    -ms-filter: contrast(100%);
+    -o-filter: contrast(100%);
+    filter: contrast(100%);
+
+    -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+    -moz-transition: all 0.5s ease; /* Firefox */
+    -ms-transition: all 0.5s ease; /* IE 9 */
+    -o-transition: all 0.5s ease; /* Opera */
+    transition: all 0.5s ease;
+
+    cursor: pointer;
+}
+
+.map-selected, .champ-selected {
+    outline: 1px solid white;
+
+    -webkit-filter: contrast(100%);
+    -moz-filter: contrast(100%);
+    -ms-filter: contrast(100%);
+    -o-filter: contrast(100%);
+    filter: contrast(100%);
+
+    -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+    -moz-transition: all 0.5s ease; /* Firefox */
+    -ms-transition: all 0.5s ease; /* IE 9 */
+    -o-transition: all 0.5s ease; /* Opera */
+    transition: all 0.5s ease;
+}
+
+.very-little-padding {
+    padding: 0 2px !important;
+}
+
+.help-tooltip {
+    cursor: pointer;
+}

@@ -1,0 +1,45 @@
+/** Filter **/
+
+.filter-items-button {
+    float: left;
+    padding: 13px 13px 13px 3px;
+    -webkit-transition: all 0.5s ease;
+}
+
+.filter-items-button:hover {
+    -webkit-filter: contrast(20%);
+    -webkit-transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.filter-menu {
+    display: none;
+    position: absolute;
+    width: 250px;
+    left: -280;
+    height: 57vh;
+    z-index: 1000;
+}
+
+.filter-form p {
+    padding-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.filter-form label {
+    color: #444444 !important;
+}
+
+.filter-form-title {
+    font-size: 14px;
+    padding: 8px 0;
+}
+
+.filter-form-title:hover {
+    cursor: move;
+}
+
+.filter-indent {
+    margin-left: 25px;
+}

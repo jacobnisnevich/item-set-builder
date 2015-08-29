@@ -1,0 +1,105 @@
+/** General Styles **/
+
+body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+iframe {
+    width: 100%;
+    height: 98%;
+    border: 0;
+}
+
+h1 {
+    font-size: 16px;
+    line-height: 100%;
+    margin: 10px 0;
+}
+
+/* Navbar */
+
+nav .brand-logo {
+    font-size: 1.8rem;
+    line-height: 56px;
+}
+
+.nav-wrapper-container {
+    height: 50px;
+}
+
+/* Util */
+
+.no-padding {
+    padding: 0;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Footer */
+
+footer.page-footer {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+/* Don't Know What They're For and Too Scared to Delete Them */
+
+#spinner-view {
+    display: none;
+}
+
+#results-view {
+    display: none;
+}
+
+#builder {
+    height: 100%;
+}
+
+#results-table img {
+    width: 64px;
+}
+
+#results-back {
+    margin-top: 20px;
+}
+
+.custom-card {
+    padding: 20px;
+}
+
+.card-title-custom {
+    font-size: 24px;
+    padding-bottom: 5px;
+}
+
+.shadow {
+    text-shadow: #333 2px 2px 8px;
+}
+
+#builder-app .col {
+    text-align: center
+}

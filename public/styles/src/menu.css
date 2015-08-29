@@ -1,0 +1,41 @@
+/** Menu Bar **/
+
+#toolbar {
+    height: 48px;
+    position: relative;
+}
+
+#menu-buttons-left {
+    position: absolute;
+    left: 12px;
+    top: 5px;
+}
+
+#menu-buttons-left a {
+    float: left;
+    margin-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#menu-buttons-right {
+    position: absolute;
+    right: 12px;
+    top: 5px;
+}
+
+#menu-buttons-right a {
+    float: right;
+    margin-left: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media (max-width: 1250px) {
+    .menu-button-text {
+        display: none;
+    }
+    i.right {
+        margin-left: 0px;
+    }
+}

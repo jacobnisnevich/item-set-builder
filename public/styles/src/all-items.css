@@ -1,0 +1,63 @@
+/** All Items **/
+
+/* Item Select */
+
+#item-selection {
+    height: 70vh;
+}
+
+#all-items {
+    height: 55vh;
+}
+
+#all-items img {
+    float: left;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+#all-items-container {
+    position: relative;
+}
+
+/* Tooltips */
+
+stats, grouplimit {
+    color: rgb(182, 234, 187);
+}
+
+unique, active, aura, passive {
+    color: rgb(200, 200, 0);
+}
+
+consumable {
+    color: rgb(224, 145, 58);
+}
+
+.item-efficiency-negative {
+    color: red;
+}
+
+.item-efficiency-neutral {
+    color: white;
+}
+
+.item-efficiency-positive {
+    color: #00D800;
+}
+
+/* Drag and Drop */
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+.item:hover {
+    cursor: move;
+}

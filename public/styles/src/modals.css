@@ -1,0 +1,72 @@
+/** Modals **/
+
+/* Set Summary*/
+
+.spinner-white,
+.spinner-white-only {
+    border-color: #DDDDDD;
+}
+
+.active .spinner-layer.spinner-white-only {
+    opacity: 1;
+    -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
+    animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
+}
+
+.summary-box {
+    height: 98%;
+}
+
+.summary-progress {
+    margin: 0 auto;
+    width: 64px;
+    padding-top: 100px
+}
+
+.summary-content {
+    display: none;
+}
+
+.summary-title-container {
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.summary-efficiency, .summary-tags {
+    margin: 10px 0;
+    padding: 20px 0;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.summary-efficiency .s8 {
+    text-align: center;
+    padding: 10px;
+    height: 128px;
+    border-radius: 3px;
+}
+
+.summary-efficiency .s8 div {
+    margin: 10px 0;
+}
+
+/* Instructions and Confirmation */
+
+code {
+    padding: 10px;
+    margin: 5px;
+    border: 2px grey solid;
+}
+
+#upload-instructions-box, #reset-confirmation-box {
+    width: 35% !important;
+    height: 40% !important;
+    min-width: 500px;
+    min-height: 300px;
+}
+
+.modal .modal-footer .btn-flat {
+    float: right;
+    margin: 6px 5px;
+}

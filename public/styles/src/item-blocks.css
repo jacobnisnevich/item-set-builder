@@ -1,0 +1,83 @@
+/** Item Blocks **/
+
+/* Block Viewer */
+
+#item-builder {
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+/* Slots */
+
+.item-slot img {
+    border-radius: 10px;
+}
+
+.item-slot {
+    position: relative;
+    float: left;
+    margin: 9px;
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    box-shadow: 1px 1px 5px;
+}
+
+.item-count {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 18px;
+    width: 18px;
+    background-color: rgba(50, 50, 50, 0.8);
+    color: white;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    font-size: 12px;
+}
+
+/* Blocks */
+
+#item-set-blocks {
+    border: 0;
+}
+
+#item-set-blocks li {
+    margin-bottom: 20px;
+}
+
+.collapsible-header {
+    pointer-events: none;
+}
+
+#item-set-blocks li {
+    position: relative;
+}
+
+.item-block-buttons {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.item-block-buttons i {
+    margin-right: 15px;
+    color: #5f5f5f;
+}
+
+.item-block-close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.item-block-close-button i {
+    margin-left: 15px;
+    color: #5f5f5f;
+}
+
+.toggle-item-block-button:hover, .edit-item-block-button:hover, .close-item-block-button:hover {
+    cursor: pointer;
+}

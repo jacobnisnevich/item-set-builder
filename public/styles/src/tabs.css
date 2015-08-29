@@ -1,0 +1,37 @@
+/** Tabs **/
+
+/* General */
+
+.tabs .tab a {
+    color: rgb(183, 178, 16) !important;
+}
+
+.tabs .indicator {
+    background-color: rgb(202, 195, 33);
+}
+
+/* Forms */
+
+[type="checkbox"]:checked+label:before {
+    border-right: 2px solid rgb(183, 178, 16);
+    border-bottom: 2px solid rgb(183, 178, 16);
+}
+
+[type="radio"]:checked + label:after {
+    border: 2px solid rgb(183, 178, 16);
+    background-color: rgb(183, 178, 16);
+}
+
+.build-type-form {
+    margin: 10px 0 20px 0;
+}
+
+/* Height and Scroll */
+
+#all-items, #set-info, #preset-builds {
+    overflow-y: scroll;
+}
+
+#all-items-container, #set-info, #preset-builds {
+    height: 63vh;
+}
