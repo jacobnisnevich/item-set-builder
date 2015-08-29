@@ -7,24 +7,28 @@ $(document).ready(function() {
         $(this).parent().find(".item-block-name").last().click();
     });
 
-    $(document).on('click', ".edit-item-block-button", function() {
+    $(document).on("click", ".edit-item-block-button", function() {
         var blockName = $(this).parent().parent().find('.item-block-name');
         blockName.attr('contentEditable', true);
         blockName.focus();
         blockName.select();
     });
 
-    $(document).on('click', ".toggle-item-block-button", function() {
+    $(document).on("click", ".toggle-item-block-button", function() {
         var blockHeader = $(this).parent().parent().find('.item-block-name');
         blockHeader.click();
     });
 
-    $(document).on('click', ".close-item-block-button", function() {
+    $(document).on("click", ".close-item-block-button", function() {
         var block = $(this).parent().parent();
-        block.slideUp('500');
+        block.slideUp("500");
         setTimeout(function() {
             block.remove();
         }, 500)
+    });
+
+    $(document).on("keypress", "[contenteditable]", function(event) {
+        return event.which != 13;
     });
 
     $(document).on('focusout', ".item-block-name", function() {
