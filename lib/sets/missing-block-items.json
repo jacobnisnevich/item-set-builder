@@ -1,0 +1,104 @@
+{
+  "title": "My Custom Saved Set",
+  "type": "custom",
+  "map": "SR",
+  "mode": "CLASSIC",
+  "priority": false,
+  "sortrank": 0,
+  "blocks": [
+    {
+      "type": "New Name For Item Block"
+    },
+    {
+      "items": [
+        {
+          "id": "3117",
+          "count": "1"
+        },
+        {
+          "id": "2049",
+          "count": "1"
+        },
+        {
+          "id": "3401",
+          "count": "1"
+        },
+        {
+          "id": "3190",
+          "count": "1"
+        },
+        {
+          "id": "3222",
+          "count": "1"
+        },
+        {
+          "id": "3800",
+          "count": "1"
+        }
+      ],
+      "type": "Highest Win % Core Build (51.44% wins - 4034 games)"
+    },
+    {
+      "items": [
+        {
+          "id": "3361",
+          "count": "1"
+        },
+        {
+          "id": "3362",
+          "count": "1"
+        },
+        {
+          "id": "3364",
+          "count": "1"
+        },
+        {
+          "id": "3363",
+          "count": "1"
+        }
+      ],
+      "type": "Trinkets | Frequent: E.Q.W.E.E.R.E.Q.E.Q.R.Q.Q.W.W.R.W.W"
+    },
+    {
+      "items": [
+        {
+          "id": "2003",
+          "count": "1"
+        },
+        {
+          "id": "2004",
+          "count": "1"
+        },
+        {
+          "id": "2043",
+          "count": "1"
+        },
+        {
+          "id": "2044",
+          "count": "1"
+        },
+        {
+          "id": "2041",
+          "count": "1"
+        },
+        {
+          "id": "2138",
+          "count": "1"
+        },
+        {
+          "id": "2137",
+          "count": "1"
+        },
+        {
+          "id": "2140",
+          "count": "1"
+        },
+        {
+          "id": "2139",
+          "count": "1"
+        }
+      ],
+      "type": "Consumables | Wins: Q.E.W.Q.Q.R.Q.W.Q.W.R.W.W.E.E.R.E.E"
+    }
+  ]
+}

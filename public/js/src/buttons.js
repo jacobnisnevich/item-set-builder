@@ -172,6 +172,71 @@ function isValidFileName(fileName) {
     return isValid;
 }
 
+function isValidJSON(obj) {
+    var message = "valid";
+    var isValid = true;
+
+    if (!obj.title) {
+        return {
+            "message": "Item set does not contain a title",
+            "valid": false
+        }
+    }
+    if (!obj.map) {
+        return {
+            "message": "Item set does not contain a map preference",
+            "valid": false
+        }
+    }
+    if (!obj.mode) {
+        return {
+            "message": "Item set does not contain a mode preference",
+            "valid": false
+        }
+    }
+    if (!obj.blocks) {
+        return {
+            "message": "Item set does not contain any item blocks",
+            "valid": false
+        }
+    }
+
+    obj.blocks.forEach(function(block) {
+        if (!block.type) {
+            message = "Item set contains block without a title";
+            isValid = false;
+            return;
+        }
+        if (!block.items) {
+            message = "Item set contains block without items";
+            isValid = false;
+            return;
+        }
+
+        block.items.forEach(function(item) {
+            if (!item.id) {
+                message = "Item set contains item without an id";
+                isValid = false;
+                return;
+            }
+            if (!item.count) {
+                message = "Item set contains item without a count";
+                isValid = false;
+                return;
+            }
+        });
+
+        if (!isValid) {
+            return;
+        }
+    });
+
+    return {
+        "message": message,
+        "valid": isValid
+    }
+}
+
 // Event handling functions
 
 function handleFileUpload(files) {
@@ -179,7 +244,18 @@ function handleFileUpload(files) {
 
     var reader = new FileReader();
     reader.onload = function(event) {
-        loadFromJSON(JSON.parse(event.target.result));
+        try {
+            var obj = JSON.parse(event.target.result);
+            var validateResult = isValidJSON(obj);
+
+            if (validateResult.valid) {
+                loadFromJSON(obj);
+            } else {
+                Materialize.toast("Error uploading JSON: " + validateResult.message, 4000)
+            }
+        } catch(e) {
+            Materialize.toast("Error uploading JSON: " + e, 4000)
+        }
     };
     reader.readAsText(file);
 }
