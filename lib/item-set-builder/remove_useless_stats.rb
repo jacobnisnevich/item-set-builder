@@ -1,3 +1,5 @@
+# Script for removing non-efficiency related states from raw item efficiency stats
+
 require 'json'
 
 file = File.read('../item-efficiency-raw.json')

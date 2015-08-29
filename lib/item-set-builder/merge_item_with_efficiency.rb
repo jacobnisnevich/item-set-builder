@@ -1,3 +1,5 @@
+# Unused script for merging items and efficiency stats
+
 require 'json'
 
 def mergeWithFiles()

@@ -2,10 +2,13 @@ class SetParser
   attr_reader :set, :items
 
   def initialize(setObject, itemJSON)
+    # Item set data from bildr
     @set = setObject
+    # Item data from Riot API with efficiency stats embedded
     @items = itemJSON
   end
 
+  # Function for generating Set Summary page on bildr
   def summary()
     summaryHash = {}
     summaryHash["title"] = @set["title"]
@@ -22,6 +25,7 @@ class SetParser
           itemID = item["id"]
           itemData = @items[itemID]
 
+          # Fix for issue with Total Biscuit of Rejuvenation, which for some reason has no tags
           if !itemData["tags"].nil?
             itemData["tags"].each do |tag|
               if itemTags[tag].nil?
@@ -32,6 +36,7 @@ class SetParser
             end
           end
 
+          # If item is tagged as a "base" item its worth is guaranteed to be equal to its cost by definition
           if itemData["efficiency"]["base"] == true
             totalCost = totalCost + itemData["gold"]["base"]
             totalWorthLower = totalWorthLower + itemData["gold"]["base"]
@@ -41,6 +46,7 @@ class SetParser
 
             itemCases = itemData["efficiency"]["cases"]
 
+            # Used as base cases for determining best and worst case item worth
             bestCase = 0
             worstCase = Float::INFINITY
 
@@ -67,12 +73,12 @@ class SetParser
     summaryHash["totalWorthLower"] = totalWorthLower
     summaryHash["totalWorthUpper"] = totalWorthUpper
 
+    # Check for division by 0 errors
     if totalWorthLower > 0
       summaryHash["totalEfficiencyLower"] = totalWorthLower / totalCost.to_f
     else 
       summaryHash["totalEfficiencyLower"] = "NaN"
     end
-
     if totalWorthUpper > 0
       summaryHash["totalEfficiencyUpper"] = totalWorthUpper / totalCost.to_f
     else 

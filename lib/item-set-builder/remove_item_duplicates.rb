@@ -1,3 +1,5 @@
+# Script for parsing raw item efficiency stats and removing duplicates
+
 require 'json'
 
 file = File.read('../item-efficiency-raw.json')

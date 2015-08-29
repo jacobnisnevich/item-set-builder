@@ -1,3 +1,5 @@
+# Simple class that draws from starter-presets.json to create appropriate item set JSON
+
 class StarterPresets < SetGenerator
   def getStarterPreset(presetName)
   	@item_set["title"] = presetName

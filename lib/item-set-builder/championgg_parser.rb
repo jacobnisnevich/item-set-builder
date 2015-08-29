@@ -12,8 +12,10 @@ class ChampGGParser < SetGenerator
       createItemBlock('Highest Winrate Core Build', getCoreBuildItems(page, type))
     end
 
+    # Upgraded trinkets
     createItemBlock('Trinkets', ['3361', '3362', '3363', '3364'])
 
+    # Potions, wards, and elixirs
     createItemBlock('Consumables', ['2003', '2004', '2043', '2044', '2041', '2138', '2137', '2140', '2139'])
 
     return @item_set
@@ -37,6 +39,7 @@ class ChampGGParser < SetGenerator
   end
 
   def getStartingItems(page, type)
+    # Need this because of weird Nokogiri bug with parent going up two levels
     buildIndex = getBuildIndex(type) + 2
 
     startingBuildContainer = page.at('div:contains("Most Frequent Starters")').parent
@@ -48,6 +51,7 @@ class ChampGGParser < SetGenerator
       startingBuildItems.push(itemID)
     end
 
+    # Pushes trinkets to end of starters
     ['3340', '3341', '3342'].each do |trinket|
       startingBuildItems.push(trinket)
     end
@@ -55,6 +59,7 @@ class ChampGGParser < SetGenerator
     return startingBuildItems
   end
 
+  # Function for picking out array of items out of most frequenct or highest winrate and starter or core
   def getBuildIndex(type)
     buildIndex = 0
 

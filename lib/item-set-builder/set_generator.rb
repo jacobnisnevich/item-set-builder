@@ -1,3 +1,5 @@
+# Base class for both ChampGGParser and StarterPresets
+
 class SetGenerator
   attr_reader :item_set
 

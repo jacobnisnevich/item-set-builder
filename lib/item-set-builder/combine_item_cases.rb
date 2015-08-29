@@ -1,3 +1,5 @@
+# Script for merging item efficiency statistics with their appropriate ids
+
 require 'json'
 
 file = File.read('../id-to-name.json')
