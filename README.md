@@ -64,6 +64,8 @@ Item sets that you are currently working with can be completely reset by clickin
 
 ### Item Block Manipulation
 
+![Item Block Controls](http://i.imgur.com/bW2gpfx.png)
+
 In the item block manipulation panel, the user has four possible ways to manipulate item sets:
 
 1. Expand and collapse the item blocks
