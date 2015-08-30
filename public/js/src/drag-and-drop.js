@@ -84,11 +84,12 @@ function drop(ev) {
         if (slot_filled) {
             if (index_source > index_drop) { // Source > destination
                 if (ev.target.id == data) { // If same item
-                    if (data == '2003' || data == '2004' || data == '2043' || data == '2044') { // If stackable
+                    if (data == '2003' || data == '2004' || data == '2010' || data == '2043' || data == '2044') { // If stackable
                         var countElement = $(ev.target).parent().find('.item-count');
                         var countNumber = Number($(ev.target).parent().find('.item-count').html());
                         if ((data == '2003' && (countNumber + number) <= 5) || // Health potion
                             (data == '2004' && (countNumber + number) <= 5) || // Mana potion
+                            (data == '2010' && (countNumber + number) <= 5) || // 2010 Biscuit
                             (data == '2043' && (countNumber + number) <= 2) || // Vision ward
                             (data == '2044' && (countNumber + number) <= 3))   // Stealth ward
                         { 
@@ -110,11 +111,12 @@ function drop(ev) {
             } else { // Source < destination
                 // Stack if item is stackable
                 if (ev.target.id == data) {
-                    if (data == '2003' || data == '2004' || data == '2043' || data == '2044') { // If stackable
+                    if (data == '2003' || data == '2004' || data == '2010' || data == '2043' || data == '2044') { // If stackable
                         var countElement = $(ev.target).parent().find('.item-count');
                         var countNumber = Number($(ev.target).parent().find('.item-count').html());
                         if ((data == '2003' && (countNumber + number) <= 5) || // Health potion
                             (data == '2004' && (countNumber + number) <= 5) || // Mana potion
+                            (data == '2010' && (countNumber + number) <= 5) || // 2010 Biscuit
                             (data == '2043' && (countNumber + number) <= 2) || // Vision ward
                             (data == '2044' && (countNumber + number) <= 3))   // Stealth ward
                         { 
@@ -162,6 +164,7 @@ function drop(ev) {
                 var countNumber = Number($(ev.target).parent().find('.item-count').html());
                 if ((data == '2003' && (countNumber + number) <= 5) || // Health potion
                     (data == '2004' && (countNumber + number) <= 5) || // Mana potion
+                    (data == '2010' && (countNumber + number) <= 5) || // 2010 Biscuit
                     (data == '2043' && (countNumber + number) <= 2) || // Vision ward
                     (data == '2044' && (countNumber + number) <= 3))   // Stealth ward
                 { 
