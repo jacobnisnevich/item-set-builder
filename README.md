@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/jacobnisnevich/item-set-builder](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jacobnisnevich/item-set-builder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**bildr** is a HTML5 web application built with a Ruby and Sinatra back-end and a MaterializeCSS front-end. bildr was created to allow for easy and quick creation of item sets outside of the League of Legends client while providing more information than the client's item set builder, such as item efficiency statisitics. This application was made as a submission for the [Riot Games API Challenge 2.0](https://developer.riotgames.com/discussion/announcements/show/2lxEyIcE).
+**bildr** is a HTML5 web application built with a Ruby and Sinatra back-end and a MaterializeCSS front-end. bildr was created to allow for easy and quick creation of item sets outside of the League of Legends client while providing more information than the client's item set builder, such as item efficiency statistics. This application was made as a submission for the [Riot Games API Challenge 2.0](https://developer.riotgames.com/discussion/announcements/show/2lxEyIcE).
 
 The site can be viewed at [bildr.co](http://bildr.co).
 
