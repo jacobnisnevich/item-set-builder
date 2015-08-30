@@ -54,14 +54,14 @@
 /* Instructions and Confirmation */
 
 code {
-    padding: 10px;
     margin: 5px;
-    border: 2px grey solid;
+    margin-left: 20px;
+    display: block;
 }
 
-#upload-instructions-box, #reset-confirmation-box {
-    width: 35% !important;
-    height: 40% !important;
+#upload-instructions-box, #reset-confirmation-box, #download-instructions-box {
+    width: 45% !important;
+    height: 45% !important;
     min-width: 500px;
     min-height: 300px;
 }
