@@ -25,12 +25,25 @@ $(document).ready(function() {
     new Opentip("#champ-help-tooltip", "Pick one specific champion or none for a global item set");
     new Opentip("#map-help-tooltip", "Pick one specific map or none for a global item set"); 
 
+    var excludedItems = [
+        2009, // Free Total Biscuit of Rejuvenation
+        3240, // Enchantment on tier 1 boots
+        3241, // Enchantment on tier 1 boots
+        3242, // Enchantment on tier 1 boots
+        3243, // Enchantment on tier 1 boots
+        3244, // Enchantment on tier 1 boots
+        3245  // Enchantment on tier 1 boots
+    ];
+
     $.get("/getItems", function(data) {
         dataJSON = JSON.parse(data);
+
         for (var itemId in dataJSON) {
-            if (dataJSON.hasOwnProperty(itemId)) {
+            if (dataJSON.hasOwnProperty(itemId) && $.inArray(parseInt(itemId), excludedItems) == -1) {
                 $("#all-items").append('<img draggable="true" ondragstart="drag(event)" id="' + itemId + '" class="item" src="/images/items/' + itemId + '.png" alt="' + dataJSON[itemId]['name'] + '"/>');
+
                 var tooltipDescription = "<img src='/images/gold.png'>&nbsp;" + dataJSON[itemId]['gold']['total'] + "<br><br>" + dataJSON[itemId]['description'];
+
                 if (dataJSON[itemId]['efficiency'] != null) {
                     if (!dataJSON[itemId]['efficiency']['base']) {
                         tooltipDescription = tooltipDescription.concat("<br><hr>")
@@ -55,7 +68,15 @@ $(document).ready(function() {
                         tooltipDescription = tooltipDescription.concat("Gold Efficiency Ratio: <b class='item-efficiency-neutral'>100%</b><br><br>");
                     }
                 }
-                new Opentip("#" + itemId, tooltipDescription, dataJSON[itemId]['name'])
+
+                var tooltipName = dataJSON[itemId]['name'];
+
+                if (parseInt(itemId) == 3043) {
+                    tooltipName = tooltipName + " (Crystal Scar)";
+                } 
+
+                new Opentip("#" + itemId, tooltipDescription, tooltipName);
+
                 if (dataJSON[itemId]['tags']) {
                     dataJSON[itemId]['tags'].forEach(function(tag) {
                         $("#" + itemId).addClass(tag);
