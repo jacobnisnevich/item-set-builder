@@ -286,11 +286,7 @@ $(document).ready(function() {
             var item = $(this);
             var returnval = false;
             filters.forEach(function(element) {
-                if (element == "All Items") {
-                    returnval = false;
-                    return false;
-                }
-                else if (element == "Starting Items") {
+                if (element == "Starting Items") {
                     if (!item.hasClass("Jungle") &&
                         !item.hasClass("Lane")) {
                         returnval = true;
