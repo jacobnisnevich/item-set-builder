@@ -58,11 +58,15 @@ Saving your item set works by utilizing the ```localStorage``` functionality of 
 
 *(Note: you can only have one item set saved at a time and clicking* Save *will overwrite any previously saved item set)*
 
+To retrieve your saved item set, simple navigate to [bildr.co](bildr.co) and your set should automatically load!
+
 ### Reset Item Set
 
 Item sets that you are currently working with can be completely reset by clicking the *Reset* button in the horizontal menu bar. Note that this will reset all items in the item block viewer as well as information in the _Set Info_ tab. Also note that there is no way to recover your item set after you have hit reset unless you have saved your item set as *Reset* does not reset your saved item set.
 
 ### Item Block Manipulation
+
+![Item Block Controls](http://i.imgur.com/bW2gpfx.png)
 
 In the item block manipulation panel, the user has four possible ways to manipulate item sets:
 
