@@ -1,5 +1,12 @@
 /** Filter **/
 
+#all-items-button {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 95%;
+    margin-bottom: 5px;
+}
+
 .filter-items-button {
     float: left;
     padding: 13px 13px 13px 3px;
