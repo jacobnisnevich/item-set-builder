@@ -38,11 +38,11 @@ class SetParser
 
           # If item is tagged as a "base" item its worth is guaranteed to be equal to its cost by definition
           if itemData["efficiency"]["base"] == true
-            totalCost = totalCost + itemData["gold"]["base"]
-            totalWorthLower = totalWorthLower + itemData["gold"]["base"]
-            totalWorthUpper = totalWorthUpper + itemData["gold"]["base"]
+            totalCost = totalCost + itemData["gold"]["total"]
+            totalWorthLower = totalWorthLower + itemData["gold"]["total"]
+            totalWorthUpper = totalWorthUpper + itemData["gold"]["total"]
           else
-            totalCost = totalCost + itemData["gold"]["base"]
+            totalCost = totalCost + itemData["gold"]["total"]
 
             itemCases = itemData["efficiency"]["cases"]
 
@@ -87,6 +87,6 @@ class SetParser
 
     summaryHash["tagDistribution"] = itemTags
 
-    return summaryHash
+    summaryHash
   end
 end
