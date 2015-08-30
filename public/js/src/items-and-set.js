@@ -280,27 +280,13 @@ $(document).ready(function() {
 
         var all_items_checked = false;
         all_items.filter(function() {
-            if (all_items_checked) {
-                //uncheck all checkboxes
-                $('input[type=checkbox]').each(function() {
-                    $(this).prop('checked', false);
-                });
-                all_items.show();
-                return false;
-            }
-
             //if hidden already, just return
             if (this.hidden) {return false}
 
             var item = $(this);
             var returnval = false;
             filters.forEach(function(element) {
-                if (all_items_checked || element == "All Items") {
-                    all_items_checked = true;
-                    returnval = false;
-                    return false;
-                }
-                else if (element == "Starting Items") {
+                if (element == "Starting Items") {
                     if (!item.hasClass("Jungle") &&
                         !item.hasClass("Lane")) {
                         returnval = true;
@@ -358,6 +344,15 @@ $(document).ready(function() {
             return returnval;
         }).hide();
     });
+
+    $(document).on('click', "#all-items-button", function() {
+        //uncheck all checkboxes
+        $('input[type=checkbox]').each(function() {
+            $(this).prop('checked', false);
+        });
+        $(".item", $("#all-items")).show();
+    });
+        
 });
 
 function toggleFilterMenu() {
