@@ -6,6 +6,8 @@
 
 The site can be viewed at [bildr.co](http://bildr.co).
 
+## [Short Demo Video](https://www.youtube.com/watch?v=QayUJVY35_I)
+
 ## Installation and Set-up
 
 **_If you want to run the app locally._**
