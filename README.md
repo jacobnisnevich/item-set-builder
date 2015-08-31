@@ -10,7 +10,7 @@ The site can be viewed at [bildr.co](http://bildr.co).
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=QayUJVY35_I
 " target="_blank"><img src="http://img.youtube.com/vi/QayUJVY35_I/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+alt="Bildr.co Demo" width="480" height="360" border="10" /></a>
 
 ## Installation and Set-up
 
